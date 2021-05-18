@@ -1,5 +1,5 @@
 # Ansible Workstation Setup
-This playbook install the software that I use on my Ubuntu workstation.
+This playbook installs the software that I use on my Ubuntu (Bionic Beaver) workstation.
 
 ## Installation
 1. Clone this repo: `git clone https://github.com/wozorio/ansible-workstation-setup.git`
