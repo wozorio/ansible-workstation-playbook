@@ -1,2 +1,2 @@
 ---
-downloads_dir: ~/.ansible-downloads/
+downloads_dir: /var/tmp/.ansible-downloads/
