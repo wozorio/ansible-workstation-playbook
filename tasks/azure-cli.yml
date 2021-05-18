@@ -19,4 +19,4 @@
     state: present
 
 - name: Update apt and install azure-cli
-  apt: update_cache=yes name=azure-cli state=latest
+  apt: name=azure-cli state=latest update_cache=yes
