@@ -13,4 +13,4 @@
       state: directory
 
   - import_tasks: tasks/az-cli.yml
-      tags: ['az-cli']
+    tags: ['az-cli']
