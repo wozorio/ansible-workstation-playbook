@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  vars_files:
+    - default.config.yml
+
+  tasks:
+    - import_tasks: tasks/az-cli.yml
+      tags: ['az-cli']
