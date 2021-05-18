@@ -1,2 +1,2 @@
 ---
-downloads_dir: /var/tmp/.ansible-downloads/
+distrib_codename: bionic

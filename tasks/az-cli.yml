@@ -1,9 +1,0 @@
----
-- name: Download az-cli
-  get_url:
-    url: https://aka.ms/InstallAzureCLIDeb
-    dest: "{{ downloads_dir }}"
-    mode: 0755
-
-- name: Install az-cli
-  command: sh {{ downloads_dir }}deb_install.sh
