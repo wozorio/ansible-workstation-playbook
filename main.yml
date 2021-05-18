@@ -7,5 +7,10 @@
     - default.config.yml
 
   tasks:
-    - import_tasks: tasks/az-cli.yml
+  - name: Ensure Ansible downloads directory exists
+    file:
+      path: "{{ downloads_dir }}"
+      state: directory
+
+  - import_tasks: tasks/az-cli.yml
       tags: ['az-cli']

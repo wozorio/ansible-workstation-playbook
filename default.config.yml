@@ -1,2 +1,2 @@
 ---
-terraform_version: 0.15.3
+downloads_dir: ~/.ansible-downloads/
