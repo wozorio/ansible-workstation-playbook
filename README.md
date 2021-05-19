@@ -6,9 +6,8 @@ This playbook installs the software that I use on my Ubuntu (Bionic Beaver) work
 1. Change to the repo directory: `cd ansible-workstation-setup`
 1. Install Ansible
     ```bash
-    sudo apt update
-    sudo apt -y install software-properties-common
     sudo add-apt-repository --yes --update ppa:ansible/ansible
-    sudo apt -y install ansible
+    sudo apt update
+    sudo apt -y install software-properties-common ansible
     ```
 3. Run the playbook: `ansible-playbook main.yml -i inventory --ask-become-pass`
