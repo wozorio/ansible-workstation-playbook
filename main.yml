@@ -8,3 +8,5 @@
   tasks:
   - import_tasks: tasks/azure-cli.yml
     tags: ['azure-cli']
+  - import_tasks: tasks/terraform.yml
+    tags: ['terraform']

@@ -1,2 +1,3 @@
 ---
 distrib_codename: bionic
+terraform_version: 0.15.3
