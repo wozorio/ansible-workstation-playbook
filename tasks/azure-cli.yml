@@ -1,6 +1,9 @@
 ---
 - name: Install required system packages
-  apt: name={{ item }} state=latest update_cache=yes
+  apt:
+    name: {{ item }}
+    state: latest
+    update_cache: yes
   loop:
   - ca-certificates
   - curl
@@ -19,4 +22,7 @@
     state: present
 
 - name: Update apt and install azure-cli
-  apt: name=azure-cli state=latest update_cache=yes
+  apt:
+    name: azure-cli
+    state: latest
+    update_cache: yes
