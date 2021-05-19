@@ -5,10 +5,17 @@
   vars_files:
     - default.config.yml
 
+  pre_tasks:
+    - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      tags: ["always"]
+
   tasks:
-  - import_tasks: tasks/tools.yml
-    tags: ['tools']
-  - import_tasks: tasks/azure-cli.yml
-    tags: ['azure-cli']
-  - import_tasks: tasks/terraform.yml
-    tags: ['terraform']
+    - import_tasks: tasks/tools.yml
+      tags: ["tools"]
+    - import_tasks: tasks/azure-cli.yml
+      tags: ["azure-cli"]
+    - import_tasks: tasks/terraform.yml
+      tags: ["terraform"]

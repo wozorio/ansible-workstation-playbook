@@ -3,8 +3,7 @@
   apt:
     name: "{{ item }}"
     state: latest
-    update_cache: yes
   loop:
-  - jq
-  - unzip
-  - tree
+    - jq
+    - unzip
+    - tree
