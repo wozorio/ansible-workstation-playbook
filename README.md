@@ -10,3 +10,11 @@ This playbook installs the software that I use on my Ubuntu (Bionic Beaver) work
 1. Clone the repo: `git clone https://github.com/wozorio/ansible-workstation-setup.git`
 1. Change to the repo directory: `cd ansible-workstation-setup`
 1. Run the playbook: `ansible-playbook main.yml -i inventory --ask-become-pass`
+
+### Running a specific set of tagged tasks
+
+You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `tools`, `azure-cli` and `terraform`.
+
+```bash
+ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools,terraform"
+```
