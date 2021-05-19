@@ -11,4 +11,4 @@ This playbook installs the software that I use on my Ubuntu (Bionic Beaver) work
     sudo add-apt-repository --yes --update ppa:ansible/ansible
     sudo apt -y install ansible
     ```
-3. Run: `ansible-playbook main.yml -i inventory --ask-become-pass`
+3. Run the playbook: `ansible-playbook main.yml -i inventory --ask-become-pass`
