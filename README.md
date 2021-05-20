@@ -9,7 +9,8 @@ This playbook installs the software that I use on my Ubuntu (Bionic Beaver) work
     ```
 1. Clone the repo: `git clone https://github.com/wozorio/ansible-workstation-setup.git`
 1. Change to the repo directory: `cd ansible-workstation-setup`
-1. Run the playbook: `ansible-playbook main.yml -i inventory --ask-become-pass`
+1. Install the required Ansible roles: `ansible-galaxy install -r requirements.yml`
+3. Run the playbook: `ansible-playbook main.yml -i inventory --ask-become-pass`
 
 ### Running a specific set of tagged tasks
 
