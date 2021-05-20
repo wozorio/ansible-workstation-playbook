@@ -23,3 +23,5 @@
       tags: ["azure-cli"]
     - import_tasks: tasks/terraform.yml
       tags: ["terraform"]
+    - import_tasks: tasks/kubectl.yml
+      tags: ["kubectl"]
