@@ -1,6 +1,6 @@
 ---
 - name: Install kubectl {{ kubectl_version }}
   get_url:
-    url: "https://dl.k8s.io/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl"
+    url: https://dl.k8s.io/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
     dest: /usr/local/bin/kubectl
     mode: 755
