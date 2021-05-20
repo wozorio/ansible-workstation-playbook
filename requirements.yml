@@ -1,4 +1,4 @@
 ---
 roles:
-  - name: hello-world
-    src: https://github.com/wozorio/ansible-role-hello-world
+  - name: docker
+    src: https://github.com/wozorio/ansible-role-docker

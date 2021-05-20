@@ -13,8 +13,8 @@
       tags: ["always"]
 
   roles:
-    - role: hello-world
-      tags: ["hello-world"]
+    - role: docker
+      tags: ["docker"]
 
   tasks:
     - import_tasks: tasks/tools.yml
