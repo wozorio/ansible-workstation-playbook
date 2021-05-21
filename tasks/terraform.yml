@@ -13,5 +13,5 @@
     creates: "{{ download_dir }}/terraform"
 
 - name: Move Terraform to /usr/local/bin
-  command: >
+  shell: |
     cp {{ download_dir }}/terraform /usr/local/bin/terraform
