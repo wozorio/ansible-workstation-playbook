@@ -4,3 +4,4 @@ distrib_codename: bionic
 terraform_version: 0.15.3
 terraform_checksum: sha256:5ce5834fd74e3368ad7bdaac847f973e66e61acae469ee86b88da4c6d9f933d4
 kubectl_version: 1.19.0
+kubectl_checksum: sha256:79bb0d2f05487ff533999a639c075043c70a0a1ba25c1629eb1eef6ebe3ba70f

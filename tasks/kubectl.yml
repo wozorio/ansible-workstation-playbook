@@ -1,6 +1,10 @@
 ---
-- name: Install kubectl {{ kubectl_version }}
+- name: Download kubectl
   get_url:
-    url: https://dl.k8s.io/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
-    dest: /usr/local/bin/kubectl
-    mode: 755
+    url: "https://dl.k8s.io/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl"
+    dest: "{{ download_dir }}/kubectl"
+    checksum: "{{ kubectl_checksum }}"
+
+- name: Move kubectl to /usr/local/bin
+  command: >
+    mv {{ download_dir }}/kubectl /usr/local/bin/kubectl
