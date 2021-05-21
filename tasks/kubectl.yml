@@ -7,4 +7,4 @@
 
 - name: Move kubectl to /usr/local/bin
   command: >
-    mv {{ download_dir }}/kubectl /usr/local/bin/kubectl
+    cp {{ download_dir }}/kubectl /usr/local/bin/kubectl
