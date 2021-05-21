@@ -5,7 +5,7 @@
     dest: "{{ download_dir }}/kubectl"
     checksum: "{{ kubectl_checksum }}"
 
-- name: Move kubectl to /usr/local/bin
+- name: Copy kubectl to /usr/local/bin
   shell: |
     cp {{ download_dir }}/kubectl /usr/local/bin/kubectl
     chmod +x /usr/local/bin/kubectl

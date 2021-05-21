@@ -12,6 +12,6 @@
     remote_src: true
     creates: "{{ download_dir }}/terraform"
 
-- name: Move Terraform to /usr/local/bin
+- name: Copy Terraform to /usr/local/bin
   shell: |
     cp {{ download_dir }}/terraform /usr/local/bin/terraform
