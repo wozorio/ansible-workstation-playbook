@@ -2,5 +2,5 @@
 download_dir: /tmp
 distrib_codename: bionic
 terraform_version: 0.15.3
-terraform_checksum: sha256:7d4edd9c63eb53cbba4e7df69b5ef44b3d55fca4cd1f315940d9d83bf0152ae3
+terraform_checksum: sha256:5ce5834fd74e3368ad7bdaac847f973e66e61acae469ee86b88da4c6d9f933d4
 kubectl_version: 1.19.0
