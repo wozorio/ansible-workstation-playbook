@@ -1,0 +1,20 @@
+---
+- name: Download Helm
+  get_url:
+    url: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+    dest: "{{ download_dir }}/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+    checksum: "{{ helm_checksum }}"
+
+- name: Extract Helm
+  unarchive:
+    src: "{{ download_dir }}/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+    dest: "{{ download_dir }}"
+    remote_src: true
+    creates: "{{ download_dir }}/linux-amd64"
+
+- name: Copy Helm to /usr/local/bin
+  copy:
+    src: "{{ download_dir }}/linux-amd64/helm"
+    dest: /usr/local/bin/helm
+    remote_src: true
+    mode: 0775
