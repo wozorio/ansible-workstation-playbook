@@ -13,5 +13,8 @@
     creates: "{{ download_dir }}/terraform"
 
 - name: Copy Terraform to /usr/local/bin
-  shell: |
-    cp {{ download_dir }}/terraform /usr/local/bin/terraform
+  copy:
+    src: "{{ download_dir }}/terraform"
+    dest: /usr/local/bin/terraform
+    remote_src: true
+    mode: 0775

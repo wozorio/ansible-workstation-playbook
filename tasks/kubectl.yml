@@ -6,6 +6,8 @@
     checksum: "{{ kubectl_checksum }}"
 
 - name: Copy kubectl to /usr/local/bin
-  shell: |
-    cp {{ download_dir }}/kubectl /usr/local/bin/kubectl
-    chmod +x /usr/local/bin/kubectl
+  copy:
+    src: "{{ download_dir }}/kubectl"
+    dest: /usr/local/bin/kubectl
+    remote_src: true
+    mode: 0775
