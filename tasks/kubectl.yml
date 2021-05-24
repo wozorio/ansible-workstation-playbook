@@ -5,9 +5,9 @@
     dest: "{{ download_dir }}/kubectl"
     checksum: "{{ kubectl_checksum }}"
 
-- name: Copy kubectl to /usr/local/bin
+- name: Copy kubectl binary to its path
   copy:
     src: "{{ download_dir }}/kubectl"
-    dest: /usr/local/bin/kubectl
+    dest: "{{ kubectl_bin_path }}"
     remote_src: true
     mode: 0775

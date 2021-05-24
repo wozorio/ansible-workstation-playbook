@@ -12,9 +12,9 @@
     remote_src: true
     creates: "{{ download_dir }}/terraform"
 
-- name: Copy Terraform to /usr/local/bin
+- name: Copy Terraform binary to its path
   copy:
     src: "{{ download_dir }}/terraform"
-    dest: /usr/local/bin/terraform
+    dest: "{{ terraform_bin_path }}"
     remote_src: true
     mode: 0775
