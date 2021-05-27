@@ -14,8 +14,8 @@ This playbook installs the software that I use on my Ubuntu (Bionic Beaver) work
 
 ### Running a specific set of tagged tasks
 
-You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `docker`, `tools`, `azure-cli`, `terraform`, `kubectl` and `helm`.
+You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `azure-cli`, `docker`, `helm`, `kubectl`, `terraform`, `terragrunt` and `tools`.
 
 ```bash
-ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools,terraform"
+ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terraform"
 ```

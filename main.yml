@@ -21,9 +21,11 @@
       tags: ["tools"]
     - import_tasks: tasks/azure-cli.yml
       tags: ["azure-cli"]
-    - import_tasks: tasks/terraform.yml
-      tags: ["terraform"]
-    - import_tasks: tasks/kubectl.yml
-      tags: ["kubectl"]
     - import_tasks: tasks/helm.yml
       tags: ["helm"]
+    - import_tasks: tasks/kubectl.yml
+      tags: ["kubectl"]
+    - import_tasks: tasks/terraform.yml
+      tags: ["terraform"]
+    - import_tasks: tasks/terragrunt.yml
+      tags: ["terragrunt"]
