@@ -1,7 +1,7 @@
 # Ansible Workstation Setup
 This playbook installs the software that I use on my Ubuntu (Bionic Beaver) workstation.
 
-[![MIT licensed][badge-license]][link-license]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Installation
 1. Install Ansible
