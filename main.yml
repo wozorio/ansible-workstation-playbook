@@ -25,6 +25,8 @@
       tags: ["helm"]
     - import_tasks: tasks/kubectl.yml
       tags: ["kubectl"]
+    - import_tasks: tasks/stern.yml
+      tags: ["stern"]
     - import_tasks: tasks/terraform.yml
       tags: ["terraform"]
     - import_tasks: tasks/terragrunt.yml
