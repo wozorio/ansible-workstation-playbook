@@ -3,7 +3,7 @@
   become: true
 
   vars_files:
-    - default.config.yml
+    - /vars/main.yml
 
   pre_tasks:
     - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
@@ -17,6 +17,8 @@
       tags: ["docker"]
 
   tasks:
+    - import_tasks: tasks/customizations.yml
+      tags: ["customizations"]
     - import_tasks: tasks/tools.yml
       tags: ["tools"]
     - import_tasks: tasks/azure-cli.yml
