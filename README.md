@@ -31,7 +31,7 @@ The tags available are:
 |terragrunt|Install [Terragrunt](https://terragrunt.gruntwork.io/)|
 |tools|Install various tools|
 
-### Usage example
+#### Usage example
 ```bash
 ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terraform"
 ```
