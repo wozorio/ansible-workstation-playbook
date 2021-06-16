@@ -1,9 +1,11 @@
 # Ansible Workstation Setup
+
 This playbook installs the software that I use on my Ubuntu (Bionic Beaver) workstation.
 
 ![GitHub](https://img.shields.io/github/license/wozorio/ansible-workstation-setup)
 
 ## Installation
+
 1. Install Ansible
     ```bash
     sudo add-apt-repository --update --yes ppa:ansible/ansible
@@ -15,6 +17,7 @@ This playbook installs the software that I use on my Ubuntu (Bionic Beaver) work
 3. Run the playbook: `ansible-playbook main.yml -i inventory --ask-become-pass`
 
 ### Running a specific set of tagged tasks
+
 You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag.
 
 The tags available are:
@@ -32,6 +35,7 @@ The tags available are:
 |tools|Install various tools|
 
 #### Usage example
+
 ```bash
 ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terraform"
 ```
