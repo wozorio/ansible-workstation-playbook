@@ -24,15 +24,15 @@ The tags available are:
 
 |Tag|Description|
 |---|---|
-|azure-cli|Install azure-cli|
-|customizations|Perform various OS custumizations|
-|docker|Install [Docker](https://docs.docker.com/engine/install/ubuntu/)|
-|helm|Install [Helm](https://helm.sh/)|
-|kubectl|Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)|
-|stern|Install [Stern](https://github.com/wercker/stern)|
-|terraform|Install [Terraform](https://www.terraform.io/)|
-|terragrunt|Install [Terragrunt](https://terragrunt.gruntwork.io/)|
-|tools|Install various tools|
+|`azure-cli`|Install azure-cli|
+|`customizations`|Perform various OS custumizations|
+|`docker`|Install [Docker](https://docs.docker.com/engine/install/ubuntu/)|
+|`helm`|Install [Helm](https://helm.sh/)|
+|`kubectl`|Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)|
+|`stern`|Install [Stern](https://github.com/wercker/stern)|
+|`terraform`|Install [Terraform](https://www.terraform.io/)|
+|`terragrunt`|Install [Terragrunt](https://terragrunt.gruntwork.io/)|
+|`tools`|Install various tools and utilities (i.e.: `jq`, `unzip`, `git`, etc)|
 
 #### Usage example
 
