@@ -2,7 +2,7 @@
 
 This playbook installs the software that I use on my Ubuntu (Bionic Beaver) workstation.
 
-![GitHub](https://img.shields.io/github/license/wozorio/ansible-workstation-setup)
+[![GitHub](https://img.shields.io/github/license/wozorio/ansible-workstation-setup)](https://github.com/wozorio/ansible-workstation-setup/blob/master/LICENSE)
 
 ## Installation
 
