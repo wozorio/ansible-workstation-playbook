@@ -25,7 +25,7 @@ The tags available are:
 |Tag|Description|
 |---|---|
 |`azure-cli`|Install azure-cli|
-|`customizations`|Perform various OS custumizations|
+|`customizations`|Perform various OS customizations|
 |`docker`|Install [Docker](https://docs.docker.com/engine/install/ubuntu/)|
 |`helm`|Install [Helm](https://helm.sh/)|
 |`kubectl`|Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)|
