@@ -14,6 +14,8 @@
 
   roles:
     - role: docker
+      vars:
+        docker_user: "{{ user }}"
       tags: ["docker"]
 
   tasks:
