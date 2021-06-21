@@ -9,3 +9,5 @@
     - tree
     - git
     - htop
+    - wget
+    - curl
