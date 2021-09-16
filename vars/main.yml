@@ -9,7 +9,7 @@ helm_checksum: sha256:a8ddb4e30435b5fd45308ecce5eaad676d64a5de9c89660b56face3fe9
 helm_bin_path: /usr/local/bin/helm
 
 kubectl_version: 1.22.2
-kubectl_checksum: aeca0018958c1cae0bf2f36f566315e52f87bdab38b440df349cd091e9f13f36
+kubectl_checksum: sha256:aeca0018958c1cae0bf2f36f566315e52f87bdab38b440df349cd091e9f13f36
 kubectl_bin_path: /usr/local/bin/kubectl
 
 stern_version: 1.11.0
