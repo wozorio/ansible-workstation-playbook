@@ -1,16 +1,9 @@
 ---
 - name: Download kubens
   get_url:
-    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubens_version }}/kubens_v{{ kubens_version }}_darwin_x86_64.tar.gz"
-    dest: "{{ download_dir }}/kubens_v{{ kubens_version }}_darwin_x86_64.tar.gz"
+    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubens_version }}/kubens"
+    dest: "{{ download_dir }}/kubens"
     checksum: "{{ kubens_checksum }}"
-
-- name: Extract kubens
-  unarchive:
-    src: "{{ download_dir }}/kubens_v{{ kubens_version }}_darwin_x86_64.tar.gz"
-    dest: "{{ download_dir }}"
-    remote_src: true
-    creates: "{{ download_dir }}/kubens"
 
 - name: Copy kubens binary to its path
   copy:

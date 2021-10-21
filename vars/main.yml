@@ -13,11 +13,11 @@ kubectl_checksum: sha256:aeca0018958c1cae0bf2f36f566315e52f87bdab38b440df349cd09
 kubectl_bin_path: /usr/local/bin/kubectl
 
 kubens_version: 0.9.4
-kubens_checksum: sha256:ef43ab1217e09ac1b929d4b9dd2c22cbb10540ef277a3a9b484c020820c988b1
+kubens_checksum: sha256:509c97c0882e688ae8fad8aa13524cc7c003e4883db447a905bdb47d64c13bdc
 kubens_bin_path: /usr/local/bin/kubens
 
 kubectx_version: 0.9.4
-kubectx_checksum: sha256:99392d5cc3d174a18b68d9cce6872dc6c7216d58b6913e4f6a51274cffa95583
+kubectx_checksum: sha256:557fb0ebd0251ad6524b6a84609ee9fce070de7765d6319d824e25a1e58c42cf
 kubectx_bin_path: /usr/local/bin/kubectx
 
 stern_version: 1.11.0
