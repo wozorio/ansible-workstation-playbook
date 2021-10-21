@@ -17,7 +17,7 @@ kubens_checksum: sha256:ef43ab1217e09ac1b929d4b9dd2c22cbb10540ef277a3a9b484c0208
 kubens_bin_path: /usr/local/bin/kubens
 
 kubectx_version: 0.9.4
-kubectx_checksum: sha256:db5a48e85ff4d8c6fa947e3021e11ba4376f9588dd5fa779a80ed5c18287db22
+kubectx_checksum: sha256:99392d5cc3d174a18b68d9cce6872dc6c7216d58b6913e4f6a51274cffa95583
 kubectx_bin_path: /usr/local/bin/kubectx
 
 stern_version: 1.11.0
