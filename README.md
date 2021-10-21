@@ -29,6 +29,7 @@ The tags available are:
 |`docker`|Install [Docker](https://docs.docker.com/engine/install/ubuntu/)|
 |`helm`|Install [Helm](https://helm.sh/)|
 |`kubectl`|Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)|
+|`kubectx`|Install [kubectx](https://github.com/ahmetb/kubectx/)|
 |`stern`|Install [Stern](https://github.com/wercker/stern)|
 |`terraform`|Install [Terraform](https://www.terraform.io/)|
 |`terragrunt`|Install [Terragrunt](https://terragrunt.gruntwork.io/)|

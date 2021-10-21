@@ -1,0 +1,13 @@
+---
+- name: Download kubectx
+  get_url:
+    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubectx_version }}/kubectx_v{{ kubectx_version }}_darwin_x86_64.tar.gz"
+    dest: "{{ download_dir }}/kubectx"
+    checksum: "{{ kubectx_checksum }}"
+
+- name: Copy kubectx binary to its path
+  copy:
+    src: "{{ download_dir }}/kubectx"
+    dest: "{{ kubectx_bin_path }}"
+    remote_src: true
+    mode: 0775
