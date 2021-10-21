@@ -1,7 +1,7 @@
 ---
 - name: Download kubens
   get_url:
-    url: "https://github.com/ahmetb/kubens/releases/download/v{{ kubens_version }}/kubens_v{{ kubens_version }}_darwin_x86_64.tar.gz"
+    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubens_version }}/kubens_v{{ kubens_version }}_darwin_x86_64.tar.gz"
     dest: "{{ download_dir }}/kubens_v{{ kubens_version }}_darwin_x86_64.tar.gz"
     checksum: "{{ kubens_checksum }}"
 
