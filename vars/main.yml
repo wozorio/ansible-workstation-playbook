@@ -12,6 +12,10 @@ kubectl_version: 1.22.2
 kubectl_checksum: sha256:aeca0018958c1cae0bf2f36f566315e52f87bdab38b440df349cd091e9f13f36
 kubectl_bin_path: /usr/local/bin/kubectl
 
+kubens_version: 0.9.4
+kubens_checksum: sha256:ef43ab1217e09ac1b929d4b9dd2c22cbb10540ef277a3a9b484c020820c988b1
+kubens_bin_path: /usr/local/bin/kubens
+
 kubectx_version: 0.9.4
 kubectx_checksum: sha256:db5a48e85ff4d8c6fa947e3021e11ba4376f9588dd5fa779a80ed5c18287db22
 kubectx_bin_path: /usr/local/bin/kubectx
