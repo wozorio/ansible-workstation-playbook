@@ -39,3 +39,5 @@
       tags: ["terraform"]
     - import_tasks: tasks/terragrunt.yml
       tags: ["terragrunt"]
+    - import_tasks: tasks/zsh.yml
+      tags: ["zsh"]
