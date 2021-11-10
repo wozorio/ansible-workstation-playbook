@@ -35,6 +35,7 @@ The tags available are:
 |`terraform`|Install [Terraform](https://www.terraform.io/)|
 |`terragrunt`|Install [Terragrunt](https://terragrunt.gruntwork.io/)|
 |`tools`|Install various tools and utilities (i.e.: `jq`, `unzip`, `git`, etc)|
+|`zsh`|Install [Zsh](https://www.zsh.org/)|
 
 ### Usage example
 
