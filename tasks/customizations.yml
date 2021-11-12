@@ -6,3 +6,8 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0664
+
+- name: Set hostname
+  hostname:
+    name: "{{ hostname }}"
+    use: systemd

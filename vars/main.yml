@@ -1,5 +1,6 @@
 ---
 user: wozorio
+hostname: homealone
 homedir: "/home/{{ user }}"
 download_dir: /tmp
 distrib_codename: bionic
