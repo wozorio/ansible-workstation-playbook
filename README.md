@@ -40,5 +40,5 @@ The tags available are:
 ### Usage example
 
 ```
-ansible-playbook site.yml -i inventory --ask-become-pass --tags "tools, terraform"
+ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terraform"
 ```
