@@ -1,6 +1,6 @@
 ---
 user: wozorio
-hostname: homealone
+hostname: darkside
 homedir: "/home/{{ user }}"
 download_dir: /tmp
 distrib_codename: bionic
