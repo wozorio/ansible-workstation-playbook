@@ -8,7 +8,7 @@ This playbook installs the software that I use on my Linux Mint 20.3 (Una) works
 
 1. Install Ansible
     ```
-    sudo add-apt-repository --update --yes ppa:ansible/ansible
+    sudo add-apt-repository --yes ppa:ansible/ansible
     sudo apt install -y software-properties-common ansible
     ```
 1. Clone the repo: `git clone https://github.com/wozorio/ansible-workstation-setup.git`
