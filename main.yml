@@ -3,7 +3,7 @@
   become: true
 
   vars_files:
-    - vars/main.yml
+    - defaults/main.yml
 
   pre_tasks:
     - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
