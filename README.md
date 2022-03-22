@@ -46,6 +46,6 @@ ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terrafor
 - Linux Mint 20.3 (Una)
 - Ubuntu LTS 20.04 (Focal Fossa)
 
-### Known issues
+## Known issues
 
 1. If adding Ansible repository public key with `sudo add-apt-repository --update --yes ppa:ansible/ansible` fails, try adding it manually: `curl -sL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x93C4A3FD7BB9C367" | sudo apt-key add`
