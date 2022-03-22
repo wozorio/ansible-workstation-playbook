@@ -1,6 +1,6 @@
 # Ansible Workstation Setup
 
-This playbook installs the software that I use on my Ubuntu (Bionic Beaver) workstation.
+This playbook installs the software that I use on my Linux Mint 20.3 (Una) workstation.
 
 [![GitHub](https://img.shields.io/github/license/wozorio/ansible-workstation-setup)](https://github.com/wozorio/ansible-workstation-setup/blob/master/LICENSE)
 
@@ -42,6 +42,10 @@ The tags available are:
 ```
 ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terraform"
 ```
+## Supported operating systems
+- Linux Mint 20.3 (Una)
+- Ubuntu LTS 20.04 (Focal Fossa)
 
 ### Known issues
+
 1. If adding Ansible repository public key with `sudo add-apt-repository --update --yes ppa:ansible/ansible` fails, try adding it manually: `curl -sL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x93C4A3FD7BB9C367" | sudo apt-key add`
