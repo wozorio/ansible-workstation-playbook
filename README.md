@@ -43,8 +43,9 @@ The tags available are:
 ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terraform"
 ```
 ## Supported operating systems
+
 - Linux Mint 20.3 (Una)
-- Ubuntu LTS 20.04 (Focal Fossa)
+- Ubuntu 20.04 LTS (Focal Fossa)
 
 ## Known issues
 
