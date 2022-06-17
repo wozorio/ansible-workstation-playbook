@@ -24,7 +24,7 @@
       become_user: "{{ user }}"
       when: not oh_my_zsh_dir.stat.exists
 
-    - name: Copy ZSH custom aliases
+    - name: Copy ZSH custom aliases to oh-my-zsh custom directory
       copy:
         src: "files/.aliases"
         dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
