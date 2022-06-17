@@ -29,8 +29,6 @@
         src: "files/.aliases"
         dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
         remote_src: true
-        owner: "{{ user }}"
-        group: "{{ user }}"
         mode: 0775
 
     - name: Change ZSH theme to {{ zsh_theme }}
