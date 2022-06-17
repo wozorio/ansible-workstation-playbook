@@ -10,15 +10,6 @@
         name: "{{ user }}"
         shell: /usr/bin/zsh
 
-    - name: Copy .zshrc
-      copy:
-        src: "files/.zshrc"
-        dest: "{{ homedir }}/.zshrc"
-        remote_src: true
-        owner: "{{ user }}"
-        group: "{{ user }}"
-        mode: 0664
-
     - name: Check if .oh-my-zsh directory exists
       stat:
         path: /home/{{ user }}/.oh-my-zsh
@@ -32,6 +23,15 @@
       become: true
       become_user: "{{ user }}"
       when: not oh_my_zsh_dir.stat.exists
+
+    - name: Copy ZSH custom aliases
+      copy:
+        src: "files/.aliases"
+        dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
+        remote_src: true
+        owner: "{{ user }}"
+        group: "{{ user }}"
+        mode: 0775
 
     - name: Change ZSH theme to {{ zsh_theme }}
       lineinfile:

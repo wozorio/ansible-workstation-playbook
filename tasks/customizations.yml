@@ -1,6 +1,6 @@
-- name: Copy .bash_aliases
+- name: Copy Bash custom aliases
   copy:
-    src: "files/.bash_aliases"
+    src: "files/.aliases"
     dest: "{{ homedir }}/.bash_aliases"
     remote_src: true
     owner: "{{ user }}"
