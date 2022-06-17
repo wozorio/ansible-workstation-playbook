@@ -3,7 +3,6 @@
   get_url:
     url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubectx_version }}/kubectx"
     dest: "{{ download_dir }}/kubectx"
-    checksum: "{{ kubectx_checksum }}"
 
 - name: Copy kubectx binary to its path
   copy:

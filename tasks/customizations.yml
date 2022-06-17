@@ -7,15 +7,6 @@
     group: "{{ user }}"
     mode: 0664
 
-- name: Copy .zshrc
-  copy:
-    src: "files/.zshrc"
-    dest: "{{ homedir }}/.zshrc"
-    remote_src: true
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: 0664
-
 - name: Set hostname
   hostname:
     name: "{{ hostname }}"

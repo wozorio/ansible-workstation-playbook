@@ -3,7 +3,6 @@
   get_url:
     url: "https://github.com/wercker/stern/releases/download/{{ stern_version }}/stern_linux_amd64"
     dest: "{{ download_dir }}/stern_linux_amd64"
-    checksum: "{{ stern_checksum }}"
 
 - name: Copy Stern binary to its path
   copy:

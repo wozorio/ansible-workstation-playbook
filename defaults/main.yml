@@ -5,30 +5,26 @@ homedir: "/home/{{ user }}"
 download_dir: /tmp
 distrib_codename: bionic
 
+install_zsh: true
+zsh_theme: robbyrussell
+
 helm_version: 3.5.4
-helm_checksum: sha256:a8ddb4e30435b5fd45308ecce5eaad676d64a5de9c89660b56face3fe990b318
 helm_bin_path: /usr/local/bin/helm
 
 kubectl_version: 1.23.5
-kubectl_checksum: sha256:715da05c56aa4f8df09cb1f9d96a2aa2c33a1232f6fd195e3ffce6e98a50a879
 kubectl_bin_path: /usr/local/bin/kubectl
 
 kubens_version: 0.9.4
-kubens_checksum: sha256:509c97c0882e688ae8fad8aa13524cc7c003e4883db447a905bdb47d64c13bdc
 kubens_bin_path: /usr/local/bin/kubens
 
 kubectx_version: 0.9.4
-kubectx_checksum: sha256:e887e4e2b3dd4c94d0ecdb84270fb4fac2e65c4d5b0ee461e688fb8089fd4900
 kubectx_bin_path: /usr/local/bin/kubectx
 
 stern_version: 1.11.0
-stern_checksum: sha256:e0b39dc26f3a0c7596b2408e4fb8da533352b76aaffdc18c7ad28c833c9eb7db
 stern_bin_path: /usr/local/bin/stern
 
-terraform_version: 1.0.0
-terraform_checksum: sha256:8be33cc3be8089019d95eb8f546f35d41926e7c1e5deff15792e969dde573eb5
+terraform_version: 1.2.3
 terraform_bin_path: /usr/local/bin/terraform
 
 terragrunt_version: 0.29.6
-terragrunt_checksum: sha256:f97aa3bfb3edf71d67609f4060b8a69b467bcdbcfb67b2529b37273d637cffda
 terragrunt_bin_path: /usr/local/bin/terragrunt

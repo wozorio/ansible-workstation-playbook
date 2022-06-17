@@ -1,16 +1,11 @@
 ---
 - name: Download Terraform
-  get_url:
-    url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
-    dest: "{{ download_dir }}/terraform_{{ terraform_version }}_linux_amd64.zip"
-    checksum: "{{ terraform_checksum }}"
-
-- name: Extract Terraform
   unarchive:
-    src: "{{ download_dir }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+    src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
     dest: "{{ download_dir }}"
     remote_src: true
-    creates: "{{ download_dir }}/terraform"
+    mode: 0755
+  register: terraform_download
 
 - name: Copy Terraform binary to its path
   copy:
@@ -18,3 +13,4 @@
     dest: "{{ terraform_bin_path }}"
     remote_src: true
     mode: 0775
+  when: terraform_download is changed

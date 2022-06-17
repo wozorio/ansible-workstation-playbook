@@ -3,7 +3,6 @@
   get_url:
     url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubens_version }}/kubens"
     dest: "{{ download_dir }}/kubens"
-    checksum: "{{ kubens_checksum }}"
 
 - name: Copy kubens binary to its path
   copy:

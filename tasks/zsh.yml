@@ -1,10 +1,41 @@
 ---
-- name: Install ZSH
-  apt:
-    name: zsh
-    state: latest
+- block:
+    - name: Install ZSH
+      apt:
+        name: zsh
+        state: latest
 
-- name: Set ZSH as the default shell
-  user:
-    name: "{{ user }}"
-    shell: /usr/bin/zsh
+    - name: Set ZSH as the default shell
+      user:
+        name: "{{ user }}"
+        shell: /usr/bin/zsh
+
+    - name: Copy .zshrc
+      copy:
+        src: "files/.zshrc"
+        dest: "{{ homedir }}/.zshrc"
+        remote_src: true
+        owner: "{{ user }}"
+        group: "{{ user }}"
+        mode: 0664
+
+    - name: Check if .oh-my-zsh directory exists
+      stat:
+        path: /home/{{ user }}/.oh-my-zsh
+      register: oh_my_zsh_dir
+
+    - name: Install oh-my-zsh
+      shell: |
+        curl -fsL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
+      args:
+        warn: false
+      become: true
+      become_user: "{{ user }}"
+      when: not oh_my_zsh_dir.stat.exists
+
+    - name: Change ZSH theme to {{ zsh_theme }}
+      lineinfile:
+        path: "/home/{{ user }}/.zshrc"
+        regexp: "^ZSH_THEME="
+        line: "ZSH_THEME={{ zsh_theme }}"
+  when: install_zsh | bool
