@@ -3,7 +3,7 @@ user: wozorio
 hostname: darkside
 homedir: "/home/{{ user }}"
 download_dir: /tmp
-distrib_codename: bionic
+distrib_codename: focal
 
 install_zsh: true
 zsh_theme: robbyrussell
