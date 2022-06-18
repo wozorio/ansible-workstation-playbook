@@ -20,7 +20,6 @@
         curl -fsL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
       args:
         warn: false
-      become: true
       become_user: "{{ user }}"
       when: not oh_my_zsh_dir.stat.exists
 
