@@ -37,6 +37,8 @@
       tags: ["stern"]
     - import_tasks: tasks/terraform.yml
       tags: ["terraform"]
+    - import_tasks: tasks/terraform-docs.yml
+      tags: ["terraform"]
     - import_tasks: tasks/terragrunt.yml
       tags: ["terragrunt"]
     - import_tasks: tasks/zsh.yml

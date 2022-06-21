@@ -1,0 +1,16 @@
+---
+- name: Download terraform-docs
+  unarchive:
+    src: "https://github.com/terraform-docs/terraform-docs/releases/download/v{{ terraform_docs_version }}/terraform-docs-v{{ terraform_docs_version }}-linux-amd64.tar.gz"
+    dest: "{{ download_dir }}"
+    remote_src: true
+    mode: 0755
+  register: terraform_docs_download
+
+- name: Copy terraform-docs binary to its path
+  copy:
+    src: "{{ download_dir }}/terraform-docs"
+    dest: "{{ terraform_docs_bin_path }}"
+    remote_src: true
+    mode: 0775
+  when: terraform_docs_download is changed
