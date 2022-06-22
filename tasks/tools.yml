@@ -12,3 +12,4 @@
     - wget
     - curl
     - terminator
+    - shellcheck
