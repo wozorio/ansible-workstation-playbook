@@ -18,7 +18,7 @@ This playbook installs the software that I use on my Linux Mint 20.3 (Una) works
 
 ## Running a specific set of tagged tasks
 
-You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag.
+You can filter which software to install by specifying the respective tag(s) using `ansible-playbook`'s `--tags` flag.
 
 The tags available are:
 
