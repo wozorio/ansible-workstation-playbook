@@ -1,2 +1,3 @@
 alias k=kubectl
-alias ls="ls -ls"
+alias l="ls"
+alias ll="ls -l"
