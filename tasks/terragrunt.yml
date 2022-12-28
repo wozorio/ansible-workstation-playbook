@@ -7,6 +7,6 @@
 - name: Copy Terragrunt binary to its path
   copy:
     src: "{{ download_dir }}/terragrunt_linux_amd64"
-    dest: "{{ bin_path }}"
+    dest: "{{ bin_path }}/terragrunt"
     remote_src: true
     mode: 0775
