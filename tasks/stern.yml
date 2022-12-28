@@ -1,12 +1,16 @@
 ---
 - name: Download Stern
-  get_url:
-    url: "https://github.com/wercker/stern/releases/download/{{ stern_version }}/stern_linux_amd64"
-    dest: "{{ download_dir }}/stern_linux_amd64"
+  unarchive:
+    src: "https://github.com/stern/stern/releases/download/v{{ stern_version }}/stern_{{ stern_version }}_linux_amd64.tar.gz"
+    dest: "{{ download_dir }}"
+    remote_src: true
+    mode: 0755
+  register: stern_download
 
 - name: Copy Stern binary to its path
   copy:
-    src: "{{ download_dir }}/stern_linux_amd64"
+    src: "{{ download_dir }}/stern"
     dest: "{{ bin_path }}"
     remote_src: true
     mode: 0775
+  when: stern_download is changed
