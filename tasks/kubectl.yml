@@ -7,6 +7,6 @@
 - name: Copy kubectl binary to its path
   copy:
     src: "{{ download_dir }}/kubectl"
-    dest: "{{ kubectl_bin_path }}"
+    dest: "{{ bin_path }}"
     remote_src: true
     mode: 0775
