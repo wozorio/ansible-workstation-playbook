@@ -10,25 +10,17 @@ install_zsh: true
 zsh_theme: robbyrussell
 
 helm_version: 3.5.4
-helm_bin_path: /usr/local/bin/helm
 
 kubectl_version: 1.23.5
-kubectl_bin_path: /usr/local/bin/kubectl
 
 kubens_version: 0.9.4
-kubens_bin_path: /usr/local/bin/kubens
 
 kubectx_version: 0.9.4
-kubectx_bin_path: /usr/local/bin/kubectx
 
 stern_version: 1.11.0
-stern_bin_path: /usr/local/bin/stern
 
 terraform_version: 1.2.4
-terraform_bin_path: /usr/local/bin/terraform
 
 terragrunt_version: 0.29.6
-terragrunt_bin_path: /usr/local/bin/terragrunt
 
 terraform_docs_version: 0.16.0
-terraform_docs_bin_path: /usr/local/bin/terraform-docs
