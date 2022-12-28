@@ -10,7 +10,7 @@
 - name: Copy Helm binary to its path
   copy:
     src: "{{ download_dir }}/linux-amd64/helm"
-    dest: "{{ helm_bin_path }}"
+    dest: "{{ bin_path }}"
     remote_src: true
     mode: 0775
   when: helm_download is changed
