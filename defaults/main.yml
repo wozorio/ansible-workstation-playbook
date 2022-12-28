@@ -3,6 +3,7 @@ user: wozorio
 hostname: darkside
 homedir: "/home/{{ user }}"
 download_dir: /tmp
+bin_path: /usr/local/bin
 distrib_codename: focal
 
 install_zsh: true
