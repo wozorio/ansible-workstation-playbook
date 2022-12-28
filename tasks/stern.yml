@@ -7,6 +7,6 @@
 - name: Copy Stern binary to its path
   copy:
     src: "{{ download_dir }}/stern_linux_amd64"
-    dest: "{{ stern_bin_path }}"
+    dest: "{{ bin_path }}"
     remote_src: true
     mode: 0775
