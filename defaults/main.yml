@@ -19,7 +19,7 @@ kubectx_version: 0.9.4
 
 stern_version: 1.22.0
 
-terraform_version: 1.3.6
+terraform_version: 1.4.6
 
 terragrunt_version: 0.42.5
 
