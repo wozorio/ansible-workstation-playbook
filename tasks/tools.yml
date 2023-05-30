@@ -11,5 +11,5 @@
     - htop
     - wget
     - curl
-    - terminator
+    - tilix
     - shellcheck
