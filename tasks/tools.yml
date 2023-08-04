@@ -13,3 +13,4 @@
     - curl
     - tilix
     - shellcheck
+    - neofetch
