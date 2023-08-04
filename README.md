@@ -13,6 +13,7 @@ This playbook installs the software that I use on my Linux Mint 20.3 (Una) works
     ```
 1. Clone the repo: `git clone https://github.com/wozorio/ansible-workstation-setup.git`
 1. Change to the repo directory: `cd ansible-workstation-setup`
+1. Install Ansible Galaxy: `sudo apt install ansible-core`
 1. Install the required Ansible roles: `ansible-galaxy install -r requirements.yml -f`
 1. Run the playbook: `ansible-playbook main.yml -i inventory --ask-become-pass`
 
