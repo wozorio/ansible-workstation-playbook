@@ -4,7 +4,7 @@ hostname: darkside
 homedir: "/home/{{ user }}"
 download_dir: /tmp
 bin_path: /usr/local/bin
-distrib_codename: focal
+distrib_codename: jammy
 
 install_zsh: true
 zsh_theme: robbyrussell
