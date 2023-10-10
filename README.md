@@ -7,10 +7,10 @@ This playbook installs the software that I use on my Linux Mint 20.3 (Una) works
 ## Installation
 
 1. Install Ansible
-    ```
-    sudo add-apt-repository --yes ppa:ansible/ansible
-    sudo apt install -y software-properties-common ansible
-    ```
+   ```
+   sudo add-apt-repository --yes ppa:ansible/ansible
+   sudo apt install -y software-properties-common ansible
+   ```
 1. Clone the repo: `git clone https://github.com/wozorio/ansible-workstation-setup.git`
 1. Change to the repo directory: `cd ansible-workstation-setup`
 1. Install Ansible Galaxy: `sudo apt install ansible-core`
@@ -23,26 +23,27 @@ You can filter which software to install by specifying the respective tag(s) usi
 
 The tags available are:
 
-|Tag|Description|
-|---|---|
-|`azure-cli`|Install azure-cli|
-|`customizations`|Perform various OS customizations|
-|`docker`|Install [Docker](https://docs.docker.com/engine/install/ubuntu/)|
-|`helm`|Install [Helm](https://helm.sh/)|
-|`kubectl`|Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)|
-|`kubens` |Install [kubens](https://github.com/ahmetb/kubectx/)|
-|`kubectx` |Install [kubectx](https://github.com/ahmetb/kubectx/)|
-|`stern`|Install [Stern](https://github.com/wercker/stern)|
-|`terraform`|Install [Terraform](https://www.terraform.io/)|
-|`terragrunt`|Install [Terragrunt](https://terragrunt.gruntwork.io/)|
-|`tools`|Install various tools and utilities (i.e.: `jq`, `unzip`, `git`, etc)|
-|`zsh`|Install [Zsh](https://www.zsh.org/)|
+| Tag              | Description                                                                      |
+| ---------------- | -------------------------------------------------------------------------------- |
+| `azure-cli`      | Install azure-cli                                                                |
+| `customizations` | Perform various OS customizations                                                |
+| `docker`         | Install [Docker](https://docs.docker.com/engine/install/ubuntu/)                 |
+| `helm`           | Install [Helm](https://helm.sh/)                                                 |
+| `kubectl`        | Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) |
+| `kubens`         | Install [kubens](https://github.com/ahmetb/kubectx/)                             |
+| `kubectx`        | Install [kubectx](https://github.com/ahmetb/kubectx/)                            |
+| `stern`          | Install [Stern](https://github.com/wercker/stern)                                |
+| `terraform`      | Install [Terraform](https://www.terraform.io/)                                   |
+| `terragrunt`     | Install [Terragrunt](https://terragrunt.gruntwork.io/)                           |
+| `tools`          | Install various tools and utilities (i.e.: `jq`, `unzip`, `git`, etc)            |
+| `zsh`            | Install [Zsh](https://www.zsh.org/)                                              |
 
 ### Usage example
 
 ```
 ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terraform"
 ```
+
 ## Supported operating systems
 
 - Linux Mint 20.3 (Una)
