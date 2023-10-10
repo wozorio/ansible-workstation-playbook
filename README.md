@@ -1,6 +1,6 @@
 # Ansible Workstation Setup
 
-This playbook installs the software that I use on my Linux Mint 20.3 (Una) workstation.
+This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jellyfish) workstation.
 
 [![GitHub](https://img.shields.io/github/license/wozorio/ansible-workstation-setup)](https://github.com/wozorio/ansible-workstation-setup/blob/master/LICENSE)
 
@@ -46,8 +46,7 @@ ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terrafor
 
 ## Supported operating systems
 
-- Linux Mint 20.3 (Una)
-- Ubuntu 20.04 LTS (Focal Fossa)
+- Ubuntu 22.04 LTS (Jammy Jellyfish)
 
 ## Known issues
 
