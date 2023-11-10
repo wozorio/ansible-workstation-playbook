@@ -1,7 +1,7 @@
 ---
 - name: Download Stern
   shell: |
-    wget -P "{{ download_dir }}" "https://github.com/stern/stern/releases/download/v{{ stern_version }}/stern_{{ stern_version }}_linux_amd64.tar.gz"
+    wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/stern/stern/releases/download/v{{ stern_version }}/stern_{{ stern_version }}_linux_amd64.tar.gz"
     tar -xvzf "{{ download_dir }}/stern_{{ stern_version }}_linux_amd64.tar.gz" --directory "{{ download_dir }}"
   register: stern_download
 

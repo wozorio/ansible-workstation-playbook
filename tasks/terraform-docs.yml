@@ -1,7 +1,7 @@
 ---
 - name: Download terraform-docs
   shell: |
-    wget -P "{{ download_dir }}" "https://github.com/terraform-docs/terraform-docs/releases/download/v{{ terraform_docs_version }}/terraform-docs-v{{ terraform_docs_version }}-linux-amd64.tar.gz"
+    wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/terraform-docs/terraform-docs/releases/download/v{{ terraform_docs_version }}/terraform-docs-v{{ terraform_docs_version }}-linux-amd64.tar.gz"
     tar -xvzf "{{ download_dir }}/terraform-docs-v{{ terraform_docs_version }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
   register: terraform_docs_download
 
