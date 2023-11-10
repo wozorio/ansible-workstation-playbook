@@ -1,10 +1,8 @@
 ---
 - name: Download Helm
-  unarchive:
-    src: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
-    dest: "{{ download_dir }}"
-    remote_src: true
-    mode: 0755
+  shell: |
+    wget -P "{{ download_dir }}" "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+    tar -xvzf "{{ download_dir }}/helm-v{{ helm_version }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
   register: helm_download
 
 - name: Copy Helm binary to its path
