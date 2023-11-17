@@ -25,6 +25,12 @@ This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jel
    cd ansible-workstation-setup
    ```
 
+1. Install Ansible Core:
+
+   ```bash
+   sudo apt install -y ansible-core
+   ```
+
 1. Run the playbook:
 
    ```bash
