@@ -1,0 +1,16 @@
+---
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+docker_apt_gpg_key: https://download.docker.com/linux/ubuntu/gpg
+docker_deb_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable"
+docker_dependencies:
+  - apt-transport-https
+  - ca-certificates
+  - gnupg
+docker_install_sdk_for_python: true
+docker_sdk_for_python_dependencies:
+  - python3-pip
+  - virtualenv
+  - python3-setuptools

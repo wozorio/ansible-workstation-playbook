@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  role_name: docker
+  author: Wellington Ozorio
+  description: Install docker-ce on a host running Ubuntu Linux 18.04
+
+dependencies: []

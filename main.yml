@@ -13,7 +13,7 @@
       tags: ["always"]
 
   roles:
-    - role: docker
+    - role: roles/docker
       vars:
         docker_user: "{{ user }}"
       tags: ["docker"]

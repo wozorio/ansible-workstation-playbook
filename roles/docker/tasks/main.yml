@@ -1,0 +1,57 @@
+---
+- name: Ensure old versions of Docker are not installed
+  ansible.builtin.package:
+    name:
+      - docker
+      - docker-engine
+    state: absent
+
+- name: Install dependencies
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ docker_dependencies }}"
+
+- name: Add Docker GPG key to apt
+  ansible.builtin.get_url:
+    url: "{{ docker_apt_gpg_key }}"
+    dest: /etc/apt/trusted.gpg.d/docker.asc
+    mode: 0644
+    force: true
+
+- name: Add Docker repository
+  ansible.builtin.apt_repository:
+    repo: "{{ docker_deb_repository }}"
+    state: present
+
+- name: Install Docker
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  loop: "{{ docker_packages }}"
+  notify:
+    - enable docker
+    - restart docker
+
+- name: Ensure handlers are notified now for the Docker service changes to take effect
+  meta: flush_handlers
+
+- name: Add user to the docker group
+  user:
+    name: "{{ docker_user }}"
+    groups: docker
+    append: yes
+  when: docker_user is defined
+
+- name: Install dependencies for Docker SDK for Python
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ docker_sdk_for_python_dependencies }}"
+  when: docker_install_sdk_for_python | bool
+
+- name: Install Docker SDK for Python
+  ansible.builtin.pip:
+    name: docker
+  when: docker_install_sdk_for_python | bool
