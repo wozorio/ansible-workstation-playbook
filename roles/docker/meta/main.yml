@@ -2,6 +2,6 @@
 galaxy_info:
   role_name: docker
   author: Wellington Ozorio
-  description: Install docker-ce on a host running Ubuntu Linux 18.04
+  description: Install docker-ce on a host running Ubuntu Linux 22.04
 
 dependencies: []
