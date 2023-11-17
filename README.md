@@ -6,16 +6,30 @@ This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jel
 
 ## Installation
 
-1. Install Ansible
-   ```
+1. Install Ansible:
+
+   ```bash
    sudo add-apt-repository --yes ppa:ansible/ansible
    sudo apt install -y software-properties-common ansible
    ```
-1. Clone the repo: `git clone https://github.com/wozorio/ansible-workstation-setup.git`
-1. Change to the repo directory: `cd ansible-workstation-setup`
-1. Install Ansible Galaxy: `sudo apt install ansible-core`
-1. Install the required Ansible roles: `ansible-galaxy install -r requirements.yml -f`
-1. Run the playbook: `ansible-playbook main.yml -i inventory --ask-become-pass`
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/wozorio/ansible-workstation-setup.git
+   ```
+
+1. Change to the repository directory:
+
+   ```bash
+   cd ansible-workstation-setup
+   ```
+
+1. Run the playbook:
+
+   ```bash
+   ansible-playbook main.yml -i inventory --ask-become-pass
+   ```
 
 ## Running a specific set of tagged tasks
 
@@ -40,7 +54,7 @@ The tags available are:
 
 ### Usage example
 
-```
+```bash
 ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terraform"
 ```
 
@@ -50,4 +64,8 @@ ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terrafor
 
 ## Known issues
 
-1. If adding Ansible repository public key with `sudo add-apt-repository --update --yes ppa:ansible/ansible` fails, try adding it manually: `curl -sL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x93C4A3FD7BB9C367" | sudo apt-key add`
+1. If adding Ansible repository public key with `sudo add-apt-repository --update --yes ppa:ansible/ansible` fails, try adding it manually:
+
+   ```bash
+   curl -sL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x93C4A3FD7BB9C367" | sudo apt-key add`
+   ```
