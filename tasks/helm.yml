@@ -1,12 +1,12 @@
 ---
 - name: Download Helm
-  shell: |
+  ansible.builtin.shell: |
     wget -q -o /dev/null -P "{{ download_dir }}" "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
     tar -xvzf "{{ download_dir }}/helm-v{{ helm_version }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
   register: helm_download
 
 - name: Copy Helm binary to its path
-  copy:
+  ansible.builtin.copy:
     src: "{{ download_dir }}/linux-amd64/helm"
     dest: "{{ bin_path }}"
     remote_src: true

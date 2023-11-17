@@ -1,22 +1,22 @@
 ---
 - block:
     - name: Install ZSH
-      apt:
+      ansible.builtin.apt:
         name: zsh
         state: latest
 
     - name: Set ZSH as the default shell
-      user:
+      ansible.builtin.user:
         name: "{{ user }}"
         shell: /usr/bin/zsh
 
     - name: Check if .oh-my-zsh directory exists
-      stat:
+      ansible.builtin.stat:
         path: /home/{{ user }}/.oh-my-zsh
       register: oh_my_zsh_dir
 
     - name: Install oh-my-zsh
-      shell: |
+      ansible.builtin.shell: |
         curl -fsL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
       args:
         warn: false
@@ -24,14 +24,14 @@
       when: not oh_my_zsh_dir.stat.exists
 
     - name: Copy ZSH custom aliases to oh-my-zsh custom directory
-      copy:
+      ansible.builtin.copy:
         src: "files/.aliases"
         dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
         remote_src: true
         mode: 0775
 
     - name: Change ZSH theme to {{ zsh_theme }}
-      lineinfile:
+      ansible.builtin.lineinfile:
         path: "/home/{{ user }}/.zshrc"
         regexp: "^ZSH_THEME="
         line: "ZSH_THEME={{ zsh_theme }}"

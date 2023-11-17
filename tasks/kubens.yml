@@ -1,11 +1,11 @@
 ---
 - name: Download kubens
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubens_version }}/kubens"
     dest: "{{ download_dir }}/kubens"
 
 - name: Copy kubens binary to its path
-  copy:
+  ansible.builtin.copy:
     src: "{{ download_dir }}/kubens"
     dest: "{{ bin_path }}"
     remote_src: true

@@ -1,12 +1,12 @@
 ---
 - name: Download terraform-docs
-  shell: |
+  ansible.builtin.shell: |
     wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/terraform-docs/terraform-docs/releases/download/v{{ terraform_docs_version }}/terraform-docs-v{{ terraform_docs_version }}-linux-amd64.tar.gz"
     tar -xvzf "{{ download_dir }}/terraform-docs-v{{ terraform_docs_version }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
   register: terraform_docs_download
 
 - name: Copy terraform-docs binary to its path
-  copy:
+  ansible.builtin.copy:
     src: "{{ download_dir }}/terraform-docs"
     dest: "{{ bin_path }}"
     remote_src: true

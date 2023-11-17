@@ -1,12 +1,12 @@
 ---
 - name: Download Stern
-  shell: |
+  ansible.builtin.shell: |
     wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/stern/stern/releases/download/v{{ stern_version }}/stern_{{ stern_version }}_linux_amd64.tar.gz"
     tar -xvzf "{{ download_dir }}/stern_{{ stern_version }}_linux_amd64.tar.gz" --directory "{{ download_dir }}"
   register: stern_download
 
 - name: Copy Stern binary to its path
-  copy:
+  ansible.builtin.copy:
     src: "{{ download_dir }}/stern"
     dest: "{{ bin_path }}"
     remote_src: true

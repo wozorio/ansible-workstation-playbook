@@ -1,11 +1,11 @@
 ---
 - name: Download kubectx
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubectx_version }}/kubectx"
     dest: "{{ download_dir }}/kubectx"
 
 - name: Copy kubectx binary to its path
-  copy:
+  ansible.builtin.copy:
     src: "{{ download_dir }}/kubectx"
     dest: "{{ bin_path }}"
     remote_src: true

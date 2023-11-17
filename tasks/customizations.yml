@@ -1,5 +1,5 @@
 - name: Copy Bash custom aliases
-  copy:
+  ansible.builtin.copy:
     src: "files/.aliases"
     dest: "{{ homedir }}/.bash_aliases"
     remote_src: true
@@ -8,6 +8,6 @@
     mode: 0664
 
 - name: Set hostname
-  hostname:
+  ansible.builtin.hostname:
     name: "{{ hostname }}"
     use: systemd
