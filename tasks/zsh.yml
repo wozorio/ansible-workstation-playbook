@@ -25,7 +25,7 @@
 
     - name: Copy ZSH custom aliases to oh-my-zsh custom directory
       ansible.builtin.copy:
-        src: "files/.aliases"
+        src: "dotfiles/.aliases"
         dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
         remote_src: true
         mode: 0775
