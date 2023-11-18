@@ -64,6 +64,12 @@ The tags available are:
 ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terraform"
 ```
 
+## Overriding variables during runtime
+
+```bash
+ansible-playbook main.yml -i inventory --ask-become-pass --extra-vars "user=wozorio hostname=mint"
+```
+
 ## Supported operating systems
 
 - Ubuntu 22.04 LTS (Jammy Jellyfish)
