@@ -1,6 +1,6 @@
 - name: Copy Bash custom aliases
   ansible.builtin.copy:
-    src: "files/.aliases"
+    src: "dotfiles/.aliases"
     dest: "{{ homedir }}/.bash_aliases"
     remote_src: true
     owner: "{{ user }}"
