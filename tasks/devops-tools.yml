@@ -20,7 +20,7 @@
 
     - name: Add azure-cli repository
       ansible.builtin.apt_repository:
-        repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ distrib_codename }} main
+        repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli {{ distrib_codename }} main
         state: present
 
     - name: Install azure-cli
