@@ -16,13 +16,13 @@ This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jel
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/wozorio/ansible-workstation-setup.git
+   git clone https://github.com/wozorio/ansible-workstation-playbook.git
    ```
 
 1. Change to the repository directory:
 
    ```bash
-   cd ansible-workstation-setup
+   cd ansible-workstation-playbook
    ```
 
 1. Install Ansible Core:
