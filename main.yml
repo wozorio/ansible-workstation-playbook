@@ -21,25 +21,9 @@
   tasks:
     - import_tasks: tasks/customizations.yml
       tags: ["customizations"]
+    - import_tasks: tasks/devops-tools.yml
+      tags: ["devops-tools"]
     - import_tasks: tasks/tools.yml
       tags: ["tools"]
-    - import_tasks: tasks/azure-cli.yml
-      tags: ["azure-cli"]
-    - import_tasks: tasks/helm.yml
-      tags: ["helm"]
-    - import_tasks: tasks/kubectl.yml
-      tags: ["kubectl"]
-    - import_tasks: tasks/kubens.yml
-      tags: ["kubens"]
-    - import_tasks: tasks/kubectx.yml
-      tags: ["kubectx"]
-    - import_tasks: tasks/stern.yml
-      tags: ["stern"]
-    - import_tasks: tasks/terraform.yml
-      tags: ["terraform"]
-    - import_tasks: tasks/terraform-docs.yml
-      tags: ["terraform"]
-    - import_tasks: tasks/terragrunt.yml
-      tags: ["terragrunt"]
     - import_tasks: tasks/zsh.yml
       tags: ["zsh"]

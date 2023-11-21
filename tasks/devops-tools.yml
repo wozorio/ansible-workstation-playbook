@@ -1,0 +1,135 @@
+---
+- block:
+    - name: Install azure-cli dependencies
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - ca-certificates
+        - curl
+        - apt-transport-https
+        - lsb-release
+        - gnupg
+
+    - name: Add Microsoft GPG key to apt
+      ansible.builtin.apt_key:
+        url: https://packages.microsoft.com/keys/microsoft.asc
+        state: present
+
+    - name: Add azure-cli repository
+      ansible.builtin.apt_repository:
+        repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ distrib_codename }} main
+        state: present
+
+    - name: Install azure-cli
+      ansible.builtin.apt:
+        name: azure-cli
+        state: latest
+        update_cache: yes
+
+    - name: Download Helm
+      ansible.builtin.shell: |
+        wget -q -o /dev/null -P "{{ download_dir }}" "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+        tar -xvzf "{{ download_dir }}/helm-v{{ helm_version }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
+      register: helm_download
+
+    - name: Copy Helm binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/linux-amd64/helm"
+        dest: "{{ bin_path }}"
+        remote_src: true
+        mode: 0775
+      when: helm_download is changed
+
+    - name: Download kubectl
+      ansible.builtin.get_url:
+        url: "https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl"
+        dest: "{{ download_dir }}/kubectl"
+
+    - name: Copy kubectl binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/kubectl"
+        dest: "{{ bin_path }}"
+        remote_src: true
+        mode: 0775
+
+    - name: Download kubectx
+      ansible.builtin.get_url:
+        url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubectx_version }}/kubectx"
+        dest: "{{ download_dir }}/kubectx"
+
+    - name: Copy kubectx binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/kubectx"
+        dest: "{{ bin_path }}"
+        remote_src: true
+        mode: 0775
+
+    - name: Download kubens
+      ansible.builtin.get_url:
+        url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubens_version }}/kubens"
+        dest: "{{ download_dir }}/kubens"
+
+    - name: Copy kubens binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/kubens"
+        dest: "{{ bin_path }}"
+        remote_src: true
+        mode: 0775
+
+    - name: Download Stern
+      ansible.builtin.shell: |
+        wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/stern/stern/releases/download/v{{ stern_version }}/stern_{{ stern_version }}_linux_amd64.tar.gz"
+        tar -xvzf "{{ download_dir }}/stern_{{ stern_version }}_linux_amd64.tar.gz" --directory "{{ download_dir }}"
+      register: stern_download
+
+    - name: Copy Stern binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/stern"
+        dest: "{{ bin_path }}"
+        remote_src: true
+        mode: 0775
+      when: stern_download is changed
+
+    - name: Download terraform-docs
+      ansible.builtin.shell: |
+        wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/terraform-docs/terraform-docs/releases/download/v{{ terraform_docs_version }}/terraform-docs-v{{ terraform_docs_version }}-linux-amd64.tar.gz"
+        tar -xvzf "{{ download_dir }}/terraform-docs-v{{ terraform_docs_version }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
+      register: terraform_docs_download
+
+    - name: Copy terraform-docs binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/terraform-docs"
+        dest: "{{ bin_path }}"
+        remote_src: true
+        mode: 0775
+      when: terraform_docs_download is changed
+
+    - name: Download Terraform
+      ansible.builtin.unarchive:
+        src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+        dest: "{{ download_dir }}"
+        remote_src: true
+        mode: 0755
+      register: terraform_download
+
+    - name: Copy Terraform binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/terraform"
+        dest: "{{ bin_path }}"
+        remote_src: true
+        mode: 0775
+      when: terraform_download is changed
+
+    - name: Download Terragrunt
+      ansible.builtin.get_url:
+        url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64"
+        dest: "{{ download_dir }}/terragrunt_linux_amd64"
+
+    - name: Copy Terragrunt binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/terragrunt_linux_amd64"
+        dest: "{{ bin_path }}/terragrunt"
+        remote_src: true
+        mode: 0775
+  when: install_devops_tools | bool

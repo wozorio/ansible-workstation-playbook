@@ -43,25 +43,18 @@ You can filter which software to install by specifying the respective tag(s) usi
 
 The tags available are:
 
-| Tag              | Description                                                                      |
-| ---------------- | -------------------------------------------------------------------------------- |
-| `azure-cli`      | Install azure-cli                                                                |
-| `customizations` | Perform various OS customizations                                                |
-| `docker`         | Install [Docker](https://docs.docker.com/engine/install/ubuntu/)                 |
-| `helm`           | Install [Helm](https://helm.sh/)                                                 |
-| `kubectl`        | Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) |
-| `kubens`         | Install [kubens](https://github.com/ahmetb/kubectx/)                             |
-| `kubectx`        | Install [kubectx](https://github.com/ahmetb/kubectx/)                            |
-| `stern`          | Install [Stern](https://github.com/wercker/stern)                                |
-| `terraform`      | Install [Terraform](https://www.terraform.io/)                                   |
-| `terragrunt`     | Install [Terragrunt](https://terragrunt.gruntwork.io/)                           |
-| `tools`          | Install various tools and utilities (i.e.: `jq`, `unzip`, `git`, etc)            |
-| `zsh`            | Install [Zsh](https://www.zsh.org/)                                              |
+| Tag              | Description                                                                                                        |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `customizations` | Perform various OS customizations                                                                                  |
+| `devops_tools`   | Install several DevOps tools such as `Helm`, `Kubectl`, `Kubens`, `Kubectx`, `Stern`, `Terraform` and `Terragrunt` |
+| `docker`         | Install [Docker](https://docs.docker.com/engine/install/ubuntu/)                                                   |
+| `tools`          | Install various tools and utilities (i.e.: `jq`, `unzip`, `git`, etc)                                              |
+| `zsh`            | Install [Zsh](https://www.zsh.org/)                                                                                |
 
 ### Usage example
 
 ```bash
-ansible-playbook main.yml -i inventory --ask-become-pass --tags "tools, terraform"
+ansible-playbook main.yml -i inventory --ask-become-pass --tags "customizations, docker"
 ```
 
 ## Overriding variables during runtime
