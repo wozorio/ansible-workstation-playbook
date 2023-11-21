@@ -1,4 +1,4 @@
-# Ansible Workstation Setup
+# Ansible Workstation Playbook
 
 This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jellyfish) workstation.
 
