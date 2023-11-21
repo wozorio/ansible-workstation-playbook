@@ -12,9 +12,11 @@
         - gnupg
 
     - name: Add Microsoft GPG key to apt
-      ansible.builtin.apt_key:
+      ansible.builtin.get_url:
         url: https://packages.microsoft.com/keys/microsoft.asc
-        state: present
+        dest: /etc/apt/trusted.gpg.d/microsoft.asc
+        mode: 0644
+        force: true
 
     - name: Add azure-cli repository
       ansible.builtin.apt_repository:
