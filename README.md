@@ -60,7 +60,7 @@ ansible-playbook main.yml -i inventory --ask-become-pass --tags "customizations,
 ## Overriding variables during runtime
 
 ```bash
-ansible-playbook main.yml -i inventory --ask-become-pass --extra-vars "user=wozorio hostname=mint"
+ansible-playbook main.yml -i inventory --ask-become-pass --extra-vars "user=wozorio install_zsh=false"
 ```
 
 ## Supported operating systems
