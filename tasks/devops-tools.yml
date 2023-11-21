@@ -27,7 +27,6 @@
       ansible.builtin.apt:
         name: azure-cli
         state: latest
-        update_cache: yes
 
     - name: Download Helm
       ansible.builtin.shell: |
