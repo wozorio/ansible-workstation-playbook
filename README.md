@@ -45,10 +45,10 @@ The tags available are:
 
 | Tag              | Description                                                                                                        |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `customizations` | Perform various OS customizations                                                                                  |
-| `devops_tools`   | Install several DevOps tools such as `Helm`, `Kubectl`, `Kubens`, `Kubectx`, `Stern`, `Terraform` and `Terragrunt` |
+| `customizations` | Perform OS customizations                                                                                  |
+| `devops_tools`   | Install DevOps tools such as `Helm`, `Kubectl`, `Kubens`, `Kubectx`, `Stern`, `Terraform` and `Terragrunt` |
 | `docker`         | Install [Docker](https://docs.docker.com/engine/install/ubuntu/)                                                   |
-| `tools`          | Install various tools and utilities (i.e.: `jq`, `unzip`, `git`, etc)                                              |
+| `tools`          | Install general-purpose tools and utilities (i.e.: `jq`, `unzip`, `git`, etc)                                              |
 | `zsh`            | Install [Zsh](https://www.zsh.org/)                                                                                |
 
 ### Usage example
