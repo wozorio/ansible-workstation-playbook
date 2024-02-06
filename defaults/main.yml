@@ -6,15 +6,19 @@ download_dir: /tmp
 bin_path: /usr/local/bin
 distrib_codename: jammy
 
-install_zsh: true
-zsh_theme: robbyrussell
+zsh:
+  install: true
+  theme: robbyrussell
+  oh_my_zsh_plugins: "git kube-ps1"
 
-install_devops_tools: true
-helm_version: 3.10.3
-kubectl_version: 1.26.0
-kubens_version: 0.9.4
-kubectx_version: 0.9.4
-stern_version: 1.22.0
-terraform_version: 1.6.4
-terragrunt_version: 0.42.5
-terraform_docs_version: 0.16.0
+devops_tools:
+  install: true
+  tools:
+    helm_version: 3.10.3
+    kubectl_version: 1.26.0
+    kubens_version: 0.9.4
+    kubectx_version: 0.9.4
+    stern_version: 1.22.0
+    terraform_version: 1.6.4
+    terragrunt_version: 0.42.5
+    terraform_docs_version: 0.16.0

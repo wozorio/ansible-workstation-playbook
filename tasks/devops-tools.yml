@@ -30,8 +30,8 @@
 
     - name: Download Helm
       ansible.builtin.shell: |
-        wget -q -o /dev/null -P "{{ download_dir }}" "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
-        tar -xvzf "{{ download_dir }}/helm-v{{ helm_version }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
+        wget -q -o /dev/null -P "{{ download_dir }}" "https://get.helm.sh/helm-v{{ devops_tools.tools.helm_version }}-linux-amd64.tar.gz"
+        tar -xvzf "{{ download_dir }}/helm-v{{ devops_tools.tools.helm_version }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
       register: helm_download
 
     - name: Copy Helm binary to its path
@@ -44,7 +44,7 @@
 
     - name: Download kubectl
       ansible.builtin.get_url:
-        url: "https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl"
+        url: "https://storage.googleapis.com/kubernetes-release/release/v{{ devops_tools.tools.kubectl_version }}/bin/linux/amd64/kubectl"
         dest: "{{ download_dir }}/kubectl"
 
     - name: Copy kubectl binary to its path
@@ -56,7 +56,7 @@
 
     - name: Download kubectx
       ansible.builtin.get_url:
-        url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubectx_version }}/kubectx"
+        url: "https://github.com/ahmetb/kubectx/releases/download/v{{ devops_tools.tools.kubectx_version }}/kubectx"
         dest: "{{ download_dir }}/kubectx"
 
     - name: Copy kubectx binary to its path
@@ -68,7 +68,7 @@
 
     - name: Download kubens
       ansible.builtin.get_url:
-        url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubens_version }}/kubens"
+        url: "https://github.com/ahmetb/kubectx/releases/download/v{{ devops_tools.tools.kubens_version }}/kubens"
         dest: "{{ download_dir }}/kubens"
 
     - name: Copy kubens binary to its path
@@ -80,8 +80,8 @@
 
     - name: Download Stern
       ansible.builtin.shell: |
-        wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/stern/stern/releases/download/v{{ stern_version }}/stern_{{ stern_version }}_linux_amd64.tar.gz"
-        tar -xvzf "{{ download_dir }}/stern_{{ stern_version }}_linux_amd64.tar.gz" --directory "{{ download_dir }}"
+        wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/stern/stern/releases/download/v{{ devops_tools.tools.stern_version }}/stern_{{ devops_tools.tools.stern_version }}_linux_amd64.tar.gz"
+        tar -xvzf "{{ download_dir }}/stern_{{ devops_tools.tools.stern_version }}_linux_amd64.tar.gz" --directory "{{ download_dir }}"
       register: stern_download
 
     - name: Copy Stern binary to its path
@@ -94,8 +94,8 @@
 
     - name: Download terraform-docs
       ansible.builtin.shell: |
-        wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/terraform-docs/terraform-docs/releases/download/v{{ terraform_docs_version }}/terraform-docs-v{{ terraform_docs_version }}-linux-amd64.tar.gz"
-        tar -xvzf "{{ download_dir }}/terraform-docs-v{{ terraform_docs_version }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
+        wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/terraform-docs/terraform-docs/releases/download/v{{ devops_tools.tools.terraform_docs_version }}/terraform-docs-v{{ devops_tools.tools.terraform_docs_version }}-linux-amd64.tar.gz"
+        tar -xvzf "{{ download_dir }}/terraform-docs-v{{ devops_tools.tools.terraform_docs_version }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
       register: terraform_docs_download
 
     - name: Copy terraform-docs binary to its path
@@ -108,7 +108,7 @@
 
     - name: Download Terraform
       ansible.builtin.unarchive:
-        src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+        src: "https://releases.hashicorp.com/terraform/{{ devops_tools.tools.terraform_version }}/terraform_{{ devops_tools.tools.terraform_version }}_linux_amd64.zip"
         dest: "{{ download_dir }}"
         remote_src: true
         mode: 0755
@@ -124,7 +124,7 @@
 
     - name: Download Terragrunt
       ansible.builtin.get_url:
-        url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64"
+        url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ devops_tools.tools.terragrunt_version }}/terragrunt_linux_amd64"
         dest: "{{ download_dir }}/terragrunt_linux_amd64"
 
     - name: Copy Terragrunt binary to its path
@@ -133,4 +133,4 @@
         dest: "{{ bin_path }}/terragrunt"
         remote_src: true
         mode: 0775
-  when: install_devops_tools | bool
+  when: devops_tools.install | bool

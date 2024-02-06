@@ -23,6 +23,18 @@
       become_user: "{{ user }}"
       when: not oh_my_zsh_dir.stat.exists
 
+    - name: Install oh-my-zsh plugins
+      ansible.builtin.lineinfile:
+        path: "/home/{{ user }}/.zshrc"
+        regexp: "^plugins="
+        line: "plugins=({{ zsh.oh_my_zsh_plugins }})"
+
+    - name: Add kube-ps1 to the prompt
+      ansible.builtin.lineinfile:
+        path: "/home/{{ user }}/.zshrc"
+        regexp: "^PROMPT="
+        line: "PROMPT='$(kube_ps1)'$PROMPT"
+
     - name: Copy ZSH custom aliases to oh-my-zsh custom directory
       ansible.builtin.copy:
         src: "dotfiles/.aliases"
@@ -30,9 +42,9 @@
         remote_src: true
         mode: 0775
 
-    - name: Change ZSH theme to {{ zsh_theme }}
+    - name: Change ZSH theme to {{ zsh.theme }}
       ansible.builtin.lineinfile:
         path: "/home/{{ user }}/.zshrc"
         regexp: "^ZSH_THEME="
-        line: "ZSH_THEME={{ zsh_theme }}"
-  when: install_zsh | bool
+        line: "ZSH_THEME={{ zsh.theme }}"
+  when: zsh.install | bool
