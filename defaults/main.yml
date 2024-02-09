@@ -14,8 +14,8 @@ zsh:
 devops_tools:
   install: true
   versions:
-    helm: 3.10.3
-    kubectl: 1.26.0
+    helm: 3.14.0
+    kubectl: 1.29.1
     kubens: 0.9.4
     kubectx: 0.9.4
     stern: 1.22.0
