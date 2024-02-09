@@ -13,12 +13,12 @@ zsh:
 
 devops_tools:
   install: true
-  tools:
-    helm_version: 3.10.3
-    kubectl_version: 1.26.0
-    kubens_version: 0.9.4
-    kubectx_version: 0.9.4
-    stern_version: 1.22.0
-    terraform_version: 1.6.4
-    terragrunt_version: 0.42.5
-    terraform_docs_version: 0.16.0
+  versions:
+    helm: 3.10.3
+    kubectl: 1.26.0
+    kubens: 0.9.4
+    kubectx: 0.9.4
+    stern: 1.22.0
+    terraform: 1.7.3
+    terragrunt: 0.42.5
+    terraform_docs: 0.16.0
