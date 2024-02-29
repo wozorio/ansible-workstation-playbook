@@ -8,7 +8,7 @@ distrib_codename: jammy
 
 zsh:
   install: true
-  theme: robbyrussell
+  theme: bira
   oh_my_zsh_plugins: "git kube-ps1"
 
 devops_tools:
