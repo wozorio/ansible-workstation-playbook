@@ -20,11 +20,11 @@
       tags: ["docker"]
 
   tasks:
-    - import_tasks: tasks/customizations.yml
-      tags: ["customizations"]
-    - import_tasks: tasks/devops-tools.yml
-      tags: ["devops-tools"]
-    - import_tasks: tasks/tools.yml
-      tags: ["tools"]
+    - import_tasks: tasks/utils.yml
+      tags: ["utils"]
     - import_tasks: tasks/zsh.yml
       tags: ["zsh"]
+    - import_tasks: tasks/devops-tools.yml
+      tags: ["devops-tools"]
+    - import_tasks: tasks/customizations.yml
+      tags: ["customizations"]

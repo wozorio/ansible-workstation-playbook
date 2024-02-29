@@ -107,11 +107,9 @@
       when: terraform_docs_download is changed
 
     - name: Download Terraform
-      ansible.builtin.unarchive:
-        src: "https://releases.hashicorp.com/terraform/{{ devops_tools.versions.terraform }}/terraform_{{ devops_tools.versions.terraform }}_linux_amd64.zip"
-        dest: "{{ download_dir }}"
-        remote_src: true
-        mode: 0755
+      ansible.builtin.shell: |
+        wget -q -o /dev/null -P "{{ download_dir }}" "https://releases.hashicorp.com/terraform/{{ devops_tools.versions.terraform }}/terraform_{{ devops_tools.versions.terraform }}_linux_amd64.zip"
+        unzip -o "{{ download_dir }}/terraform_{{ devops_tools.versions.terraform }}_linux_amd64.zip" -d "{{ download_dir }}"
       register: terraform_download
 
     - name: Copy Terraform binary to its path
@@ -121,16 +119,4 @@
         remote_src: true
         mode: 0775
       when: terraform_download is changed
-
-    - name: Download Terragrunt
-      ansible.builtin.get_url:
-        url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ devops_tools.versions.terragrunt }}/terragrunt_linux_amd64"
-        dest: "{{ download_dir }}/terragrunt_linux_amd64"
-
-    - name: Copy Terragrunt binary to its path
-      ansible.builtin.copy:
-        src: "{{ download_dir }}/terragrunt_linux_amd64"
-        dest: "{{ bin_path }}/terragrunt"
-        remote_src: true
-        mode: 0775
   when: devops_tools.install | bool

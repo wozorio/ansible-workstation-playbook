@@ -1,16 +1,15 @@
 ---
-- name: Install tools
+- name: Install utils
   ansible.builtin.apt:
     name: "{{ item }}"
     state: latest
   loop:
-    - jq
-    - unzip
-    - tree
+    - curl
     - git
     - htop
-    - wget
-    - curl
-    - tilix
-    - shellcheck
+    - jq
     - neofetch
+    - shellcheck
+    - tree
+    - unzip
+    - wget
