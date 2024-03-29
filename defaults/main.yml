@@ -8,7 +8,7 @@ distrib_codename: jammy
 
 zsh:
   install: true
-  theme: robbyrussell
+  theme: bira
   oh_my_zsh_plugins: "git kube-ps1"
 
 devops_tools:
@@ -20,5 +20,4 @@ devops_tools:
     kubectx: 0.9.4
     stern: 1.22.0
     terraform: 1.7.3
-    terragrunt: 0.42.5
     terraform_docs: 0.16.0
