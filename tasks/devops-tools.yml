@@ -92,20 +92,6 @@
         mode: 0775
       when: stern_download is changed
 
-    - name: Download terraform-docs
-      ansible.builtin.shell: |
-        wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/terraform-docs/terraform-docs/releases/download/v{{ devops_tools.versions.terraform_docs }}/terraform-docs-v{{ devops_tools.versions.terraform_docs }}-linux-amd64.tar.gz"
-        tar -xvzf "{{ download_dir }}/terraform-docs-v{{ devops_tools.versions.terraform_docs }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
-      register: terraform_docs_download
-
-    - name: Copy terraform-docs binary to its path
-      ansible.builtin.copy:
-        src: "{{ download_dir }}/terraform-docs"
-        dest: "{{ bin_path }}"
-        remote_src: true
-        mode: 0775
-      when: terraform_docs_download is changed
-
     - name: Download Terraform
       ansible.builtin.shell: |
         wget -q -o /dev/null -P "{{ download_dir }}" "https://releases.hashicorp.com/terraform/{{ devops_tools.versions.terraform }}/terraform_{{ devops_tools.versions.terraform }}_linux_amd64.zip"
@@ -119,4 +105,18 @@
         remote_src: true
         mode: 0775
       when: terraform_download is changed
+
+    - name: Download terraform-docs
+      ansible.builtin.shell: |
+        wget -q -o /dev/null -P "{{ download_dir }}" "https://github.com/terraform-docs/terraform-docs/releases/download/v{{ devops_tools.versions.terraform_docs }}/terraform-docs-v{{ devops_tools.versions.terraform_docs }}-linux-amd64.tar.gz"
+        tar -xvzf "{{ download_dir }}/terraform-docs-v{{ devops_tools.versions.terraform_docs }}-linux-amd64.tar.gz" --directory "{{ download_dir }}"
+      register: terraform_docs_download
+
+    - name: Copy terraform-docs binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/terraform-docs"
+        dest: "{{ bin_path }}"
+        remote_src: true
+        mode: 0775
+      when: terraform_docs_download is changed
   when: devops_tools.install | bool
