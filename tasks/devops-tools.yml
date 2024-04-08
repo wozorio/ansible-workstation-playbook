@@ -1,5 +1,10 @@
 ---
 - block:
+    - name: Install Python packages
+      ansible.builtin.pip:
+        name: "{{ item }}"
+      loop: "{{ devops_tools.python_packages }}"
+
     - name: Install azure-cli dependencies
       ansible.builtin.apt:
         name: "{{ item }}"

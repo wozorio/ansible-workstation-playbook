@@ -13,6 +13,9 @@ zsh:
 
 devops_tools:
   install: true
+  python_packages:
+    - poetry
+    - yamllint
   versions:
     helm: 3.14.0
     kubectl: 1.29.1
