@@ -10,17 +10,3 @@ zsh:
   install: true
   theme: robbyrussell
   oh_my_zsh_plugins: "git kube-ps1"
-
-devops_tools:
-  install: true
-  python_packages:
-    - poetry
-    - yamllint
-  versions:
-    helm: 3.14.0
-    kubectl: 1.29.1
-    kubens: 0.9.4
-    kubectx: 0.9.4
-    stern: 1.22.0
-    terraform: 1.7.3
-    terraform_docs: 0.16.0

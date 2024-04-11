@@ -5,7 +5,7 @@
     remote_src: true
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0664
+    mode: "0664"
 
 - name: Set hostname
   ansible.builtin.hostname:

@@ -66,11 +66,3 @@ ansible-playbook main.yml -i inventory --ask-become-pass --extra-vars "user=wozo
 ## Supported operating systems
 
 - Ubuntu 22.04 LTS (Jammy Jellyfish)
-
-## Known issues
-
-1. If adding Ansible repository public key with `sudo add-apt-repository --update --yes ppa:ansible/ansible` fails, try adding it manually:
-
-   ```bash
-   curl -sL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x93C4A3FD7BB9C367" | sudo apt-key add`
-   ```

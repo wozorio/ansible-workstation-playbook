@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Set up Ubuntu 22.04
+  hosts: localhost
   become: true
   gather_facts: false
 
@@ -7,24 +8,28 @@
     - defaults/main.yml
 
   pre_tasks:
-    - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
-      apt:
-        update_cache: yes
+    - name: Run apt-get dist-upgrade if the last one was more than 3600 seconds ago
+      ansible.builtin.apt:
+        update_cache: true
         cache_valid_time: 3600
+        upgrade: dist
       tags: ["always"]
 
   roles:
-    - role: roles/docker
+    - role: docker
       vars:
         docker_user: "{{ user }}"
       tags: ["docker"]
+    - role: devops_tools
+      tags: ["devops_tools"]
 
   tasks:
-    - import_tasks: tasks/utils.yml
+    - name: Import utils task
+      ansible.builtin.import_tasks: tasks/utils.yml
       tags: ["utils"]
-    - import_tasks: tasks/zsh.yml
+    - name: Import ZSH task
+      ansible.builtin.import_tasks: tasks/zsh.yml
       tags: ["zsh"]
-    - import_tasks: tasks/devops-tools.yml
-      tags: ["devops-tools"]
-    - import_tasks: tasks/customizations.yml
+    - name: Import customizations task
+      ansible.builtin.import_tasks: tasks/customizations.yml
       tags: ["customizations"]

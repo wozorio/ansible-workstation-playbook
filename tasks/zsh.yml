@@ -1,9 +1,11 @@
 ---
-- block:
+- name: Set up ZSH
+  when: zsh.install | bool
+  block:
     - name: Install ZSH
       ansible.builtin.apt:
         name: zsh
-        state: latest
+        state: present
 
     - name: Set ZSH as the default shell
       ansible.builtin.user:
@@ -17,10 +19,14 @@
 
     - name: Install oh-my-zsh
       ansible.builtin.shell: |
+        set -o pipefail
         curl -fsL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
       args:
         warn: false
+      become: false
       become_user: "{{ user }}"
+      register: oh_my_zsh_output
+      changed_when: "'folder already exists' not in oh_my_zsh_output.stdout"
       when: not oh_my_zsh_dir.stat.exists
 
     - name: Install oh-my-zsh plugins
@@ -40,11 +46,10 @@
         src: "dotfiles/.aliases"
         dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
         remote_src: true
-        mode: 0775
+        mode: "0775"
 
     - name: Change ZSH theme to {{ zsh.theme }}
       ansible.builtin.lineinfile:
         path: "/home/{{ user }}/.zshrc"
         regexp: "^ZSH_THEME="
         line: "ZSH_THEME={{ zsh.theme }}"
-  when: zsh.install | bool

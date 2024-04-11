@@ -2,7 +2,7 @@
 - name: Install utils
   ansible.builtin.apt:
     name: "{{ item }}"
-    state: latest
+    state: present
   loop:
     - curl
     - git

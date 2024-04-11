@@ -1,9 +1,0 @@
----
-galaxy_info:
-  role_name: docker
-  author: Wellington Ozorio
-  description: Install docker-ce on a host running Ubuntu Linux 22.04
-  license: MIT
-  min_ansible_version: "2.16"
-
-dependencies: []
