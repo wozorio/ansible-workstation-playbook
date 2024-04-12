@@ -75,6 +75,20 @@
     - Extract Stern binary
     - Copy Stern binary to its path
 
+- name: Download Pulumi install script
+  ansible.builtin.get_url:
+    url: https://get.pulumi.com
+    dest: "{{ download_dir }}/pulumi_install.sh"
+    mode: "0755"
+
+- name: Install Pulumi
+  ansible.builtin.shell: |
+    . {{ download_dir }}/pulumi_install.sh
+  become: false
+  become_user: "{{ user }}"
+  register: pulumi_output
+  changed_when: "'Pulumi is now installed' not in pulumi_output.stdout"
+
 - name: Download Terraform
   ansible.builtin.get_url:
     url: "https://releases.hashicorp.com/terraform/{{ devops_tools_versions.terraform }}/terraform_{{ devops_tools_versions.terraform }}_linux_amd64.zip"
