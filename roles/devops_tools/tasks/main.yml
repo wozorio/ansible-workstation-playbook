@@ -18,6 +18,14 @@
   ansible.builtin.apt:
     name: python{{ python_version_short }}-venv
 
+- name: Configure Poetry to create virtual environments in the project root
+  ansible.builtin.command: |
+    poetry config virtualenvs.in-project true
+  become: false
+  become_user: "{{ user }}"
+  register: poetry_result
+  changed_when: poetry_result.rc != 0
+
 - name: Download Helm
   ansible.builtin.get_url:
     url: "https://get.helm.sh/helm-v{{ devops_tools_versions.helm }}-linux-amd64.tar.gz"
