@@ -1,55 +1,52 @@
 ---
-- name: Set up ZSH
-  when: zsh.install | bool
-  block:
-    - name: Install ZSH
-      ansible.builtin.apt:
-        name: zsh
-        state: present
+- name: Install ZSH
+  ansible.builtin.apt:
+    name: zsh
+    state: present
 
-    - name: Set ZSH as the default shell
-      ansible.builtin.user:
-        name: "{{ user }}"
-        shell: /usr/bin/zsh
+- name: Set ZSH as the default shell
+  ansible.builtin.user:
+    name: "{{ user }}"
+    shell: /usr/bin/zsh
 
-    - name: Check if .oh-my-zsh directory exists
-      ansible.builtin.stat:
-        path: /home/{{ user }}/.oh-my-zsh
-      register: oh_my_zsh_dir
+- name: Check if .oh-my-zsh directory exists
+  ansible.builtin.stat:
+    path: /home/{{ user }}/.oh-my-zsh
+  register: oh_my_zsh_dir
 
-    - name: Install oh-my-zsh
-      ansible.builtin.shell: |
-        set -o pipefail
-        curl -fsL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
-      args:
-        warn: false
-      become: false
-      become_user: "{{ user }}"
-      register: oh_my_zsh_output
-      changed_when: "'folder already exists' not in oh_my_zsh_output.stdout"
-      when: not oh_my_zsh_dir.stat.exists
+- name: Install oh-my-zsh
+  ansible.builtin.shell: |
+    set -o pipefail
+    curl -fsL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
+  args:
+    warn: false
+  become: false
+  become_user: "{{ user }}"
+  register: oh_my_zsh_output
+  changed_when: "'folder already exists' not in oh_my_zsh_output.stdout"
+  when: not oh_my_zsh_dir.stat.exists
 
-    - name: Install oh-my-zsh plugins
-      ansible.builtin.lineinfile:
-        path: "/home/{{ user }}/.zshrc"
-        regexp: "^plugins="
-        line: "plugins=({{ zsh.oh_my_zsh_plugins }})"
+- name: Install oh-my-zsh plugins
+  ansible.builtin.lineinfile:
+    path: "/home/{{ user }}/.zshrc"
+    regexp: "^plugins="
+    line: "plugins=({{ zsh.oh_my_zsh_plugins }})"
 
-    - name: Add kube-ps1 to the prompt
-      ansible.builtin.lineinfile:
-        path: "/home/{{ user }}/.zshrc"
-        regexp: "^PROMPT="
-        line: "PROMPT='$(kube_ps1)'$PROMPT"
+- name: Add kube-ps1 to the prompt
+  ansible.builtin.lineinfile:
+    path: "/home/{{ user }}/.zshrc"
+    regexp: "^PROMPT="
+    line: "PROMPT='$(kube_ps1)'$PROMPT"
 
-    - name: Copy ZSH custom aliases to oh-my-zsh custom directory
-      ansible.builtin.copy:
-        src: "dotfiles/.aliases"
-        dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
-        remote_src: true
-        mode: "0775"
+- name: Copy ZSH custom aliases to oh-my-zsh custom directory
+  ansible.builtin.copy:
+    src: "dotfiles/.aliases"
+    dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
+    remote_src: true
+    mode: "0775"
 
-    - name: Change ZSH theme to {{ zsh.theme }}
-      ansible.builtin.lineinfile:
-        path: "/home/{{ user }}/.zshrc"
-        regexp: "^ZSH_THEME="
-        line: "ZSH_THEME={{ zsh.theme }}"
+- name: Change ZSH theme to {{ zsh.theme }}
+  ansible.builtin.lineinfile:
+    path: "/home/{{ user }}/.zshrc"
+    regexp: "^ZSH_THEME="
+    line: "ZSH_THEME={{ zsh.theme }}"

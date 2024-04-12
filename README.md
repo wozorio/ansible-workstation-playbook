@@ -51,6 +51,10 @@ The tags available are:
 ansible-playbook main.yml -i inventory --ask-become-pass --tags "customizations, docker"
 ```
 
+```bash
+ansible-playbook main.yml -i inventory --ask-become-pass --skip-tags "zsh"
+```
+
 ## Overriding variables during runtime
 
 ```bash

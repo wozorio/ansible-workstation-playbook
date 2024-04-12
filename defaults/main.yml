@@ -7,6 +7,5 @@ bin_path: /usr/local/bin
 distrib_codename: jammy
 
 zsh:
-  install: true
   theme: robbyrussell
   oh_my_zsh_plugins: "git kube-ps1"
