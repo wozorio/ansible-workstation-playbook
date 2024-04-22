@@ -29,21 +29,6 @@
     remote_src: true
     mode: "0755"
 
-- name: Extract Terraform binary
-  ansible.builtin.unarchive:
-    src: "{{ download_dir }}/terraform_{{ devops_tools_versions.terraform }}_linux_amd64.zip"
-    dest: "{{ download_dir }}"
-    remote_src: true
-    creates: "{{ download_dir }}/terraform"
-    mode: "0755"
-
-- name: Copy Terraform binary to its path
-  ansible.builtin.copy:
-    src: "{{ download_dir }}/terraform"
-    dest: "{{ bin_path }}"
-    remote_src: true
-    mode: "0775"
-
 - name: Extract terraform-docs binary
   ansible.builtin.unarchive:
     src: "{{ download_dir }}/terraform-docs-v{{ devops_tools_versions.terraform_docs }}-linux-amd64.tar.gz"

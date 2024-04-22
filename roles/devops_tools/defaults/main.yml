@@ -11,5 +11,4 @@ devops_tools_versions:
   kubens: 0.9.4
   kubectx: 0.9.4
   stern: 1.22.0
-  terraform: 1.7.3
   terraform_docs: 0.16.0

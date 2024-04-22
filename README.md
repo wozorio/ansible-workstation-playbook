@@ -9,8 +9,8 @@ This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jel
 1. Install Ansible:
 
    ```bash
-   sudo add-apt-repository --yes ppa:ansible/ansible
-   sudo apt install -y software-properties-common ansible
+   pip install ansible
+   sudo apt -y install python3-debian
    ```
 
 1. Clone the repository:
