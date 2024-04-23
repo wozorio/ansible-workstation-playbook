@@ -2,4 +2,3 @@ alias k=kubectl
 alias l="ls"
 alias ll="ls -l"
 alias upg="sudo apt update && sudo apt dist-upgrade -y"
-alias purgebranch="git branch -D $(git branch)"
