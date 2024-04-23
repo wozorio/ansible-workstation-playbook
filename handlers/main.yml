@@ -1,0 +1,4 @@
+---
+- name: Remove obsolete apt dependencies
+  ansible.builtin.apt:
+    autoremove: true
