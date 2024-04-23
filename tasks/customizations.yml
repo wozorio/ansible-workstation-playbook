@@ -28,7 +28,7 @@
   become: false
   become_user: "{{ user }}"
 
-- name: Configure git credentials to be cached
+- name: Enable caching of git credentials
   community.general.git_config:
     name: credential.helper
     scope: global
