@@ -10,7 +10,7 @@ This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jel
 
    ```bash
    pip install ansible
-   sudo apt -y install python3-debian
+   sudo apt -y reinstall python3-debian
    ```
 
 1. Clone the repository:

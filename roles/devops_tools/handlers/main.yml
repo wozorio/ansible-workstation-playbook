@@ -1,4 +1,8 @@
 ---
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+
 - name: Extract Helm binary
   ansible.builtin.unarchive:
     src: "{{ download_dir }}/helm-v{{ devops_tools_versions.helm }}-linux-amd64.tar.gz"

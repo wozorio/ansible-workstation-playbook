@@ -26,6 +26,26 @@
   register: poetry_result
   changed_when: poetry_result.rc != 0
 
+- name: Add HashiCorp repository
+  ansible.builtin.deb822_repository:
+    name: hashicorp-archive
+    state: present
+    suites: ["{{ distrib_codename }}"]
+    uris: ["https://apt.releases.hashicorp.com"]
+    components: [main]
+    signed_by: https://apt.releases.hashicorp.com/gpg
+    enabled: true
+  notify:
+    - Update apt cache
+
+- name: Ensure handlers are notified now
+  ansible.builtin.meta: flush_handlers
+
+- name: Install Terraform
+  ansible.builtin.apt:
+    name: terraform
+    state: present
+
 - name: Download Helm
   ansible.builtin.get_url:
     url: "https://get.helm.sh/helm-v{{ devops_tools_versions.helm }}-linux-amd64.tar.gz"
@@ -96,21 +116,6 @@
   become_user: "{{ user }}"
   register: pulumi_output
   changed_when: "'Pulumi is now installed' not in pulumi_output.stdout"
-
-- name: Add HashiCorp repository
-  ansible.builtin.deb822_repository:
-    name: hashicorp-archive
-    state: present
-    suites: ["{{ distrib_codename }}"]
-    uris: ["https://apt.releases.hashicorp.com"]
-    components: [main]
-    signed_by: https://apt.releases.hashicorp.com/gpg
-    enabled: true
-
-- name: Install Terraform
-  ansible.builtin.apt:
-    name: terraform
-    state: present
 
 - name: Download terraform-docs
   ansible.builtin.get_url:

@@ -11,3 +11,35 @@
   ansible.builtin.hostname:
     name: "{{ hostname }}"
     use: systemd
+
+- name: Set git username
+  community.general.git_config:
+    name: user.name
+    scope: global
+    value: "{{ full_name }}"
+  become: false
+  become_user: "{{ user }}"
+
+- name: Set git email address
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "{{ email }}"
+  become: false
+  become_user: "{{ user }}"
+
+- name: Configure git credentials to be cached
+  community.general.git_config:
+    name: credential.helper
+    scope: global
+    value: store
+  become: false
+  become_user: "{{ user }}"
+
+- name: Set git default pull policy to merge
+  community.general.git_config:
+    name: pull.rebase
+    scope: global
+    value: false
+  become: false
+  become_user: "{{ user }}"

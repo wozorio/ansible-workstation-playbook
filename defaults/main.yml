@@ -1,5 +1,7 @@
 ---
 user: wozorio
+full_name: Wellington Ozorio
+email: well.ozorio@gmail.com
 hostname: darkside
 homedir: "/home/{{ user }}"
 download_dir: /tmp

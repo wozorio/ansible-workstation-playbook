@@ -8,12 +8,14 @@
     - defaults/main.yml
 
   pre_tasks:
-    - name: Run apt-get dist-upgrade if the last one was more than 3600 seconds ago
+    - name: Run apt dist-upgrade if the last one was more than 3600 seconds ago
       ansible.builtin.apt:
         update_cache: true
         cache_valid_time: 3600
         upgrade: dist
       tags: ["always"]
+      notify:
+        - Remove obsolete apt dependencies
 
   roles:
     - role: docker
