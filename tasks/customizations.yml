@@ -12,34 +12,30 @@
     name: "{{ hostname }}"
     use: systemd
 
-- name: Set git username
-  community.general.git_config:
-    name: user.name
-    scope: global
-    value: "{{ full_name }}"
+- name: Git preferences
   become: false
   become_user: "{{ user }}"
+  block:
+    - name: Set git username
+      community.general.git_config:
+        name: user.name
+        scope: global
+        value: "{{ full_name }}"
 
-- name: Set git email address
-  community.general.git_config:
-    name: user.email
-    scope: global
-    value: "{{ email }}"
-  become: false
-  become_user: "{{ user }}"
+    - name: Set git email address
+      community.general.git_config:
+        name: user.email
+        scope: global
+        value: "{{ email }}"
 
-- name: Enable caching of git credentials
-  community.general.git_config:
-    name: credential.helper
-    scope: global
-    value: store
-  become: false
-  become_user: "{{ user }}"
+    - name: Enable caching of git credentials
+      community.general.git_config:
+        name: credential.helper
+        scope: global
+        value: store
 
-- name: Set git default pull policy to merge
-  community.general.git_config:
-    name: pull.rebase
-    scope: global
-    value: false
-  become: false
-  become_user: "{{ user }}"
+    - name: Set git default pull policy to merge
+      community.general.git_config:
+        name: pull.rebase
+        scope: global
+        value: false
