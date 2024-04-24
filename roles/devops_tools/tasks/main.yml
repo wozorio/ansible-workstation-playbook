@@ -46,63 +46,6 @@
     name: terraform
     state: present
 
-- name: Download Helm
-  ansible.builtin.get_url:
-    url: "https://get.helm.sh/helm-v{{ devops_tools_versions.helm }}-linux-amd64.tar.gz"
-    dest: "{{ download_dir }}/helm-v{{ devops_tools_versions.helm }}-linux-amd64.tar.gz"
-    mode: "0775"
-  notify:
-    - Extract Helm binary
-    - Copy Helm binary to its path
-
-- name: Download kubectl
-  ansible.builtin.get_url:
-    url: "https://storage.googleapis.com/kubernetes-release/release/v{{ devops_tools_versions.kubectl }}/bin/linux/amd64/kubectl"
-    dest: "{{ download_dir }}/kubectl"
-    mode: "0775"
-
-- name: Copy kubectl binary to its path
-  ansible.builtin.copy:
-    src: "{{ download_dir }}/kubectl"
-    dest: "{{ bin_path }}"
-    remote_src: true
-    mode: "0775"
-
-- name: Download kubectx
-  ansible.builtin.get_url:
-    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ devops_tools_versions.kubectx }}/kubectx"
-    dest: "{{ download_dir }}/kubectx"
-    mode: "0775"
-
-- name: Copy kubectx binary to its path
-  ansible.builtin.copy:
-    src: "{{ download_dir }}/kubectx"
-    dest: "{{ bin_path }}"
-    remote_src: true
-    mode: "0775"
-
-- name: Download kubens
-  ansible.builtin.get_url:
-    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ devops_tools_versions.kubens }}/kubens"
-    dest: "{{ download_dir }}/kubens"
-    mode: "0775"
-
-- name: Copy kubens binary to its path
-  ansible.builtin.copy:
-    src: "{{ download_dir }}/kubens"
-    dest: "{{ bin_path }}"
-    remote_src: true
-    mode: "0775"
-
-- name: Download Stern
-  ansible.builtin.get_url:
-    url: "https://github.com/stern/stern/releases/download/v{{ devops_tools_versions.stern }}/stern_{{ devops_tools_versions.stern }}_linux_amd64.tar.gz"
-    dest: "{{ download_dir }}/stern_{{ devops_tools_versions.stern }}_linux_amd64.tar.gz"
-    mode: "0775"
-  notify:
-    - Extract Stern binary
-    - Copy Stern binary to its path
-
 - name: Download Pulumi install script
   ansible.builtin.get_url:
     url: https://get.pulumi.com
@@ -116,6 +59,48 @@
   become_user: "{{ user }}"
   register: pulumi_output
   changed_when: "'Pulumi is now installed' not in pulumi_output.stdout"
+
+- name: Install hadolint
+  ansible.builtin.get_url:
+    url: "https://github.com/hadolint/hadolint/releases/download/v{{ devops_tools_versions.hadolint }}-beta/hadolint-Linux-x86_64"
+    dest: "{{ bin_path }}/hadolint"
+    mode: "0775"
+
+- name: Install kubectl
+  ansible.builtin.get_url:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v{{ devops_tools_versions.kubectl }}/bin/linux/amd64/kubectl"
+    dest: "{{ bin_path }}"
+    mode: "0775"
+
+- name: Install kubectx
+  ansible.builtin.get_url:
+    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ devops_tools_versions.kubectx }}/kubectx"
+    dest: "{{ bin_path }}"
+    mode: "0775"
+
+- name: Install kubens
+  ansible.builtin.get_url:
+    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ devops_tools_versions.kubens }}/kubens"
+    dest: "{{ bin_path }}"
+    mode: "0775"
+
+- name: Download Helm
+  ansible.builtin.get_url:
+    url: "https://get.helm.sh/helm-v{{ devops_tools_versions.helm }}-linux-amd64.tar.gz"
+    dest: "{{ download_dir }}/helm-v{{ devops_tools_versions.helm }}-linux-amd64.tar.gz"
+    mode: "0775"
+  notify:
+    - Extract Helm binary
+    - Copy Helm binary to its path
+
+- name: Download Stern
+  ansible.builtin.get_url:
+    url: "https://github.com/stern/stern/releases/download/v{{ devops_tools_versions.stern }}/stern_{{ devops_tools_versions.stern }}_linux_amd64.tar.gz"
+    dest: "{{ download_dir }}/stern_{{ devops_tools_versions.stern }}_linux_amd64.tar.gz"
+    mode: "0775"
+  notify:
+    - Extract Stern binary
+    - Copy Stern binary to its path
 
 - name: Download terraform-docs
   ansible.builtin.get_url:

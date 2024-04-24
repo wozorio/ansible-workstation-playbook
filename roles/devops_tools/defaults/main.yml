@@ -6,6 +6,7 @@ devops_tools_python:
     - poetry
     - yamllint
 devops_tools_versions:
+  hadolint: 2.12.1
   helm: 3.14.0
   kubectl: 1.29.1
   kubens: 0.9.4
