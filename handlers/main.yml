@@ -1,5 +1,4 @@
 ---
-handlers:
-  - name: Remove obsolete apt dependencies
-    ansible.builtin.apt:
-      autoremove: true
+- name: Remove obsolete apt dependencies
+  ansible.builtin.apt:
+    autoremove: true

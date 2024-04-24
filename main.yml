@@ -27,7 +27,7 @@
       ansible.builtin.import_tasks: tasks/utils.yml
       tags: ["always"]
     - name: Import utils task
-      ansible.builtin.import_tasks: tasks/system-updates.yml
+      ansible.builtin.include_tasks: tasks/system-updates.yml
       tags: ["utils"]
     - name: Import ZSH task
       ansible.builtin.import_tasks: tasks/zsh.yml
