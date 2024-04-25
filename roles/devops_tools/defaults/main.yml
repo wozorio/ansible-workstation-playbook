@@ -1,10 +1,9 @@
 ---
-devops_tools_python:
-  packages:
-    - ansible-lint
-    - azure-cli
-    - poetry
-    - yamllint
+devops_tools_python_packages:
+  - ansible-lint
+  - azure-cli
+  - poetry
+  - yamllint
 devops_tools_versions:
   hadolint: 2.12.1
   helm: 3.14.0

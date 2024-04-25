@@ -2,7 +2,7 @@
 - name: Install Python packages
   ansible.builtin.pip:
     name: "{{ item }}"
-  loop: "{{ devops_tools_python.packages }}"
+  loop: "{{ devops_tools_python_packages }}"
 
 - name: Gather Python version
   ansible.builtin.setup:
