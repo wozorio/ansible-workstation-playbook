@@ -22,12 +22,16 @@
     - role: devops_tools
       tags: ["devops_tools"]
 
+  handlers:
+    - name: Import handler
+      ansible.builtin.include_tasks: handlers/main.yml
+
   tasks:
     - name: Perform system updates
-      ansible.builtin.import_tasks: tasks/utils.yml
+      ansible.builtin.import_tasks: tasks/system-updates.yml
       tags: ["always"]
     - name: Import utils task
-      ansible.builtin.include_tasks: tasks/system-updates.yml
+      ansible.builtin.import_tasks: tasks/utils.yml
       tags: ["utils"]
     - name: Import ZSH task
       ansible.builtin.import_tasks: tasks/zsh.yml
