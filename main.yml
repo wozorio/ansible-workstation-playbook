@@ -8,7 +8,7 @@
     - defaults/main.yml
 
   pre_tasks:
-    - name: Run system updates
+    - name: Perform system updates
       ansible.builtin.apt:
         update_cache: true
         upgrade: dist
