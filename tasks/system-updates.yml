@@ -1,9 +1,0 @@
----
-- name: Run apt dist-upgrade
-  ansible.builtin.apt:
-    upgrade: dist
-  notify:
-    - Remove obsolete apt dependencies
-
-- name: Ensure handlers are notified now
-  ansible.builtin.meta: flush_handlers

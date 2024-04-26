@@ -8,11 +8,14 @@
     - defaults/main.yml
 
   pre_tasks:
-    - name: Update apt cache
+    - name: Run system updates
       ansible.builtin.apt:
         update_cache: true
-        cache_valid_time: 3600
-      tags: ["always"]
+        upgrade: dist
+      notify:
+        - Remove obsolete apt dependencies
+    - name: Ensure handlers are notified now
+      ansible.builtin.meta: flush_handlers
 
   roles:
     - role: docker
@@ -22,14 +25,7 @@
     - role: devops_tools
       tags: ["devops_tools"]
 
-  handlers:
-    - name: Import handler
-      ansible.builtin.include_tasks: handlers/main.yml
-
   tasks:
-    - name: Perform system updates
-      ansible.builtin.import_tasks: tasks/system-updates.yml
-      tags: ["always"]
     - name: Import utils task
       ansible.builtin.import_tasks: tasks/utils.yml
       tags: ["utils"]
