@@ -8,14 +8,13 @@
     - defaults/main.yml
 
   pre_tasks:
-    - name: Perform system updates
+    - name: Perform a dist-upgrade
       ansible.builtin.apt:
         update_cache: true
         upgrade: dist
-      notify:
-        - Remove obsolete apt dependencies
-    - name: Ensure handlers are notified now
-      ansible.builtin.meta: flush_handlers
+    - name: Remove obsolete dependencies
+      ansible.builtin.apt:
+        autoremove: true
 
   roles:
     - role: docker
