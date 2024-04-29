@@ -39,3 +39,18 @@
         name: pull.rebase
         scope: global
         value: false
+
+    - name: Copy .gitalias file
+      ansible.builtin.copy:
+        src: "dotfiles/.gitalias"
+        dest: "{{ homedir }}"
+        remote_src: true
+        owner: "{{ user }}"
+        group: "{{ user }}"
+        mode: "0664"
+
+    - name: Include .gitalias filepath
+      community.general.git_config:
+        name: include.path
+        scope: global
+        value: "{{ homedir }}/.gitalias"
