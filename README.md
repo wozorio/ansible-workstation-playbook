@@ -4,6 +4,10 @@ This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jel
 
 [![GitHub](https://img.shields.io/github/license/wozorio/ansible-workstation-setup)](https://github.com/wozorio/ansible-workstation-setup/blob/master/LICENSE)
 
+## Supported operating systems
+
+- Ubuntu 22.04 LTS (Jammy Jellyfish)
+
 ## Installation
 
 1. Install Ansible:
@@ -60,7 +64,3 @@ ansible-playbook main.yml -i inventory --ask-become-pass --skip-tags "zsh"
 ```bash
 ansible-playbook main.yml -i inventory --ask-become-pass --extra-vars "user=wozorio"
 ```
-
-## Supported operating systems
-
-- Ubuntu 22.04 LTS (Jammy Jellyfish)
