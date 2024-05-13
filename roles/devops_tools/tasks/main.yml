@@ -92,14 +92,15 @@
     dest: "{{ bin_path }}"
     mode: "0775"
 
-- name: Download Helm
+- name: Download Helm install script
   ansible.builtin.get_url:
-    url: "https://get.helm.sh/helm-v{{ devops_tools_versions.helm }}-linux-amd64.tar.gz"
-    dest: "{{ download_dir }}/helm-v{{ devops_tools_versions.helm }}-linux-amd64.tar.gz"
+    url: "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
+    dest: "{{ download_dir }}/get_helm.sh"
     mode: "0775"
-  notify:
-    - Extract Helm binary
-    - Copy Helm binary to its path
+
+- name: Install Helm
+  ansible.builtin.script: |
+    "{{ download_dir }}/get_helm.sh"
 
 - name: Download Stern
   ansible.builtin.get_url:
