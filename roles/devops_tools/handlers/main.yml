@@ -3,32 +3,36 @@
   ansible.builtin.apt:
     update_cache: true
 
-- name: Extract Stern binary
-  ansible.builtin.unarchive:
-    src: "{{ download_dir }}/stern_{{ devops_tools_versions.stern }}_linux_amd64.tar.gz"
-    dest: "{{ download_dir }}"
-    remote_src: true
-    creates: "{{ download_dir }}/stern"
-    mode: "0755"
+- name: Stern
+  block:
+    - name: Extract Stern binary
+      ansible.builtin.unarchive:
+        src: "{{ download_dir }}/stern_{{ stern.json.tag_name | regex_replace('^v', '') }}_linux_amd64.tar.gz"
+        dest: "{{ download_dir }}"
+        remote_src: true
+        creates: "{{ download_dir }}/stern"
+        mode: "0755"
 
-- name: Copy Stern binary to its path
-  ansible.builtin.copy:
-    src: "{{ download_dir }}/stern"
-    dest: "{{ bin_path }}"
-    remote_src: true
-    mode: "0755"
+    - name: Copy Stern binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/stern"
+        dest: "{{ bin_path }}"
+        remote_src: true
+        mode: "0755"
 
-- name: Extract terraform-docs binary
-  ansible.builtin.unarchive:
-    src: "{{ download_dir }}/terraform-docs-v{{ devops_tools_versions.terraform_docs }}-linux-amd64.tar.gz"
-    dest: "{{ download_dir }}"
-    remote_src: true
-    creates: "{{ download_dir }}/terraform-docs"
-    mode: "0755"
+- name: Terraform-docs
+  block:
+    - name: Extract terraform-docs binary
+      ansible.builtin.unarchive:
+        src: "{{ download_dir }}/terraform-docs-{{ terraform_docs.json.tag_name }}-linux-amd64.tar.gz"
+        dest: "{{ download_dir }}"
+        remote_src: true
+        creates: "{{ download_dir }}/terraform-docs"
+        mode: "0755"
 
-- name: Copy terraform-docs binary to its path
-  ansible.builtin.copy:
-    src: "{{ download_dir }}/terraform-docs"
-    dest: "{{ bin_path }}"
-    remote_src: true
-    mode: "0775"
+    - name: Copy terraform-docs binary to its path
+      ansible.builtin.copy:
+        src: "{{ download_dir }}/terraform-docs"
+        dest: "{{ bin_path }}"
+        remote_src: true
+        mode: "0775"

@@ -26,53 +26,67 @@
   register: poetry_result
   changed_when: poetry_result.rc != 0
 
-- name: Add HashiCorp repository
-  ansible.builtin.deb822_repository:
-    name: hashicorp-archive
-    state: present
-    suites: ["{{ distrib_codename }}"]
-    uris: ["https://apt.releases.hashicorp.com"]
-    components: [main]
-    signed_by: https://apt.releases.hashicorp.com/gpg
-    enabled: true
-  notify:
-    - Update apt cache
+- name: Terraform
+  block:
+    - name: Add HashiCorp repository
+      ansible.builtin.deb822_repository:
+        name: hashicorp-archive
+        state: present
+        suites: ["{{ distrib_codename }}"]
+        uris: ["https://apt.releases.hashicorp.com"]
+        components: [main]
+        signed_by: https://apt.releases.hashicorp.com/gpg
+        enabled: true
+      notify:
+        - Update apt cache
 
-- name: Ensure handlers are notified now
-  ansible.builtin.meta: flush_handlers
+    - name: Ensure handlers are notified now
+      ansible.builtin.meta: flush_handlers
 
-- name: Install Terraform
-  ansible.builtin.apt:
-    name: terraform
-    state: present
+    - name: Install Terraform
+      ansible.builtin.apt:
+        name: terraform
+        state: present
 
-- name: Download tflint install script
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh
-    dest: "{{ download_dir }}/install_linux.sh"
-    mode: "0755"
+- name: Tflint
+  block:
+    - name: Download tflint install script
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh
+        dest: "{{ download_dir }}/install_linux.sh"
+        mode: "0755"
 
-- name: Install tflint
-  ansible.builtin.script: |
-    "{{ download_dir }}/install_linux.sh"
+    - name: Install tflint
+      ansible.builtin.script: |
+        "{{ download_dir }}/install_linux.sh"
 
-- name: Download Pulumi install script
-  ansible.builtin.get_url:
-    url: https://get.pulumi.com
-    dest: "{{ download_dir }}/pulumi_install.sh"
-    mode: "0755"
+- name: Pulumi
+  block:
+    - name: Download Pulumi install script
+      ansible.builtin.get_url:
+        url: https://get.pulumi.com
+        dest: "{{ download_dir }}/pulumi_install.sh"
+        mode: "0755"
 
-- name: Install Pulumi
-  ansible.builtin.script: |
-    "{{ download_dir }}/pulumi_install.sh"
-  become: false
-  become_user: "{{ user }}"
+    - name: Install Pulumi
+      ansible.builtin.script: |
+        "{{ download_dir }}/pulumi_install.sh"
+      become: false
+      become_user: "{{ user }}"
 
-- name: Install hadolint
-  ansible.builtin.get_url:
-    url: "https://github.com/hadolint/hadolint/releases/download/v{{ devops_tools_versions.hadolint }}-beta/hadolint-Linux-x86_64"
-    dest: "{{ bin_path }}/hadolint"
-    mode: "0775"
+- name: Hadolint
+  block:
+    - name: Determine latest hadolint release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/hadolint/hadolint/releases/latest
+        return_content: true
+      register: hadolint
+
+    - name: Install hadolint
+      ansible.builtin.get_url:
+        url: "https://github.com/hadolint/hadolint/releases/download/{{ hadolint.json.tag_name }}/hadolint-Linux-x86_64"
+        dest: "{{ bin_path }}/hadolint"
+        mode: "0775"
 
 - name: Install kubectl
   ansible.builtin.get_url:
@@ -80,42 +94,68 @@
     dest: "{{ bin_path }}"
     mode: "0775"
 
-- name: Install kubectx
-  ansible.builtin.get_url:
-    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ devops_tools_versions.kubectx }}/kubectx"
-    dest: "{{ bin_path }}"
-    mode: "0775"
+- name: Kubectx and Kubens
+  block:
+    - name: Determine latest kubectx release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/ahmetb/kubectx/releases/latest
+        return_content: true
+      register: kubectx
 
-- name: Install kubens
-  ansible.builtin.get_url:
-    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ devops_tools_versions.kubens }}/kubens"
-    dest: "{{ bin_path }}"
-    mode: "0775"
+    - name: Install kubectx
+      ansible.builtin.get_url:
+        url: "https://github.com/ahmetb/kubectx/releases/download/{{ kubectx.json.tag_name }}/kubectx"
+        dest: "{{ bin_path }}"
+        mode: "0775"
 
-- name: Download Helm install script
-  ansible.builtin.get_url:
-    url: "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
-    dest: "{{ download_dir }}/get_helm.sh"
-    mode: "0775"
+    - name: Install kubens
+      ansible.builtin.get_url:
+        url: "https://github.com/ahmetb/kubectx/releases/download/{{ kubectx.json.tag_name }}/kubens"
+        dest: "{{ bin_path }}"
+        mode: "0775"
 
-- name: Install Helm
-  ansible.builtin.script: |
-    "{{ download_dir }}/get_helm.sh"
+- name: Helm
+  block:
+    - name: Download Helm install script
+      ansible.builtin.get_url:
+        url: "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
+        dest: "{{ download_dir }}/get_helm.sh"
+        mode: "0775"
 
-- name: Download Stern
-  ansible.builtin.get_url:
-    url: "https://github.com/stern/stern/releases/download/v{{ devops_tools_versions.stern }}/stern_{{ devops_tools_versions.stern }}_linux_amd64.tar.gz"
-    dest: "{{ download_dir }}/stern_{{ devops_tools_versions.stern }}_linux_amd64.tar.gz"
-    mode: "0775"
-  notify:
-    - Extract Stern binary
-    - Copy Stern binary to its path
+    - name: Install Helm
+      ansible.builtin.script: |
+        "{{ download_dir }}/get_helm.sh"
 
-- name: Download terraform-docs
-  ansible.builtin.get_url:
-    url: "https://github.com/terraform-docs/terraform-docs/releases/download/v{{ devops_tools_versions.terraform_docs }}/terraform-docs-v{{ devops_tools_versions.terraform_docs }}-linux-amd64.tar.gz"
-    dest: "{{ download_dir }}/terraform-docs-v{{ devops_tools_versions.terraform_docs }}-linux-amd64.tar.gz"
-    mode: "0775"
-  notify:
-    - Extract terraform-docs binary
-    - Copy terraform-docs binary to its path
+- name: Stern
+  block:
+    - name: Determine latest Stern release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/stern/stern/releases/latest
+        return_content: true
+      register: stern
+
+    - name: Download Stern
+      ansible.builtin.get_url:
+        url: "https://github.com/stern/stern/releases/download/{{ stern.json.tag_name }}/stern_{{ stern.json.tag_name | regex_replace('^v', '') }}_linux_amd64.tar.gz"
+        dest: "{{ download_dir }}"
+        mode: "0775"
+      notify:
+        - Extract Stern binary
+        - Copy Stern binary to its path
+
+- name: Terraform-docs
+  block:
+    - name: Determine latest terraform-docs release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/terraform-docs/terraform-docs/releases/latest
+        return_content: true
+      register: terraform_docs
+
+    - name: Download terraform-docs
+      ansible.builtin.get_url:
+        url: "https://github.com/terraform-docs/terraform-docs/releases/download/{{ terraform_docs.json.tag_name }}/terraform-docs-{{ terraform_docs.json.tag_name }}-linux-amd64.tar.gz"
+        dest: "{{ download_dir }}/terraform-docs-{{ terraform_docs.json.tag_name }}-linux-amd64.tar.gz"
+        mode: "0775"
+      notify:
+        - Extract terraform-docs binary
+        - Copy terraform-docs binary to its path
