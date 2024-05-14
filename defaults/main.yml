@@ -6,7 +6,6 @@ hostname: darkside
 homedir: "/home/{{ user }}"
 download_dir: /tmp
 bin_path: /usr/local/bin
-distrib_codename: jammy
 
 zsh:
   theme: robbyrussell

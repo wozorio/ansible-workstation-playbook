@@ -28,11 +28,16 @@
 
 - name: Terraform
   block:
+    - name: Gather distribution codename
+      ansible.builtin.setup:
+        filter:
+          - "ansible_distribution_release"
+
     - name: Add HashiCorp repository
       ansible.builtin.deb822_repository:
         name: hashicorp-archive
         state: present
-        suites: ["{{ distrib_codename }}"]
+        suites: ["{{ ansible_distribution_release }}"]
         uris: ["https://apt.releases.hashicorp.com"]
         components: [main]
         signed_by: https://apt.releases.hashicorp.com/gpg
