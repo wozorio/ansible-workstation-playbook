@@ -4,5 +4,3 @@ devops_tools_python_packages:
   - azure-cli
   - poetry
   - yamllint
-devops_tools_versions:
-  kubectl: 1.29.1

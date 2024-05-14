@@ -88,11 +88,19 @@
         dest: "{{ bin_path }}/hadolint"
         mode: "0775"
 
-- name: Install kubectl
-  ansible.builtin.get_url:
-    url: "https://storage.googleapis.com/kubernetes-release/release/v{{ devops_tools_versions.kubectl }}/bin/linux/amd64/kubectl"
-    dest: "{{ bin_path }}"
-    mode: "0775"
+- name: Kubectl
+  block:
+    - name: Determine latest kubectl release
+      ansible.builtin.uri:
+        url: https://cdn.dl.k8s.io/release/stable.txt
+        return_content: true
+      register: kubectl_version
+
+    - name: Install kubectl
+      ansible.builtin.get_url:
+        url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version.content }}/bin/linux/amd64/kubectl"
+        dest: "{{ bin_path }}"
+        mode: "0775"
 
 - name: Kubectx and Kubens
   block:
