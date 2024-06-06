@@ -41,13 +41,13 @@ You can filter which software to install by specifying the respective tag(s) usi
 
 The tags available are:
 
-| Tag              | Description                                                                                                |
-| ---------------- | ---------------------------------------------------------------------------------------------------------- |
-| `customizations` | Perform OS customizations                                                                                  |
-| `devops_tools`   | Install DevOps tools such as `Helm`, `Kubectl`, `Kubens`, `Kubectx`, `Stern`, `Terraform` and `Terragrunt` |
-| `docker`         | Install [Docker](https://docs.docker.com/engine/install/ubuntu/)                                           |
-| `utils`          | Install utilities (i.e.: `jq`, `unzip`, `git`, etc)                                                        |
-| `zsh`            | Install [Zsh](https://www.zsh.org/)                                                                        |
+| Tag              | Description                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------- |
+| `customizations` | Perform OS customizations                                                                    |
+| `devops_tools`   | Install DevOps tools such as `Helm`, `Kubectl`, `Kubens`, `Kubectx`, `Stern` and `Terraform` |
+| `docker`         | Install [Docker](https://docs.docker.com/engine/install/ubuntu/)                             |
+| `utils`          | Install utilities (i.e.: `jq`, `unzip`, `git`, etc)                                          |
+| `zsh`            | Install [Zsh](https://www.zsh.org/)                                                          |
 
 ### Usage example
 
