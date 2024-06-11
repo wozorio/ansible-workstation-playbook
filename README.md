@@ -10,29 +10,23 @@ This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jel
 
 ## Installation
 
-1. Install Ansible:
-
-   ```bash
-   pip install ansible
-   sudo apt -y reinstall python3-debian
-   ```
-
-1. Clone the repository:
+1. Clone the repository and change to it:
 
    ```bash
    git clone https://github.com/wozorio/ansible-workstation-playbook.git
-   ```
-
-1. Change to the repository directory:
-
-   ```bash
    cd ansible-workstation-playbook
    ```
 
-1. Run the playbook:
+1. Install Ansible:
 
    ```bash
-   ansible-playbook main.yml -i inventory --ask-become-pass
+   make install
+   ```
+
+1. Run the playbook with default settings:
+
+   ```bash
+   make run
    ```
 
 ## Running a specific set of tagged tasks
