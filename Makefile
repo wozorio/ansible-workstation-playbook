@@ -1,7 +1,7 @@
-# Install Ansible and python3-debian
+# Install Ansible, ansible-lint and python3-debian
 .PHONY: bootstrap
 bootstrap:
-	@pip install ansible && \
+	@pip install ansible ansible-lint && \
  	sudo apt-get -y reinstall python3-debian
 
 # Lint the playbook
