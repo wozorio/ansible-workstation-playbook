@@ -17,7 +17,7 @@ This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jel
    cd ansible-workstation-playbook
    ```
 
-1. Install Ansible (and eventual dependencies):
+1. Install Ansible (and dependencies):
 
    ```bash
    make bootstrap
