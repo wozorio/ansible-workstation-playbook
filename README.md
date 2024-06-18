@@ -43,19 +43,22 @@ The tags available are:
 | `utils`          | Install utilities (i.e.: `jq`, `unzip`, `git`, etc)                                          |
 | `zsh`            | Install [Zsh](https://www.zsh.org/)                                                          |
 
-### Usage example
+## Usage example
+
+### Running a subset of tasks only
 
 ```bash
 make run args='--tags "customizations, docker"'
 ```
 
+### Excluding specific tasks from execution
+
 ```bash
 make run args='--skip-tags "zsh"'
 ```
 
-## Overriding variables during runtime
+### Overriding variables during runtime
 
 ```bash
 make run args='--extra-vars "user=wozorio"'
-
 ```
