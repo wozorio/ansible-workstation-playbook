@@ -13,8 +13,8 @@ lint:
 # Run the playbook with deault settings in dry-run mode
 .PHONY: dry-run
 dry-run:
-	@ansible-playbook -i inventory --diff --check --ask-become-pass main.yml
+	@ansible-playbook -i inventory --diff --check --ask-become-pass $(args) main.yml
 
 # Run the playbook with deault settings
 .PHONY: run
-	@ansible-playbook -i inventory --diff --ask-become-pass main.yml
+	@ansible-playbook -i inventory --diff --ask-become-pass $(args) main.yml

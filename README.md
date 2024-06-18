@@ -46,15 +46,16 @@ The tags available are:
 ### Usage example
 
 ```bash
-ansible-playbook main.yml -i inventory --ask-become-pass --tags "customizations, docker"
+make run args='--tags "customizations, docker"'
 ```
 
 ```bash
-ansible-playbook main.yml -i inventory --ask-become-pass --skip-tags "zsh"
+make run args='--skip-tags "zsh"'
 ```
 
 ## Overriding variables during runtime
 
 ```bash
-ansible-playbook main.yml -i inventory --ask-become-pass --extra-vars "user=wozorio"
+make run args='--extra-vars "user=wozorio"'
+
 ```
