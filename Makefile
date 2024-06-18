@@ -17,4 +17,5 @@ dry-run:
 
 # Run the playbook with deault settings
 .PHONY: run
+run:
 	@ansible-playbook -i inventory --diff --ask-become-pass $(args) main.yml
