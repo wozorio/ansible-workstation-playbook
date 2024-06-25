@@ -7,11 +7,6 @@
     group: "{{ user }}"
     mode: "0664"
 
-- name: Set hostname
-  ansible.builtin.hostname:
-    name: "{{ hostname }}"
-    use: systemd
-
 - name: Git preferences
   become: false
   become_user: "{{ user }}"
