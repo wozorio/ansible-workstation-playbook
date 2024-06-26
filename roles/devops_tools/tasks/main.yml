@@ -2,6 +2,7 @@
 - name: Install Python packages
   ansible.builtin.pip:
     name: "{{ item }}"
+    extra_args: --upgrade
   become: false
   become_user: "{{ user }}"
   loop: "{{ devops_tools_python_packages }}"
