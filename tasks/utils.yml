@@ -8,8 +8,8 @@
     - git
     - htop
     - jq
-    - neofetch
     - shellcheck
+    - tmux
     - tree
     - unzip
     - wget
