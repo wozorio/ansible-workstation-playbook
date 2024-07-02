@@ -17,7 +17,7 @@
       ansible.builtin.git:
         repo: https://github.com/tmux-plugins/tpm
         dest: "/home/{{ user }}/.tmux/plugins/tpm"
-    - name: Clone catppuccin theme
+    - name: Install catppuccin theme
       # noqa: latest
       ansible.builtin.git:
         repo: https://github.com/catppuccin/tmux
