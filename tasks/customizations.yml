@@ -12,12 +12,12 @@
   become_user: "{{ user }}"
   # noqa: latest
   block:
-    - name: Install tmux plugin manager
+    - name: Clone tmux plugin manager repo
       # noqa: latest
       ansible.builtin.git:
         repo: https://github.com/tmux-plugins/tpm
         dest: "/home/{{ user }}/.tmux/plugins/tpm"
-    - name: Install catppuccin theme
+    - name: Clone catppuccin theme repo
       # noqa: latest
       ansible.builtin.git:
         repo: https://github.com/catppuccin/tmux
