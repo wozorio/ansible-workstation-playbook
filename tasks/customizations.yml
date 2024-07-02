@@ -22,7 +22,7 @@
       ansible.builtin.git:
         repo: https://github.com/catppuccin/tmux
         dest: "/home/{{ user }}/.tmux/plugins/catppuccin"
-    - name: Copy tmux configuration
+    - name: Copy .tmux.conf file
       ansible.builtin.copy:
         src: "dotfiles/.tmux.conf"
         dest: "{{ homedir }}"
