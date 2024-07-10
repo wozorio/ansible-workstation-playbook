@@ -6,7 +6,7 @@ bootstrap:
 	@sudo apt-get update && \
 	sudo apt-get install -y pipx && \
 	pipx ensurepath && \
-	pipx install ansible && \
+	pipx install --include-deps ansible && \
 	pipx install ansible-lint && \
 	ansible-galaxy collection install community.general && \
  	sudo apt-get -y reinstall python3-debian
