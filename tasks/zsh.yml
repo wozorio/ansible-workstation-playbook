@@ -21,7 +21,7 @@
         set -o pipefail
         curl -fsL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
       args:
-        warn: false
+        executable: /bin/bash
       become: false
       become_user: "{{ user }}"
       register: oh_my_zsh_output
