@@ -5,6 +5,7 @@ SHELL = /usr/bin/env bash
 bootstrap:
 	@sudo apt-get update && \
 	sudo apt-get install -y pipx && \
+	pipx ensurepath && \
 	pipx install ansible && \
 	pipx install ansible-lint && \
 	ansible-galaxy collection install community.general && \
