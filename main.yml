@@ -21,6 +21,9 @@
       become_user: "{{ user }}"
       register: pipx_result
       changed_when: pipx_result.rc != 0
+    - name: Import utils task
+      ansible.builtin.import_tasks: tasks/utils.yml
+      tags: ["utils"]
 
   roles:
     - role: docker
@@ -31,9 +34,6 @@
       tags: ["devops_tools"]
 
   tasks:
-    - name: Import utils task
-      ansible.builtin.import_tasks: tasks/utils.yml
-      tags: ["utils"]
     - name: Import ZSH task
       ansible.builtin.import_tasks: tasks/zsh.yml
       tags: ["zsh"]
