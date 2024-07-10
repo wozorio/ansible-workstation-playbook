@@ -11,7 +11,8 @@ update-apt:
 .PHONY: setup-pipx
 setup-pipx: update-apt
 	@sudo apt-get install -y pipx && \
-	pipx ensurepath
+	pipx ensurepath && \
+	source ~/.bashrc
 
 # Set up ansible
 .PHONY: setup-ansible
