@@ -1,5 +1,7 @@
 SHELL = /usr/bin/env bash
 
+.DEFAULT_GOAL = bootstrap
+
 # Update the apt cache
 .PHONY: update-apt
 update-apt:
