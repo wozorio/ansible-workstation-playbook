@@ -9,7 +9,7 @@ update-apt:
 
 # Set up pipx
 .PHONY: setup-pipx
-setup-pipx:
+setup-pipx: update-apt
 	@sudo apt-get install -y pipx && \
 	pipx ensurepath
 
@@ -22,12 +22,12 @@ setup-ansible:
 
 # Reinstall python3-debian
 .PHONY: reinstall-python3-debian
-reinstall-python3-debian:
+reinstall-python3-debian: update-apt
 	@sudo apt-get -y reinstall python3-debian
 
 # Bootstrap the machine
 .PHONY: bootstrap
-bootstrap: update-apt setup-pipx setup-ansible reinstall-python3-debian
+bootstrap: setup-pipx setup-ansible reinstall-python3-debian
 
 # Lint the playbook
 .PHONY: lint
