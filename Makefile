@@ -1,6 +1,6 @@
 SHELL = /usr/bin/env bash
 
-# Install Ansible, ansible-lint and python3-debian
+# Install Pipx, Ansible, ansible-lint and python3-debian
 .PHONY: bootstrap
 bootstrap:
 	@sudo apt-get update && \
