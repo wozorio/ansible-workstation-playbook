@@ -8,8 +8,17 @@
     - git
     - htop
     - jq
+    - pipx
     - shellcheck
     - tmux
     - tree
     - unzip
     - wget
+
+- name: Ensure pipx is added to the PATH
+  ansible.builtin.command: |
+    pipx ensurepath
+  become: false
+  become_user: "{{ user }}"
+  register: pipx_result
+  changed_when: pipx_result.rc != 0

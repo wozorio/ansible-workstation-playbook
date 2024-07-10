@@ -3,7 +3,9 @@ SHELL = /usr/bin/env bash
 # Install Ansible, ansible-lint and python3-debian
 .PHONY: bootstrap
 bootstrap:
-	@pip install --upgrade ansible ansible-lint && \
+	@pipx install ansible && \
+	pipx install ansible-lint && \
+	ansible-galaxy collection install community.general && \
  	sudo apt-get -y reinstall python3-debian
 
 # Lint the playbook

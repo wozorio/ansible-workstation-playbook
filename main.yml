@@ -15,6 +15,12 @@
     - name: Remove obsolete dependencies
       ansible.builtin.apt:
         autoremove: true
+    - name: Upgrade pipx packages
+      ansible.builtin.command: pipx upgrade-all
+      become: false
+      become_user: "{{ user }}"
+      register: pipx_result
+      changed_when: pipx_result.rc != 0
 
   roles:
     - role: docker

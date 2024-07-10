@@ -1,8 +1,8 @@
 ---
 - name: Install Python packages
-  ansible.builtin.pip:
+  community.general.pipx:
     name: "{{ item }}"
-    extra_args: --upgrade
+    pip_args: --upgrade
   become: false
   become_user: "{{ user }}"
   loop: "{{ devops_tools_python_packages }}"
