@@ -10,16 +10,16 @@ update-apt:
 # Set up pipx
 .PHONY: setup-pipx
 setup-pipx: update-apt
-	@sudo apt-get install -y pipx && \
-	pipx ensurepath && \
-	source ~/.bashrc
+	@sudo apt-get install -y pipx
+	@pipx ensurepath
+	@source ~/.bashrc
 
 # Set up ansible
 .PHONY: setup-ansible
 setup-ansible:
-	@pipx install --include-deps ansible && \
-	pipx install ansible-lint && \
-	ansible-galaxy collection install community.general
+	@pipx install --include-deps ansible
+	@pipx install ansible-lint
+	@ansible-galaxy collection install community.general
 
 # Reinstall python3-debian
 .PHONY: reinstall-python3-debian
@@ -33,8 +33,8 @@ bootstrap: setup-pipx setup-ansible reinstall-python3-debian
 # Lint the playbook
 .PHONY: lint
 lint:
-	@ansible-playbook -i inventory --syntax-check main.yml && \
-	ansible-lint
+	@ansible-playbook -i inventory --syntax-check main.yml
+	@ansible-lint
 
 # Run the playbook in dry-run mode
 .PHONY: dry-run
