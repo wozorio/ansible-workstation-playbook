@@ -8,4 +8,4 @@ bin_path: /usr/local/bin
 
 zsh:
   theme: powerlevel10k/powerlevel10k
-  oh_my_zsh_plugins: "zsh-autocomplete git kube-ps1"
+  oh_my_zsh_plugins: "git kube-ps1"

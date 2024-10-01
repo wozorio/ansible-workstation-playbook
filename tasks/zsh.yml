@@ -42,13 +42,6 @@
         remote_src: true
         mode: "0775"
 
-    - name: Install zsh-autocomplete plugin
-      ansible.builtin.git:
-        repo: https://github.com/marlonrichert/zsh-autocomplete.git
-        dest: "/home/{{ user }}/.oh-my-zsh/custom/plugins/zsh-autocomplete"
-        depth: 1
-        version: main
-
     - name: Set oh-my-zsh plugins
       ansible.builtin.lineinfile:
         path: "/home/{{ user }}/.zshrc"
