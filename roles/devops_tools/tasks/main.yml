@@ -2,7 +2,7 @@
 - name: Install Python packages
   community.general.pipx:
     name: "{{ item }}"
-    pip_args: --upgrade
+    state: latest
   become: false
   become_user: "{{ user }}"
   loop: "{{ devops_tools_python_packages }}"
