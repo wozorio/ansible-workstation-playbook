@@ -2,8 +2,13 @@
 - name: Ensure old versions of Docker are not installed
   ansible.builtin.package:
     name:
-      - docker
-      - docker-engine
+      - docker.io
+      - docker-compose
+      - docker-compose-v2
+      - docker-doc
+      - podman-docker
+      - containerd
+      - runc
     state: absent
 
 - name: Install dependencies
@@ -51,7 +56,9 @@
   when: docker_install_sdk_for_python | bool
 
 - name: Install Docker SDK for Python
-  ansible.builtin.pip:
+  community.general.pipx:
     name: docker
-    extra_args: --upgrade
+    state: latest
+  become: false
+  become_user: "{{ user }}"
   when: docker_install_sdk_for_python | bool
