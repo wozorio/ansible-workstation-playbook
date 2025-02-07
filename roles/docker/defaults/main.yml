@@ -5,7 +5,6 @@ docker_packages:
   - containerd.io
   - docker-buildx-plugin
   - docker-compose-plugin
-
 docker_apt_gpg_key: https://download.docker.com/linux/ubuntu/gpg
 docker_deb_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu noble stable"
 docker_dependencies:
