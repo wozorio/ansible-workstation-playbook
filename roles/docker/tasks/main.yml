@@ -56,9 +56,7 @@
   when: docker_install_sdk_for_python | bool
 
 - name: Install Docker SDK for Python
-  community.general.pipx:
+  ansible.builtin.pip:
     name: docker
-    state: latest
-  become: false
-  become_user: "{{ user }}"
+    extra_args: --upgrade
   when: docker_install_sdk_for_python | bool
