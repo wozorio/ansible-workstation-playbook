@@ -28,7 +28,7 @@ reinstall-python3-debian: update-apt
 
 # Allow Python system packages install
 .PHONY: allow-python-system-packages-install
-	@sudo rm -f /usr/lib/python3.12/EXTERNALLY-MANAGED
+allow-python-system-packages-install: sudo rm -f /usr/lib/python3.12/EXTERNALLY-MANAGED
 
 # Bootstrap the machine
 .PHONY: bootstrap
