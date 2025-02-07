@@ -2,8 +2,13 @@
 - name: Ensure old versions of Docker are not installed
   ansible.builtin.package:
     name:
-      - docker
-      - docker-engine
+      - docker.io
+      - docker-compose
+      - docker-compose-v2
+      - docker-doc
+      - podman-docker
+      - containerd
+      - runc
     state: absent
 
 - name: Install dependencies

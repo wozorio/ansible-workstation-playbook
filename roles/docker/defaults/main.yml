@@ -3,8 +3,10 @@ docker_packages:
   - docker-ce
   - docker-ce-cli
   - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
 docker_apt_gpg_key: https://download.docker.com/linux/ubuntu/gpg
-docker_deb_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable"
+docker_deb_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu noble stable"
 docker_dependencies:
   - apt-transport-https
   - ca-certificates

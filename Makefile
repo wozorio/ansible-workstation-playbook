@@ -26,9 +26,14 @@ setup-ansible:
 reinstall-python3-debian: update-apt
 	@sudo apt-get -y reinstall python3-debian
 
+# Allow Python system packages install
+.PHONY: allow-python-system-packages-install
+allow-python-system-packages-install:
+	@sudo rm -f /usr/lib/python3.12/EXTERNALLY-MANAGED
+
 # Bootstrap the machine
 .PHONY: bootstrap
-bootstrap: setup-pipx setup-ansible reinstall-python3-debian
+bootstrap: setup-pipx setup-ansible reinstall-python3-debian allow-python-system-packages-install
 
 # Lint the playbook
 .PHONY: lint
