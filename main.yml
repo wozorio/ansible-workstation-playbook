@@ -1,5 +1,5 @@
 ---
-- name: Set up Ubuntu 22.04
+- name: Set up Ubuntu 24.04
   hosts: localhost
   become: true
   gather_facts: false

@@ -1,12 +1,12 @@
 # Ansible Workstation Playbook
 
-This playbook installs the software that I use on my Ubuntu 22.04 LTS (Jammy Jellyfish) workstation.
+This playbook installs the software that I use on my Ubuntu 24.04 LTS (Noble Numb) workstation.
 
 [![GitHub](https://img.shields.io/github/license/wozorio/ansible-workstation-setup)](https://github.com/wozorio/ansible-workstation-setup/blob/master/LICENSE)
 
 ## Supported operating systems
 
-- Ubuntu 22.04 LTS (Jammy Jellyfish)
+- Ubuntu 24.04 LTS (Noble Numb)
 
 ## Installation
 
