@@ -9,6 +9,14 @@
     name: "{{ user }}"
     shell: /usr/bin/zsh
 
+- name: Ensure pipx is added to the PATH environment variable
+  ansible.builtin.command: |
+    pipx ensurepath
+  become: false
+  become_user: "{{ user }}"
+  register: pipx_ensurepath_result
+  changed_when: pipx_ensurepath_result.rc != 0
+
 - name: Set up oh-my-zsh
   block:
     - name: Check if .oh-my-zsh directory exists

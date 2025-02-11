@@ -68,3 +68,8 @@
         name: include.path
         scope: global
         value: "{{ homedir }}/.gitalias"
+
+- name: Install FiraCode font
+  ansible.builtin.apt:
+    name: fonts-firacode
+    state: present
