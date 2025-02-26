@@ -56,7 +56,7 @@
   when: docker_install_sdk_for_python | bool
 
 - name: Install Docker SDK for Python
-  ansible.builtin.pip:
-    name: docker
-    extra_args: --upgrade
+  ansible.builtin.apt:
+    name: python3-docker
+    state: present
   when: docker_install_sdk_for_python | bool
