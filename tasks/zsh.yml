@@ -36,25 +36,11 @@
       changed_when: "'folder already exists' not in oh_my_zsh_output.stdout"
       when: not oh_my_zsh_dir.stat.exists
 
-    - name: Install oh-my-zsh Powerlevel10k theme
-      ansible.builtin.git:
-        repo: https://github.com/romkatv/powerlevel10k.git
-        dest: "/home/{{ user }}/.oh-my-zsh/custom/themes/powerlevel10k"
-        depth: 1
-        version: master
-
-    - name: Copy oh-my-zsh Powerlevel10k theme config
-      ansible.builtin.copy:
-        src: "dotfiles/.p10k.zsh"
-        dest: "{{ homedir }}"
-        remote_src: true
-        mode: "0775"
-
     - name: Set oh-my-zsh plugins
       ansible.builtin.lineinfile:
         path: "/home/{{ user }}/.zshrc"
         regexp: "^plugins="
-        line: "plugins=({{ zsh.oh_my_zsh_plugins }})"
+        line: "plugins=({{ zsh.oh_my_zsh.plugins }})"
 
     - name: Add kube-ps1 to the prompt
       ansible.builtin.lineinfile:
@@ -73,4 +59,4 @@
       ansible.builtin.lineinfile:
         path: "/home/{{ user }}/.zshrc"
         regexp: "^ZSH_THEME="
-        line: "ZSH_THEME={{ zsh.theme }}"
+        line: "ZSH_THEME={{ zsh.oh_my_zsh.theme }}"

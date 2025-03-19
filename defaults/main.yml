@@ -7,5 +7,6 @@ download_dir: /tmp
 bin_path: /usr/local/bin
 
 zsh:
-  theme: powerlevel10k/powerlevel10k
-  oh_my_zsh_plugins: "git kube-ps1"
+  oh_my_zsh:
+    theme: robbyrussell
+    plugins: "git kube-ps1"
