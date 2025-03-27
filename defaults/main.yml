@@ -8,5 +8,5 @@ bin_path: /usr/local/bin
 
 zsh:
   oh_my_zsh:
-    theme: clean
+    theme: robbyrussell
     plugins: "git kube-ps1"
