@@ -10,26 +10,17 @@ This playbook installs the software that I use on my Ubuntu 24.04 LTS (Noble Num
 
 ## Installation
 
-1. Clone the repository and change to it:
+```bash
+curl -sO https://raw.githubusercontent.com/wozorio/ansible-workstation-playbook/refs/heads/master/install.sh | && sudo bash install.sh
+```
 
-   ```bash
-   git clone https://github.com/wozorio/ansible-workstation-playbook.git && \
-   cd ansible-workstation-playbook
-   ```
+## Running the playbook
 
-1. Install Ansible (and dependencies):
+```bash
+make run
+```
 
-   ```bash
-   make bootstrap
-   ```
-
-1. Run the playbook with default settings:
-
-   ```bash
-   make run
-   ```
-
-## Running a specific set of tagged tasks
+### Tagged tasks
 
 You can filter which software to install by specifying the respective tag(s) using `ansible-playbook`'s `--tags` flag.
 
