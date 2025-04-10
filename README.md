@@ -11,7 +11,7 @@ This playbook installs the software that I use on my Ubuntu 24.04 LTS (Noble Num
 ## Installation
 
 ```bash
-curl -sO https://raw.githubusercontent.com/wozorio/ansible-workstation-playbook/refs/heads/master/install.sh | && sudo bash install.sh
+curl -sO https://raw.githubusercontent.com/wozorio/ansible-workstation-playbook/refs/heads/master/install.sh | bash
 ```
 
 ## Running the playbook
