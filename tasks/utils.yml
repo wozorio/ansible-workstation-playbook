@@ -10,6 +10,7 @@
     - jq
     - dnsutils
     - parallel
+    - python-is-python3
     - shellcheck
     - tmux
     - tree
