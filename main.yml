@@ -12,9 +12,6 @@
       ansible.builtin.apt:
         update_cache: true
         upgrade: dist
-    - name: Remove obsolete dependencies
-      ansible.builtin.apt:
-        autoremove: true
     - name: Import utils task
       ansible.builtin.import_tasks: tasks/utils.yml
       tags: ["utils"]
@@ -34,3 +31,8 @@
     - name: Import customizations task
       ansible.builtin.import_tasks: tasks/customizations.yml
       tags: ["customizations"]
+
+  post_tasks:
+    - name: Remove obsolete dependencies
+      ansible.builtin.apt:
+        autoremove: true
