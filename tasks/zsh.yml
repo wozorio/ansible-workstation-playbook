@@ -46,7 +46,7 @@
       ansible.builtin.lineinfile:
         path: "/home/{{ user }}/.zshrc"
         regexp: "^PROMPT="
-        line: "PROMPT='$(kube_ps1)'$PROMPT"
+        line: "RPROMPT='$(kube_ps1)'"
 
     - name: Copy ZSH custom aliases to oh-my-zsh custom directory
       ansible.builtin.copy:
