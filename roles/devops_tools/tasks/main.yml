@@ -130,6 +130,20 @@
         dest: "{{ bin_path }}"
         mode: "0775"
 
+- name: Kubelinter
+  block:
+    - name: Determine latest kubelinter release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/stackrox/kube-linter/releases/latest
+        return_content: true
+      register: kubelinter
+
+    - name: Install kubelinter
+      ansible.builtin.get_url:
+        url: "https://github.com/stackrox/kube-linter/releases/download/{{ kubelinter.json.tag_name }}/kube-linter-linux"
+        dest: "{{ bin_path }}/kube-linter"
+        mode: "0775"
+
 - name: Helm
   block:
     - name: Download Helm install script
