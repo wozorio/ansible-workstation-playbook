@@ -1,11 +1,12 @@
 ---
 - name: Install Python packages
-  community.general.pipx:
-    name: "{{ item }}"
-    state: latest
+  ansible.builtin.command: |
+    uv tool install "{{ item }}"
   become: false
   become_user: "{{ user }}"
   loop: "{{ devops_tools_python_packages }}"
+  register: python_packages_result
+  changed_when: python_packages_result.rc != 0
 
 - name: Gather Python version
   ansible.builtin.setup:

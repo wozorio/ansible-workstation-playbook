@@ -9,14 +9,6 @@
     name: "{{ user }}"
     shell: /usr/bin/zsh
 
-- name: Ensure pipx is added to the PATH environment variable
-  ansible.builtin.command: |
-    pipx ensurepath
-  become: false
-  become_user: "{{ user }}"
-  register: pipx_ensurepath_result
-  changed_when: pipx_ensurepath_result.rc != 0
-
 - name: Set up oh-my-zsh
   block:
     - name: Check if .oh-my-zsh directory exists
@@ -24,12 +16,16 @@
         path: /home/{{ user }}/.oh-my-zsh
       register: oh_my_zsh_dir
 
+    - name: Download oh-my-zsh install script
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+        dest: "{{ download_dir }}/ohmyzsh_install.sh"
+        mode: "0755"
+      when: not oh_my_zsh_dir.stat.exists
+
     - name: Install oh-my-zsh
-      ansible.builtin.shell: |
-        set -o pipefail
-        curl -fsL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
-      args:
-        executable: /usr/bin/env bash
+      ansible.builtin.script: |
+        "{{ download_dir }}/ohmyzsh_install.sh"
       become: false
       become_user: "{{ user }}"
       register: oh_my_zsh_output
