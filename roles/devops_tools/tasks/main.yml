@@ -18,18 +18,6 @@
   ansible.builtin.set_fact:
     python_version_short: "{{ python_version | regex_search('([0-9]+\\.[0-9]+)') }}"
 
-- name: Install Python-venv
-  ansible.builtin.apt:
-    name: python{{ python_version_short }}-venv
-
-- name: Configure Poetry to create virtual environments in the project root
-  ansible.builtin.command: |
-    poetry config virtualenvs.in-project true
-  become: false
-  become_user: "{{ user }}"
-  register: poetry_result
-  changed_when: poetry_result.rc != 0
-
 - name: Terraform
   block:
     - name: Gather distribution codename

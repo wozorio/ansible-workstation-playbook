@@ -1,6 +1,4 @@
 ---
 devops_tools_python_packages:
-  - ansible-lint
   - azure-cli
-  - poetry
   - yamllint
