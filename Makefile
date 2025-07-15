@@ -11,6 +11,7 @@ update-apt:
 .PHONY: setup-uv
 setup-uv:
 	@curl -LsSf https://astral.sh/uv/install.sh | sh
+	@echo "export PATH=$PATH:$(HOME)/.local/bin" >> $(HOME)/.zshrc
 
 # Set up ansible
 .PHONY: setup-ansible
