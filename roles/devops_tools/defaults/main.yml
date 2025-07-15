@@ -1,4 +1,3 @@
 ---
 devops_tools_python_packages:
-  - azure-cli
   - yamllint

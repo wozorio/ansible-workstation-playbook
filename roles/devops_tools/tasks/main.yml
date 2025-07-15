@@ -8,15 +8,25 @@
   register: python_packages_result
   changed_when: python_packages_result.rc != 0
 
-- name: Gather Python version
-  ansible.builtin.setup:
-    filter:
-      - ansible_python_version
-  register: python_version
+- name: Azure-CLI
+  block:
+    - name: Download azure-cli install script
+      ansible.builtin.get_url:
+        url: https://aka.ms/InstallAzureCLIDeb
+        dest: "{{ download_dir }}/azurecli_install.sh"
+        mode: "0755"
 
-- name: Extract Python major and minor version
-  ansible.builtin.set_fact:
-    python_version_short: "{{ python_version | regex_search('([0-9]+\\.[0-9]+)') }}"
+    - name: Install azure-cli
+      ansible.builtin.script: |
+        "{{ download_dir }}/azurecli_install.sh"
+
+    - name: Kubectl and Kubelogin
+      block:
+        - name: Install kubectl and kubelogin
+          ansible.builtin.command: |
+            az aks install-cli
+          register: akscli_result
+          changed_when: akscli_result.rc != 0
 
 - name: Terraform
   block:
@@ -50,12 +60,12 @@
     - name: Download tflint install script
       ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh
-        dest: "{{ download_dir }}/install_linux.sh"
+        dest: "{{ download_dir }}/tflint_install.sh"
         mode: "0755"
 
     - name: Install tflint
       ansible.builtin.script: |
-        "{{ download_dir }}/install_linux.sh"
+        "{{ download_dir }}/tflint_install.sh"
 
 - name: Pulumi
   block:
@@ -83,20 +93,6 @@
       ansible.builtin.get_url:
         url: "https://github.com/hadolint/hadolint/releases/download/{{ hadolint.json.tag_name }}/hadolint-Linux-x86_64"
         dest: "{{ bin_path }}/hadolint"
-        mode: "0775"
-
-- name: Kubectl
-  block:
-    - name: Determine latest kubectl release
-      ansible.builtin.uri:
-        url: https://cdn.dl.k8s.io/release/stable.txt
-        return_content: true
-      register: kubectl_version
-
-    - name: Install kubectl
-      ansible.builtin.get_url:
-        url: "https://dl.k8s.io/release/{{ kubectl_version.content }}/bin/linux/amd64/kubectl"
-        dest: "{{ bin_path }}"
         mode: "0775"
 
 - name: Kubectx and Kubens
