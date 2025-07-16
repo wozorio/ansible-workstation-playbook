@@ -16,8 +16,8 @@ setup-pipx: update-apt
 # Set up ansible
 .PHONY: setup-ansible
 setup-ansible:
-	@pipx install --include-deps ansible \
-	@pipx install ansible-lint \
+	@pipx install --include-deps ansible
+	@pipx install ansible-lint
 	@source ~/.bashrc \
 	&& ansible-galaxy collection install community.general --force
 
