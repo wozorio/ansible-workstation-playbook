@@ -7,17 +7,18 @@ SHELL = /usr/bin/env bash
 update-apt:
 	@sudo apt-get update
 
-# Set up uv
-.PHONY: setup-uv
-setup-uv:
-	@curl -LsSf https://astral.sh/uv/install.sh | sudo env UV_INSTALL_DIR="/usr/local/bin" sh
+# Set up pipx
+.PHONY: setup-pipx
+setup-pipx: update-apt
+	@sudo apt-get install -y pipx
+	@pipx ensurepath
 
 # Set up ansible
 .PHONY: setup-ansible
 setup-ansible:
-	@uv tool install ansible
-	@uv tool install ansible-core
-	@uv tool install ansible-lint
+	@pipx install --include-deps ansible
+	@pipx install ansible-lint
+	@source ~/.bashrc
 	@ansible-galaxy collection install community.general --force
 
 # Reinstall python3-debian
@@ -27,7 +28,7 @@ reinstall-python3-debian: update-apt
 
 # Bootstrap the machine
 .PHONY: bootstrap
-bootstrap: setup-uv setup-ansible reinstall-python3-debian
+bootstrap: setup-pipx setup-ansible reinstall-python3-debian
 
 # Lint the playbook
 .PHONY: lint

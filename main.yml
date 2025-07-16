@@ -12,9 +12,6 @@
       ansible.builtin.apt:
         update_cache: true
         upgrade: dist
-    - name: Upgrade uv tools
-      ansible.builtin.command: |
-        uv tool upgrade --all
     - name: Import utils task
       ansible.builtin.import_tasks: tasks/utils.yml
       tags: ["utils"]
