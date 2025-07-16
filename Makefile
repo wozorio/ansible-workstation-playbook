@@ -12,6 +12,7 @@ update-apt:
 # Set up uv
 .PHONY: setup-uv
 setup-uv:
+	@curl -LsSf https://astral.sh/uv/install.sh | sh
 	@IS_UV_BIN_DIR_IN_PATH=$$(grep -c 'PATH=$$PATH:$$HOME/.local/bin' $(HOME)/.zshrc); \
 	if [[ $$IS_UV_BIN_DIR_IN_PATH -eq 0 ]]; then \
 		echo "adding uv bin directory to the PATH"; \
@@ -20,7 +21,6 @@ setup-uv:
 	else \
 		echo "uv bin directory already set in the PATH"; \
 	fi
-	@curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Set up ansible
 .PHONY: setup-ansible
