@@ -40,6 +40,12 @@
       changed_when: "'folder already exists' not in oh_my_zsh_output.stdout"
       when: not oh_my_zsh_dir.stat.exists
 
+    - name: Set oh-my-zsh theme
+      ansible.builtin.lineinfile:
+        path: "/home/{{ user }}/.zshrc"
+        regexp: "^ZSH_THEME="
+        line: "ZSH_THEME={{ zsh.oh_my_zsh.theme }}"
+
     - name: Set oh-my-zsh plugins
       ansible.builtin.lineinfile:
         path: "/home/{{ user }}/.zshrc"
@@ -58,9 +64,3 @@
         dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
         remote_src: true
         mode: "0775"
-
-    - name: Change ZSH theme to {{ zsh.theme }}
-      ansible.builtin.lineinfile:
-        path: "/home/{{ user }}/.zshrc"
-        regexp: "^ZSH_THEME="
-        line: "ZSH_THEME={{ zsh.oh_my_zsh.theme }}"

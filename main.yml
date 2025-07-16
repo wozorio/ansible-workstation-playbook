@@ -12,6 +12,9 @@
       ansible.builtin.apt:
         update_cache: true
         upgrade: dist
+    - name: Import ZSH task
+      ansible.builtin.import_tasks: tasks/zsh.yml
+      tags: ["zsh"]
     - name: Import utils task
       ansible.builtin.import_tasks: tasks/utils.yml
       tags: ["utils"]
@@ -25,9 +28,6 @@
       tags: ["devops_tools"]
 
   tasks:
-    - name: Import ZSH task
-      ansible.builtin.import_tasks: tasks/zsh.yml
-      tags: ["zsh"]
     - name: Import customizations task
       ansible.builtin.import_tasks: tasks/customizations.yml
       tags: ["customizations"]

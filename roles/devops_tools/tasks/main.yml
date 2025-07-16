@@ -1,4 +1,25 @@
 ---
+- name: Uv
+  block:
+    - name: Download uv install script
+      ansible.builtin.get_url:
+        url: https://astral.sh/uv/install.sh
+        dest: "{{ download_dir }}/uv_install.sh"
+        mode: "0755"
+
+    - name: Install uv
+      ansible.builtin.script: |
+        "{{ download_dir }}/uv_install.sh"
+      become: false
+      become_user: "{{ user }}"
+
+    - name: Add uv to the PATH (.zshrc)
+      ansible.builtin.lineinfile:
+        path: "/home/{{ user }}/.zshrc"
+        line: 'export PATH="$PATH:$HOME/.local/bin"'
+      become: false
+      become_user: "{{ user }}"
+
 - name: Install Python packages
   ansible.builtin.command: |
     uv tool install "{{ item }}"
@@ -7,6 +28,14 @@
   loop: "{{ devops_tools_python_packages }}"
   register: python_packages_result
   changed_when: python_packages_result.rc != 0
+
+- name: Upgrade Python packages
+  ansible.builtin.command: |
+    uv tool upgrade --all
+  become: false
+  become_user: "{{ user }}"
+  register: python_packages_upgrade_result
+  changed_when: python_packages_upgrade_result.rc != 0
 
 - name: Azure-CLI
   block:
