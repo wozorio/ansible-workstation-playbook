@@ -18,7 +18,7 @@ setup-pipx: update-apt
 setup-ansible:
 	@pipx install --include-deps ansible
 	@pipx install ansible-lint
-	@source ~/.bashrc \
+	@source $(HOME)/.bashrc \
 	&& ansible-galaxy collection install community.general --force
 
 # Reinstall python3-debian
