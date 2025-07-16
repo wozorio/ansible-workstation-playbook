@@ -5,7 +5,7 @@ set -e
 readonly REPO_URL="https://github.com/wozorio/ansible-workstation-playbook.git"
 
 is_make_installed() {
-    if command -v make &> /dev/null; then
+    if command -v make &>/dev/null; then
         echo 1
     else
         echo 0
