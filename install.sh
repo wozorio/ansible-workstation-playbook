@@ -49,13 +49,11 @@ main() {
 
     make bootstrap
 
-    log_white "INFO: Reloading .bashrc"
-
-    source "${HOME}"/.bashrc
-
+    log_info
+    log_info "INFO: Ansible has been successfully installed"
     log_yellow
-    log_yellow "The playbook has been successfully installed to ${INSTALL_DIR}"
-    log_yellow
+    log_yellow "WARN: Before running the playbook, run 'source ~/.bashrc'"
+    log_yellow "      to ensure paths recently added to the PATH are loaded."
 }
 
 main
