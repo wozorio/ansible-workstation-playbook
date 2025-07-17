@@ -49,9 +49,9 @@ main() {
 
     make bootstrap
 
-    log_info
-    log_info "INFO: Ansible has been successfully installed"
-    log_info
+    log_white
+    log_white "INFO: Ansible has been successfully installed"
+    log_white
 
     log_yellow "WARN: Before running the playbook for the first time, please"
     log_yellow "      run 'source ~/.bashrc' to ensure paths recently added"
