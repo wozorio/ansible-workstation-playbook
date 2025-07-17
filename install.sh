@@ -4,12 +4,17 @@ set -e
 
 readonly REPO_URL="https://github.com/wozorio/ansible-workstation-playbook.git"
 
-readonly WHITE="\033[37;1m"
+readonly BLUE="\033[34;1m"
 readonly YELLOW="\033[33;1m"
 
-log_white() {
+log() {
     local MSG="${1}"
-    echo -e "${WHITE} ${MSG}" 1>&2
+    echo "${MSG}" 1>&2
+}
+
+log_blue() {
+    local MSG="${1}"
+    echo -e "${BLUE} ${MSG}" 1>&2
 }
 
 log_yellow() {
@@ -19,16 +24,16 @@ log_yellow() {
 
 is_make_installed() {
     if command -v make &>/dev/null; then
-        log_white "INFO: make is already installed"
+        log "INFO: make is already installed"
         echo 1
     else
-        log_white "INFO: make is not installed"
+        log "INFO: make is not installed"
         echo 0
     fi
 }
 
 install_make() {
-    log_white "INFO: Installing make"
+    log "INFO: Installing make"
     sudo apt update
     sudo apt install -y make
 }
@@ -49,9 +54,9 @@ main() {
 
     make bootstrap
 
-    log_white
-    log_white "INFO: Ansible has been successfully installed"
-    log_white
+    log_blue
+    log_blue "INFO: Ansible has been successfully installed!"
+    log_blue
 
     log_yellow "WARN: Before running the playbook for the first time, please"
     log_yellow "      run 'source ~/.bashrc' to ensure paths recently added"
