@@ -34,8 +34,8 @@ is_make_installed() {
 
 install_make() {
     log "INFO: Installing make"
-    sudo apt update
-    sudo apt install -y make
+    sudo apt-get -qq update
+    sudo apt-get -qq install -y make
 }
 
 main() {
