@@ -24,17 +24,27 @@
         path: /home/{{ user }}/.oh-my-zsh
       register: oh_my_zsh_dir
 
+    - name: Download oh-my-zsh install script
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+        dest: "{{ download_dir }}/ohmyzsh_install.sh"
+        mode: "0755"
+      when: not oh_my_zsh_dir.stat.exists
+
     - name: Install oh-my-zsh
-      ansible.builtin.shell: |
-        set -o pipefail
-        curl -fsL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
-      args:
-        executable: /usr/bin/env bash
+      ansible.builtin.script: |
+        "{{ download_dir }}/ohmyzsh_install.sh"
       become: false
       become_user: "{{ user }}"
       register: oh_my_zsh_output
       changed_when: "'folder already exists' not in oh_my_zsh_output.stdout"
       when: not oh_my_zsh_dir.stat.exists
+
+    - name: Set oh-my-zsh theme
+      ansible.builtin.lineinfile:
+        path: "/home/{{ user }}/.zshrc"
+        regexp: "^ZSH_THEME="
+        line: "ZSH_THEME={{ zsh.oh_my_zsh.theme }}"
 
     - name: Set oh-my-zsh plugins
       ansible.builtin.lineinfile:
@@ -54,9 +64,3 @@
         dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
         remote_src: true
         mode: "0775"
-
-    - name: Change ZSH theme to {{ zsh.theme }}
-      ansible.builtin.lineinfile:
-        path: "/home/{{ user }}/.zshrc"
-        regexp: "^ZSH_THEME="
-        line: "ZSH_THEME={{ zsh.oh_my_zsh.theme }}"
