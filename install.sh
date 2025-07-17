@@ -55,7 +55,7 @@ main() {
     make bootstrap
 
     log_blue
-    log_blue "INFO: Ansible has been successfully installed!"
+    log_blue "INFO: Ansible playbook has been successfully installed to ${INSTALL_DIR}!"
     log_blue
 
     log_yellow "WARN: Before running the playbook for the first time, please"
