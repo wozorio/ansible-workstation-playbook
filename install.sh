@@ -51,9 +51,11 @@ main() {
 
     log_info
     log_info "INFO: Ansible has been successfully installed"
-    log_yellow
+    log_info
+
     log_yellow "WARN: Before running the playbook, run 'source ~/.bashrc'"
     log_yellow "      to ensure paths recently added to the PATH are loaded."
+    log_yellow
 }
 
 main
