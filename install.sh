@@ -34,23 +34,24 @@ install_make() {
 }
 
 main() {
-    # local REPO_NAME
-    # REPO_NAME="$(basename "${REPO_URL}" .git)"
+    local REPO_NAME
+    REPO_NAME="$(basename "${REPO_URL}" .git)"
 
-    # local INSTALL_DIR="${HOME}/${REPO_NAME}"
+    local INSTALL_DIR="${HOME}/${REPO_NAME}"
 
-    # if [[ $(is_make_installed) -eq 0 ]]; then
-    #     install_make
-    # fi
+    if [[ $(is_make_installed) -eq 0 ]]; then
+        install_make
+    fi
 
-    # rm -rf "${INSTALL_DIR}"
-    # git clone --depth 1 "${REPO_URL}" "${INSTALL_DIR}"
-    # cd "${INSTALL_DIR}"
+    rm -rf "${INSTALL_DIR}"
+    git clone --depth 1 "${REPO_URL}" "${INSTALL_DIR}"
+    cd "${INSTALL_DIR}"
 
-    # make bootstrap
+    make bootstrap
 
     log_white "INFO: Reloading .bashrc"
-    source ${HOME}/.bashrc
+
+    source "${HOME}"/.bashrc
 
     log_yellow
     log_yellow "The playbook has been successfully installed to ${INSTALL_DIR}"
