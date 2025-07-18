@@ -110,6 +110,13 @@
       become: false
       become_user: "{{ user }}"
 
+    - name: Add Pulumi to the PATH (.zshrc)
+      ansible.builtin.lineinfile:
+        path: "/home/{{ user }}/.zshrc"
+        line: 'export PATH="$PATH:$HOME/.pulumi/bin"'
+      become: false
+      become_user: "{{ user }}"
+
 - name: Hadolint
   block:
     - name: Determine latest hadolint release
