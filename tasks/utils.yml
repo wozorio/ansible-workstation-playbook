@@ -16,3 +16,4 @@
     - tree
     - unzip
     - wget
+    - yq
