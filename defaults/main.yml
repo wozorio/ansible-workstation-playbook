@@ -1,7 +1,7 @@
 ---
 user: wozorio
 full_name: Wellington Ozorio
-email: well.ozorio@gmail.com
+email: wozorio@duck.com
 homedir: "/home/{{ user }}"
 download_dir: /tmp
 bin_path: /usr/local/bin
