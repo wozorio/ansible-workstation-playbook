@@ -63,4 +63,4 @@
         src: "dotfiles/.aliases"
         dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
         remote_src: true
-        mode: "0775"
+        mode: "0755"

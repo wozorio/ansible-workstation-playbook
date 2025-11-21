@@ -129,7 +129,7 @@
       ansible.builtin.get_url:
         url: "https://github.com/hadolint/hadolint/releases/download/{{ hadolint.json.tag_name }}/hadolint-Linux-x86_64"
         dest: "{{ bin_path }}/hadolint"
-        mode: "0775"
+        mode: "0555"
 
 - name: Kubectx and Kubens
   block:
@@ -143,13 +143,13 @@
       ansible.builtin.get_url:
         url: "https://github.com/ahmetb/kubectx/releases/download/{{ kubectx.json.tag_name }}/kubectx"
         dest: "{{ bin_path }}"
-        mode: "0775"
+        mode: "0555"
 
     - name: Install kubens
       ansible.builtin.get_url:
         url: "https://github.com/ahmetb/kubectx/releases/download/{{ kubectx.json.tag_name }}/kubens"
         dest: "{{ bin_path }}"
-        mode: "0775"
+        mode: "0555"
 
 - name: Kubelinter
   block:
@@ -163,7 +163,7 @@
       ansible.builtin.get_url:
         url: "https://github.com/stackrox/kube-linter/releases/download/{{ kubelinter.json.tag_name }}/kube-linter-linux"
         dest: "{{ bin_path }}/kube-linter"
-        mode: "0775"
+        mode: "0555"
 
 - name: Helm
   block:
@@ -171,7 +171,7 @@
       ansible.builtin.get_url:
         url: "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
         dest: "{{ download_dir }}/get_helm.sh"
-        mode: "0775"
+        mode: "0555"
 
     - name: Install Helm
       ansible.builtin.script: |
@@ -189,7 +189,7 @@
       ansible.builtin.get_url:
         url: "https://github.com/stern/stern/releases/download/{{ stern.json.tag_name }}/stern_{{ stern.json.tag_name | regex_replace('^v', '') }}_linux_amd64.tar.gz"
         dest: "{{ download_dir }}"
-        mode: "0775"
+        mode: "0555"
       notify:
         - Extract Stern binary
         - Copy Stern binary to its path
@@ -206,7 +206,7 @@
       ansible.builtin.get_url:
         url: "https://github.com/terraform-docs/terraform-docs/releases/download/{{ terraform_docs.json.tag_name }}/terraform-docs-{{ terraform_docs.json.tag_name }}-linux-amd64.tar.gz"
         dest: "{{ download_dir }}/terraform-docs-{{ terraform_docs.json.tag_name }}-linux-amd64.tar.gz"
-        mode: "0775"
+        mode: "0555"
       notify:
         - Extract terraform-docs binary
         - Copy terraform-docs binary to its path

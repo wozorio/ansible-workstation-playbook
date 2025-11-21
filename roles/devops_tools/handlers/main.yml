@@ -35,4 +35,4 @@
         src: "{{ download_dir }}/terraform-docs"
         dest: "{{ bin_path }}"
         remote_src: true
-        mode: "0775"
+        mode: "0555"
