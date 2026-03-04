@@ -1,5 +1,8 @@
-alias g=git
-alias k=kubectl
+alias kgd="kubectl get deployment"
+alias kgp="kubectl get pod"
+alias kgss="kubectl get statefulset"
+alias kgs="kubectl get service"
+alias kgnp="kubectl get networkpolicy"
 alias l="ls"
 alias ll="ls -l"
 alias upd="sudo apt update && sudo apt dist-upgrade -y"
