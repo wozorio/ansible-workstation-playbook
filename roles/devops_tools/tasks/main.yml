@@ -5,7 +5,7 @@
       ansible.builtin.get_url:
         url: https://astral.sh/uv/install.sh
         dest: "{{ download_dir }}/uv_install.sh"
-        mode: "0755"
+        mode: "0555"
 
     - name: Install uv
       ansible.builtin.script: |
@@ -43,7 +43,7 @@
       ansible.builtin.get_url:
         url: https://aka.ms/InstallAzureCLIDeb
         dest: "{{ download_dir }}/azurecli_install.sh"
-        mode: "0755"
+        mode: "0555"
 
     - name: Install azure-cli
       ansible.builtin.script: |
@@ -90,7 +90,7 @@
       ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh
         dest: "{{ download_dir }}/tflint_install.sh"
-        mode: "0755"
+        mode: "0555"
 
     - name: Install tflint
       ansible.builtin.script: |
@@ -102,7 +102,7 @@
       ansible.builtin.get_url:
         url: https://get.pulumi.com
         dest: "{{ download_dir }}/pulumi_install.sh"
-        mode: "0755"
+        mode: "0555"
 
     - name: Install Pulumi
       ansible.builtin.script: |

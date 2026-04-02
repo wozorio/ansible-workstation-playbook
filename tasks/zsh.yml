@@ -28,7 +28,7 @@
       ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
         dest: "{{ download_dir }}/ohmyzsh_install.sh"
-        mode: "0755"
+        mode: "0555"
       when: not oh_my_zsh_dir.stat.exists
 
     - name: Install oh-my-zsh
@@ -63,4 +63,4 @@
         src: "dotfiles/.aliases"
         dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
         remote_src: true
-        mode: "0755"
+        mode: "0555"

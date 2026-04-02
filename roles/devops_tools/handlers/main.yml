@@ -18,7 +18,7 @@
         src: "{{ download_dir }}/stern"
         dest: "{{ bin_path }}"
         remote_src: true
-        mode: "0755"
+        mode: "0555"
 
 - name: Terraform-docs
   block:
