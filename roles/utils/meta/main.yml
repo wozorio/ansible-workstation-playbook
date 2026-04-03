@@ -1,0 +1,4 @@
+---
+galaxy_info:
+  description: Installs common utility packages
+  min_ansible_version: "2.10"

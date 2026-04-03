@@ -4,32 +4,24 @@
   become: true
   gather_facts: false
 
-  vars_files:
-    - defaults/main.yml
-
   pre_tasks:
     - name: Perform a dist-upgrade
       ansible.builtin.apt:
         update_cache: true
         upgrade: dist
-    - name: Import ZSH task
-      ansible.builtin.import_tasks: tasks/zsh.yml
-      tags: ["zsh"]
-    - name: Import utils task
-      ansible.builtin.import_tasks: tasks/utils.yml
-      tags: ["utils"]
 
   roles:
+    - role: utils
+      tags: ["utils"]
+    - role: zsh
+      tags: ["zsh"]
     - role: docker
       vars:
         docker_user: "{{ user }}"
       tags: ["docker"]
     - role: devops_tools
       tags: ["devops_tools"]
-
-  tasks:
-    - name: Import customizations task
-      ansible.builtin.import_tasks: tasks/customizations.yml
+    - role: customizations
       tags: ["customizations"]
 
   post_tasks:

@@ -8,34 +8,30 @@
         mode: "0555"
 
     - name: Install uv
-      ansible.builtin.script: |
-        "{{ download_dir }}/uv_install.sh"
+      ansible.builtin.script: "{{ download_dir }}/uv_install.sh"
       become: false
       become_user: "{{ user }}"
 
-    - name: Add uv to the PATH (.zshrc)
+    - name: Add uv to PATH in .zshrc
       ansible.builtin.lineinfile:
-        path: "/home/{{ user }}/.zshrc"
+        path: "{{ homedir }}/.zshrc"
         line: 'export PATH="$PATH:$HOME/.local/bin"'
       become: false
       become_user: "{{ user }}"
 
-- name: Install Python packages
-  ansible.builtin.command: |
-    uv tool install "{{ item }}"
+- name: Install Python packages via uv
+  ansible.builtin.command: uv tool install "{{ item }}"
   become: false
   become_user: "{{ user }}"
   loop: "{{ devops_tools_python_packages }}"
-  register: python_packages_result
-  changed_when: python_packages_result.rc != 0
+  register: uv_install_result
+  changed_when: "'Installed' in uv_install_result.stdout"
 
-- name: Upgrade Python packages
-  ansible.builtin.command: |
-    uv tool upgrade --all
+- name: Upgrade Python packages via uv
+  ansible.builtin.command: uv tool upgrade --all
   become: false
   become_user: "{{ user }}"
-  register: python_packages_upgrade_result
-  changed_when: python_packages_upgrade_result.rc != 0
+  changed_when: false
 
 - name: Azure-CLI
   block:
@@ -46,23 +42,21 @@
         mode: "0555"
 
     - name: Install azure-cli
-      ansible.builtin.script: |
-        "{{ download_dir }}/azurecli_install.sh"
+      ansible.builtin.script: "{{ download_dir }}/azurecli_install.sh"
 
-    - name: Kubectl and Kubelogin
-      block:
-        - name: Install kubectl and kubelogin
-          ansible.builtin.command: |
-            az aks install-cli
-          register: akscli_result
-          changed_when: akscli_result.rc != 0
+- name: Kubectl and Kubelogin
+  block:
+    - name: Install kubectl and kubelogin
+      ansible.builtin.command: az aks install-cli
+      register: akscli_result
+      changed_when: akscli_result.rc != 0
 
 - name: Terraform
   block:
     - name: Gather distribution codename
       ansible.builtin.setup:
         filter:
-          - "ansible_distribution_release"
+          - ansible_distribution_release
 
     - name: Add HashiCorp repository
       ansible.builtin.deb822_repository:
@@ -93,8 +87,7 @@
         mode: "0555"
 
     - name: Install tflint
-      ansible.builtin.script: |
-        "{{ download_dir }}/tflint_install.sh"
+      ansible.builtin.script: "{{ download_dir }}/tflint_install.sh"
 
 - name: Pulumi
   block:
@@ -105,14 +98,13 @@
         mode: "0555"
 
     - name: Install Pulumi
-      ansible.builtin.script: |
-        "{{ download_dir }}/pulumi_install.sh"
+      ansible.builtin.script: "{{ download_dir }}/pulumi_install.sh"
       become: false
       become_user: "{{ user }}"
 
-    - name: Add Pulumi to the PATH (.zshrc)
+    - name: Add Pulumi to PATH in .zshrc
       ansible.builtin.lineinfile:
-        path: "/home/{{ user }}/.zshrc"
+        path: "{{ homedir }}/.zshrc"
         line: 'export PATH="$PATH:$HOME/.pulumi/bin"'
       become: false
       become_user: "{{ user }}"
@@ -174,8 +166,7 @@
         mode: "0555"
 
     - name: Install Helm
-      ansible.builtin.script: |
-        "{{ download_dir }}/get_helm.sh"
+      ansible.builtin.script: "{{ download_dir }}/get_helm.sh"
 
 - name: Stern
   block:

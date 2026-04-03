@@ -1,0 +1,5 @@
+---
+- name: Install utilities
+  ansible.builtin.apt:
+    name: "{{ utils_packages }}"
+    state: present

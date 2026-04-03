@@ -1,0 +1,4 @@
+---
+galaxy_info:
+  description: Applies dotfiles and OS customisations
+  min_ansible_version: "2.10"

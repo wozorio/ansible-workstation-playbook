@@ -1,6 +1,7 @@
+---
 - name: Copy Bash custom aliases
   ansible.builtin.copy:
-    src: "dotfiles/.aliases"
+    src: "{{ playbook_dir }}/dotfiles/.aliases"
     dest: "{{ homedir }}/.bash_aliases"
     remote_src: true
     owner: "{{ user }}"
@@ -10,17 +11,17 @@
 - name: Tmux config
   become: false
   become_user: "{{ user }}"
-  # noqa: latest
   block:
     - name: Clone tmux plugin manager repo
       # noqa: latest
       ansible.builtin.git:
         repo: https://github.com/tmux-plugins/tpm
-        dest: "/home/{{ user }}/.tmux/plugins/tpm"
-    - name: Copy .tmux.conf file
+        dest: "{{ homedir }}/.tmux/plugins/tpm"
+
+    - name: Copy .tmux.conf
       ansible.builtin.copy:
-        src: "dotfiles/.tmux.conf"
-        dest: "{{ homedir }}"
+        src: "{{ playbook_dir }}/dotfiles/.tmux.conf"
+        dest: "{{ homedir }}/.tmux.conf"
         remote_src: true
         owner: "{{ user }}"
         group: "{{ user }}"
@@ -54,10 +55,10 @@
         scope: global
         value: false
 
-    - name: Copy .gitalias file
+    - name: Copy .gitalias
       ansible.builtin.copy:
-        src: "dotfiles/.gitalias"
-        dest: "{{ homedir }}"
+        src: "{{ playbook_dir }}/dotfiles/.gitalias"
+        dest: "{{ homedir }}/.gitalias"
         remote_src: true
         owner: "{{ user }}"
         group: "{{ user }}"

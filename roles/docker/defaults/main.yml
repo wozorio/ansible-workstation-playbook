@@ -6,13 +6,10 @@ docker_packages:
   - docker-buildx-plugin
   - docker-compose-plugin
 docker_apt_gpg_key: https://download.docker.com/linux/ubuntu/gpg
-docker_deb_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu noble stable"
+docker_apt_repo_url: https://download.docker.com/linux/ubuntu
 docker_dependencies:
-  - apt-transport-https
   - ca-certificates
   - gnupg
 docker_install_sdk_for_python: true
-docker_sdk_for_python_dependencies:
-  - python3-pip
-  - virtualenv
-  - python3-setuptools
+docker_sdk_for_python_packages:
+  - python3-docker

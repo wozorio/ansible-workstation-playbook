@@ -11,29 +11,36 @@
       - runc
     state: absent
 
-- name: Install dependencies
+- name: Install Docker dependencies
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name: "{{ docker_dependencies }}"
     state: present
-  loop: "{{ docker_dependencies }}"
 
-- name: Add Docker GPG key to apt
-  ansible.builtin.get_url:
-    url: "{{ docker_apt_gpg_key }}"
-    dest: /etc/apt/trusted.gpg.d/docker.asc
-    mode: "0644"
-    force: true
+- name: Gather distribution codename
+  ansible.builtin.setup:
+    filter:
+      - ansible_distribution_release
 
 - name: Add Docker repository
-  ansible.builtin.apt_repository:
-    repo: "{{ docker_deb_repository }}"
+  ansible.builtin.deb822_repository:
+    name: docker
     state: present
+    uris: ["{{ docker_apt_repo_url }}"]
+    suites: ["{{ ansible_distribution_release }}"]
+    components: [stable]
+    architectures: [amd64]
+    signed_by: "{{ docker_apt_gpg_key }}"
+    enabled: true
+  notify:
+    - Update apt cache
+
+- name: Ensure handlers are notified now for the Docker repository to be available
+  ansible.builtin.meta: flush_handlers
 
 - name: Install Docker
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name: "{{ docker_packages }}"
     state: present
-  loop: "{{ docker_packages }}"
   notify:
     - Enable Docker
     - Restart Docker
@@ -48,15 +55,8 @@
     append: true
   when: docker_user is defined
 
-- name: Install dependencies for Docker SDK for Python
-  ansible.builtin.apt:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ docker_sdk_for_python_dependencies }}"
-  when: docker_install_sdk_for_python | bool
-
 - name: Install Docker SDK for Python
   ansible.builtin.apt:
-    name: python3-docker
+    name: "{{ docker_sdk_for_python_packages }}"
     state: present
   when: docker_install_sdk_for_python | bool

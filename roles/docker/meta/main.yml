@@ -1,0 +1,4 @@
+---
+galaxy_info:
+  description: Installs and configures Docker CE
+  min_ansible_version: "2.10"

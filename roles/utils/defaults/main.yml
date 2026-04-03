@@ -1,0 +1,15 @@
+---
+utils_packages:
+  - curl
+  - dnsutils
+  - git
+  - htop
+  - jq
+  - parallel
+  - python-is-python3
+  - shellcheck
+  - tmux
+  - tree
+  - unzip
+  - wget
+  - yq

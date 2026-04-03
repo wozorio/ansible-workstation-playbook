@@ -1,0 +1,4 @@
+---
+zsh_shell: /usr/bin/zsh
+zsh_oh_my_zsh_theme: robbyrussell
+zsh_oh_my_zsh_plugins: "git kube-ps1"
