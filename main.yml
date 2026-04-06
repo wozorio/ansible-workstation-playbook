@@ -15,11 +15,10 @@
     - name: Import ZSH task
       ansible.builtin.import_tasks: tasks/zsh.yml
       tags: ["zsh"]
-    - name: Import utils task
-      ansible.builtin.import_tasks: tasks/utils.yml
-      tags: ["utils"]
 
   roles:
+    - role: homebrew
+      tags: ["homebrew"]
     - role: docker
       vars:
         docker_user: "{{ user }}"
@@ -28,6 +27,9 @@
       tags: ["devops_tools"]
 
   tasks:
+    - name: Import utils task
+      ansible.builtin.import_tasks: tasks/utils.yml
+      tags: ["utils"]
     - name: Import customizations task
       ansible.builtin.import_tasks: tasks/customizations.yml
       tags: ["customizations"]

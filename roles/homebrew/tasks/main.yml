@@ -1,0 +1,47 @@
+---
+- name: Install Homebrew dependencies
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ homebrew_dependencies }}"
+
+- name: Check if Homebrew is installed
+  ansible.builtin.stat:
+    path: "{{ homebrew_prefix }}/bin/brew"
+  register: homebrew_binary
+
+- name: Download Homebrew install script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    dest: "{{ download_dir }}/homebrew_install.sh"
+    mode: "0555"
+  when: not homebrew_binary.stat.exists
+
+- name: Install Homebrew
+  ansible.builtin.script: "{{ download_dir }}/homebrew_install.sh"
+  become: false
+  become_user: "{{ user }}"
+  environment:
+    NONINTERACTIVE: "1"
+  when: not homebrew_binary.stat.exists
+  changed_when: true
+
+- name: Add Homebrew to PATH in .bashrc
+  ansible.builtin.lineinfile:
+    path: "{{ homedir }}/.bashrc"
+    line: 'eval "$({{ homebrew_prefix }}/bin/brew shellenv)"'
+    state: present
+    create: true
+    mode: "0644"
+  become: false
+  become_user: "{{ user }}"
+
+- name: Add Homebrew to PATH in .zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ homedir }}/.zshrc"
+    line: 'eval "$({{ homebrew_prefix }}/bin/brew shellenv)"'
+    state: present
+    create: true
+    mode: "0644"
+  become: false
+  become_user: "{{ user }}"

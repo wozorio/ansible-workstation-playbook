@@ -1,3 +1,16 @@
 ---
-devops_tools_python_packages:
+devops_tools_packages:
+  - azure-cli
+  - hadolint
+  - helm
+  - kube-linter
+  - kubectl
+  - kubelogin
+  - kubectx
+  - pulumi
+  - stern
+  - terraform
+  - terraform-docs
+  - tflint
+  - uv
   - yamllint
