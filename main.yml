@@ -20,12 +20,12 @@
       tags: ["utils"]
 
   roles:
-    - role: homebrew
-      tags: ["homebrew"]
     - role: docker
       vars:
         docker_user: "{{ user }}"
       tags: ["docker"]
+    - role: homebrew
+      tags: ["homebrew"]
 
   tasks:
     - name: Import DevOps tools task
