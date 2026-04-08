@@ -5,11 +5,6 @@
     state: present
   loop: "{{ homebrew_dependencies }}"
 
-- name: Check if Homebrew is installed
-  ansible.builtin.stat:
-    path: "{{ homebrew_prefix }}/bin/brew"
-  register: homebrew_binary
-
 - name: Create Homebrew directory
   ansible.builtin.file:
     path: "{{ homebrew_prefix }}"
@@ -17,7 +12,11 @@
     mode: "0755"
     owner: "{{ user }}"
     group: "{{ user }}"
-  when: not homebrew_binary.stat.exists
+
+- name: Check if Homebrew is installed
+  ansible.builtin.stat:
+    path: "{{ homebrew_prefix }}/bin/brew"
+  register: homebrew_binary
 
 - name: Download Homebrew install script
   ansible.builtin.get_url:
