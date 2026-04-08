@@ -4,9 +4,23 @@ full_name: Wellington Ozorio
 email: wozorio@duck.com
 homedir: "/home/{{ user }}"
 download_dir: /tmp
-bin_path: /usr/local/bin
 
 zsh:
   oh_my_zsh:
     theme: robbyrussell
     plugins: "git kube-ps1"
+
+devops_tools:
+  - azure-cli
+  - hadolint
+  - helm
+  - kube-linter
+  - kubectl
+  - kubelogin
+  - kubectx
+  - pulumi
+  - stern
+  - terraform
+  - terraform-docs
+  - tflint
+  - yamllint

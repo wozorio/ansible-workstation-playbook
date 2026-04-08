@@ -1,0 +1,9 @@
+---
+homebrew_dependencies:
+  - build-essential
+  - procps
+  - curl
+  - file
+  - git
+
+homebrew_prefix: "/home/linuxbrew/.linuxbrew"
