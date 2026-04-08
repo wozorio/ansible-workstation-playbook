@@ -5,3 +5,5 @@ homebrew_dependencies:
   - curl
   - file
   - git
+
+homebrew_prefix: "/home/linuxbrew/.linuxbrew"

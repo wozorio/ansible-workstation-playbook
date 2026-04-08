@@ -5,7 +5,6 @@ email: wozorio@duck.com
 homedir: "/home/{{ user }}"
 download_dir: /tmp
 bin_path: /usr/local/bin
-homebrew_prefix: "{{ homedir }}/.linuxbrew"
 
 zsh:
   oh_my_zsh:

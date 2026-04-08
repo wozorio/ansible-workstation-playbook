@@ -10,6 +10,15 @@
     path: "{{ homebrew_prefix }}/bin/brew"
   register: homebrew_binary
 
+- name: Create Homebrew directory
+  ansible.builtin.file:
+    path: "{{ homebrew_prefix }}"
+    state: directory
+    mode: "0755"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  when: not homebrew_binary.stat.exists
+
 - name: Download Homebrew install script
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
@@ -18,12 +27,11 @@
   when: not homebrew_binary.stat.exists
 
 - name: Install Homebrew
-  ansible.builtin.shell: "{{ download_dir }}/homebrew_install.sh"
-  become: true
+  ansible.builtin.script: "{{ download_dir }}/homebrew_install.sh"
+  become: false
   become_user: "{{ user }}"
   environment:
     NONINTERACTIVE: "1"
-    HOMEBREW_PREFIX: "{{ homebrew_prefix }}"
   when: not homebrew_binary.stat.exists
   changed_when: true
 
