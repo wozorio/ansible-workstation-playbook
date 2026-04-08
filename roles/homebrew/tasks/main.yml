@@ -38,7 +38,7 @@
 - name: Add Homebrew to PATH in .bashrc
   ansible.builtin.lineinfile:
     path: "{{ homedir }}/.bashrc"
-    line: 'eval "$({{ homebrew_prefix }}/bin/brew shellenv)"'
+    line: "{{ homedir }}/.local/bin"
     state: present
     create: true
     mode: "0644"
@@ -48,7 +48,7 @@
 - name: Add Homebrew to PATH in .zshrc
   ansible.builtin.lineinfile:
     path: "{{ homedir }}/.zshrc"
-    line: 'eval "$({{ homebrew_prefix }}/bin/brew shellenv)"'
+    line: "{{ homedir }}/.local/bin"
     state: present
     create: true
     mode: "0644"
