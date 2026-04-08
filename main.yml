@@ -23,8 +23,6 @@
       vars:
         docker_user: "{{ user }}"
       tags: ["docker"]
-    - role: devops_tools
-      tags: ["devops_tools"]
 
   tasks:
     - name: Import utils task
@@ -33,6 +31,9 @@
     - name: Import customizations task
       ansible.builtin.import_tasks: tasks/customizations.yml
       tags: ["customizations"]
+    - name: Import DevOps tools task
+      ansible.builtin.import_tasks: tasks/devops_tools.yml
+      tags: ["devops_tools"]
 
   post_tasks:
     - name: Remove obsolete dependencies
