@@ -19,8 +19,11 @@
 
 - name: Install Homebrew
   ansible.builtin.script: "{{ download_dir }}/homebrew_install.sh"
+  become: false
+  become_user: "{{ user }}"
   environment:
     NONINTERACTIVE: "1"
+    HOMEBREW_PREFIX: "{{ homebrew_prefix }}"
   when: not homebrew_binary.stat.exists
   changed_when: true
 
@@ -31,6 +34,8 @@
     state: present
     create: true
     mode: "0644"
+  become: false
+  become_user: "{{ user }}"
 
 - name: Add Homebrew to PATH in .zshrc
   ansible.builtin.lineinfile:
@@ -39,3 +44,5 @@
     state: present
     create: true
     mode: "0644"
+  become: false
+  become_user: "{{ user }}"
