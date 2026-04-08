@@ -19,7 +19,7 @@
 
 - name: Install Homebrew
   ansible.builtin.shell: "{{ download_dir }}/homebrew_install.sh"
-  become: false
+  become: true
   become_user: "{{ user }}"
   environment:
     NONINTERACTIVE: "1"
