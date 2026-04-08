@@ -51,7 +51,6 @@ main() {
     rm -rf "${INSTALL_DIR}"
     git clone --depth 1 "${REPO_URL}" "${INSTALL_DIR}"
     cd "${INSTALL_DIR}"
-    git checkout copilot/update-install-steps-brew
 
     make bootstrap
 
