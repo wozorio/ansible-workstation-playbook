@@ -18,7 +18,7 @@
   when: not homebrew_binary.stat.exists
 
 - name: Install Homebrew
-  ansible.builtin.script: "{{ download_dir }}/homebrew_install.sh"
+  ansible.builtin.shell: "{{ download_dir }}/homebrew_install.sh"
   become: false
   become_user: "{{ user }}"
   environment:
