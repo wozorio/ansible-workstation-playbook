@@ -3,17 +3,4 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-  loop:
-    - curl
-    - git
-    - htop
-    - jq
-    - dnsutils
-    - parallel
-    - python-is-python3
-    - shellcheck
-    - tmux
-    - tree
-    - unzip
-    - wget
-    - yq
+  loop: "{{ utils }}"

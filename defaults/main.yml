@@ -10,6 +10,22 @@ zsh:
     theme: robbyrussell
     plugins: "git kube-ps1"
 
+utils:
+  - curl
+  - git
+  - htop
+  - jq
+  - dnsutils
+  - parallel
+  - python-is-python3
+  - shellcheck
+  - tmux
+  - tree
+  - unzip
+  - wget
+  - yq
+  - yamllint
+
 devops_tools:
   - azure-cli
   - hadolint
@@ -23,4 +39,3 @@ devops_tools:
   - terraform
   - terraform-docs
   - tflint
-  - yamllint
