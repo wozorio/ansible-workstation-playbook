@@ -1,19 +1,19 @@
 ---
 - name: Install utils
-  community.general.homebrew:
-    name:
-      - curl
-      - git
-      - htop
-      - jq
-      - parallel
-      - shellcheck
-      - tmux
-      - tree
-      - unzip
-      - wget
-      - yq
+  ansible.builtin.apt:
+    name: "{{ item }}"
     state: present
-    path: "{{ homebrew_prefix }}/bin"
-  become: false
-  become_user: "{{ user }}"
+  loop:
+    - curl
+    - git
+    - htop
+    - jq
+    - dnsutils
+    - parallel
+    - python-is-python3
+    - shellcheck
+    - tmux
+    - tree
+    - unzip
+    - wget
+    - yq

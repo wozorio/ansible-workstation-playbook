@@ -15,6 +15,9 @@
     - name: Import ZSH task
       ansible.builtin.import_tasks: tasks/zsh.yml
       tags: ["zsh"]
+    - name: Import utils task
+      ansible.builtin.import_tasks: tasks/utils.yml
+      tags: ["utils"]
 
   roles:
     - role: homebrew
@@ -25,15 +28,12 @@
       tags: ["docker"]
 
   tasks:
-    - name: Import utils task
-      ansible.builtin.import_tasks: tasks/utils.yml
-      tags: ["utils"]
-    - name: Import customizations task
-      ansible.builtin.import_tasks: tasks/customizations.yml
-      tags: ["customizations"]
     - name: Import DevOps tools task
       ansible.builtin.import_tasks: tasks/devops_tools.yml
       tags: ["devops_tools"]
+    - name: Import customizations task
+      ansible.builtin.import_tasks: tasks/customizations.yml
+      tags: ["customizations"]
 
   post_tasks:
     - name: Remove obsolete dependencies

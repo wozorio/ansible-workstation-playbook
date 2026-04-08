@@ -1,7 +1,7 @@
 ---
 - name: Install DevOps tools
   community.general.homebrew:
-    name: "{{ devops_tools_packages }}"
+    name: "{{ devops_tools }}"
     state: present
     path: "{{ homebrew_prefix }}/bin"
   become: false

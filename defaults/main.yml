@@ -11,7 +11,7 @@ zsh:
     theme: robbyrussell
     plugins: "git kube-ps1"
 
-devops_tools_packages:
+devops_tools:
   - azure-cli
   - hadolint
   - helm
