@@ -10,6 +10,9 @@ zsh:
     theme: robbyrussell
     plugins: "git kube-ps1"
 
+homebrew_taps:
+  - hashicorp/tap
+
 utils:
   - curl
   - git
@@ -36,6 +39,6 @@ devops_tools:
   - pulumi
   - shellcheck
   - stern
-  - terraform
+  - hashicorp/tap/terraform
   - terraform-docs
   - tflint

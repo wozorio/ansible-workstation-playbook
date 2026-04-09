@@ -53,3 +53,11 @@
     mode: "0644"
   become: false
   become_user: "{{ user }}"
+
+- name: Add Homebrew taps
+  community.general.homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  become: false
+  become_user: "{{ user }}"
+  loop: "{{ homebrew_taps }}"
