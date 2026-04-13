@@ -11,6 +11,7 @@ zsh:
     plugins: "git kube-ps1"
 
 homebrew_taps:
+  - Azure/kubelogin
   - hashicorp/tap
 
 utils:
@@ -34,7 +35,7 @@ devops_tools:
   - helm
   - kube-linter
   - kubectl
-  - kubelogin
+  - Azure/kubelogin/kubelogin
   - kubectx
   - hashicorp/tap/packer
   - pulumi
