@@ -36,6 +36,7 @@ devops_tools:
   - kubectl
   - kubelogin
   - kubectx
+  - hashicorp/tap/packer
   - pulumi
   - shellcheck
   - stern
