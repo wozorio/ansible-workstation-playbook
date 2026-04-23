@@ -40,6 +40,7 @@ devops_tools:
   - hashicorp/tap/packer
   - pulumi
   - shellcheck
+  - sops
   - stern
   - hashicorp/tap/terraform
   - terraform-docs
