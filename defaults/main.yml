@@ -45,3 +45,4 @@ devops_tools:
   - hashicorp/tap/terraform
   - terraform-docs
   - tflint
+  - trivy

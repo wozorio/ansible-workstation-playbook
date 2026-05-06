@@ -2,7 +2,7 @@
 - name: Install DevOps tools
   community.general.homebrew:
     name: "{{ devops_tools }}"
-    state: present
+    state: latest
     path: "{{ homebrew_prefix }}/bin"
   become: false
   become_user: "{{ user }}"
