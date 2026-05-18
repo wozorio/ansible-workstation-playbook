@@ -69,6 +69,24 @@
         scope: global
         value: "{{ homedir }}/.gitalias"
 
+- name: Copy OpenCode agents
+  ansible.builtin.copy:
+    src: "dotfiles/.opencode/agents/"
+    dest: "{{ homedir }}/.opencode/agents/"
+    remote_src: true
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0664"
+
+- name: Copy OpenCode skills
+  ansible.builtin.copy:
+    src: "dotfiles/.opencode/skills/"
+    dest: "{{ homedir }}/.opencode/skills/"
+    remote_src: true
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0664"
+
 - name: Install FiraCode font
   ansible.builtin.apt:
     name: fonts-firacode

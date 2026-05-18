@@ -10,10 +10,6 @@ zsh:
     theme: robbyrussell
     plugins: "git kube-ps1"
 
-homebrew_taps:
-  - Azure/kubelogin
-  - hashicorp/tap
-
 utils:
   - curl
   - git
@@ -30,6 +26,7 @@ utils:
   - yamllint
 
 devops_tools:
+  - anomalyco/tap/opencode
   - azure-cli
   - hadolint
   - helm
