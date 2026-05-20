@@ -75,23 +75,22 @@
   block:
     - name: Copy OpenCode agents
       ansible.builtin.copy:
-        src: "dotfiles/opencode/agents/"
+        src: "ai-config/opencode/agents/"
         dest: "{{ homedir }}/.config/opencode/agents/"
         remote_src: true
         owner: "{{ user }}"
         group: "{{ user }}"
-        directory_mode: "0755"
-        mode: "0644"
+        mode: "preserve"
 
     - name: Copy OpenCode skills
       ansible.builtin.copy:
-        src: "dotfiles/opencode/skills/"
+        src: "ai-config/opencode/skills/"
         dest: "{{ homedir }}/.config/opencode/skills/"
         remote_src: true
         owner: "{{ user }}"
         group: "{{ user }}"
         directory_mode: "0755"
-        mode: "0644"
+        mode: "preserve"
 
 - name: Install FiraCode font
   ansible.builtin.apt:

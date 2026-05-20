@@ -1,6 +1,6 @@
 ---
 name: python-script-generator
-description: Standards for writing, modifying, and reviewing Python scripts. Apply whenever creating or editing a Python script to enforce consistent structure, typing, logging, and tooling.
+description: Standards for Python scripts to enforce consistent structure, typing, logging, and tooling.
 ---
 
 # Architecture
@@ -10,6 +10,80 @@ description: Standards for writing, modifying, and reviewing Python scripts. App
 - No private functions — no `_` prefix; all functions must be directly callable.
 - **Avoid `try...except`** — use "Easier to Ask Forgiveness than Permission"/fail-fast; let exceptions propagate naturally. Only use `try...except` when exceptions are not handled implicitly by the libraries in use.
 - Use `dataclasses` when a class structure is needed.
+
+# If/Else Anti-Patterns
+
+**Arrow anti-pattern** — deeply nested `if/else` blocks. Invert conditions and return early instead.
+
+```python
+# Bad
+def process(data):
+    if data:
+        if data.is_valid():
+            if not data.is_expired():
+                return data.value
+# Good
+def process(data):
+    if not data:
+        return None
+    if not data.is_valid():
+        return None
+    if data.is_expired():
+        return None
+    return data.value
+```
+
+**If/else return bool** — never use a conditional block to return a boolean; return the expression directly.
+
+```python
+# Bad
+if x > 0:
+    return True
+else:
+    return False
+# Good
+return x > 0
+```
+
+**Excessive `if/elif` chains** — replace value-mapping chains with a dictionary lookup.
+
+```python
+# Bad
+if command == "start":
+    action = start
+elif command == "stop":
+    action = stop
+elif command == "restart":
+    action = restart
+# Good
+COMMANDS: dict[str, Callable] = {"start": start, "stop": stop, "restart": restart}
+action = COMMANDS[command]
+```
+
+**Boolean flags as policies** — a function that branches on multiple boolean arguments should be split into focused functions.
+
+```python
+# Bad
+def notify(user, send_email: bool, send_sms: bool): ...
+# Good
+def notify_by_email(user): ...
+def notify_by_sms(user): ...
+```
+
+**Missing or unrelated `else`** — always handle the default case explicitly; never use `else` when it has no logical relation to the `if` condition.
+
+```python
+# Bad
+if status == "active":
+    process()
+else:
+    # unrelated cleanup that always runs
+    cleanup()
+# Good
+if status == "active":
+    process()
+cleanup()
+```
 
 # Code Structure
 
