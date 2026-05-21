@@ -117,13 +117,7 @@ Use `uv` for dependencies. Every script starts with this block (no pinned versio
 
 # CLI
 
-Use `click` for argument parsing. Always add the `pylint` disable comment before `main()`:
-
-```python
-if __name__ == "__main__":
-    # pylint: disable=no-value-for-parameter
-    main()
-```
+Use `click` for argument parsing.
 
 # Logging
 
@@ -165,5 +159,5 @@ def setup_logging() -> None:
 Every script must pass:
 
 ```bash
-ruff check -v <script.py>
+ruff check --select ALL -v <script.py>
 ```
