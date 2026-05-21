@@ -3,6 +3,7 @@
   community.general.homebrew:
     name: "{{ devops_tools }}"
     state: latest
+    update_homebrew: true
     path: "{{ homebrew_prefix }}/bin"
   become: false
   become_user: "{{ user }}"
