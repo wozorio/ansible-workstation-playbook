@@ -36,6 +36,7 @@ devops_tools:
   - kubectx
   - hashicorp/tap/packer
   - pulumi
+  - ripgrep
   - ruff
   - shellcheck
   - sops
