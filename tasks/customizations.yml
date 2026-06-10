@@ -75,7 +75,7 @@
   block:
     - name: Copy OpenCode agents
       ansible.builtin.copy:
-        src: "ai-config/opencode/agents/"
+        src: "ai/opencode/agents/"
         dest: "{{ homedir }}/.config/opencode/agents/"
         remote_src: true
         owner: "{{ user }}"
@@ -84,7 +84,7 @@
 
     - name: Copy OpenCode skills
       ansible.builtin.copy:
-        src: "ai-config/opencode/skills/"
+        src: "ai/opencode/skills/"
         dest: "{{ homedir }}/.config/opencode/skills/"
         remote_src: true
         owner: "{{ user }}"

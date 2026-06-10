@@ -22,6 +22,7 @@ def process(data):
         if data.is_valid():
             if not data.is_expired():
                 return data.value
+
 # Good
 def process(data):
     if not data:
@@ -41,6 +42,7 @@ if x > 0:
     return True
 else:
     return False
+
 # Good
 return x > 0
 ```
@@ -55,6 +57,7 @@ elif command == "stop":
     action = stop
 elif command == "restart":
     action = restart
+
 # Good
 COMMANDS: dict[str, Callable] = {"start": start, "stop": stop, "restart": restart}
 action = COMMANDS[command]
@@ -65,6 +68,7 @@ action = COMMANDS[command]
 ```python
 # Bad
 def notify(user, send_email: bool, send_sms: bool): ...
+
 # Good
 def notify_by_email(user): ...
 def notify_by_sms(user): ...
@@ -79,6 +83,7 @@ if status == "active":
 else:
     # unrelated cleanup that always runs
     cleanup()
+
 # Good
 if status == "active":
     process()
@@ -111,8 +116,23 @@ Use `uv` for dependencies. Every script starts with this block (no pinned versio
 
 # Typing & Docstrings
 
-- All function arguments, variables, and return values must have type hints.
-- Use `collections.abc` for generic types (e.g., `collections.abc.Sequence` instead of `list`).
+- All function arguments and return values must have type hints.
+- Rely on Type Inference for Variables: Do not explicitly specify types for local variables during assignment when the type can be automatically inferred. Only use explicit type hints on variables when initializing an empty collection or when the inferred type is ambiguous.
+
+```python
+# Bad
+user_count: int = 0
+api_url: str = "https://api.example.com"
+results: list[int] = [1, 2, 3]
+
+# Good
+user_count = 0
+api_url = "https://api.example.com"
+results = [1, 2, 3]
+processed_ids: list[str] = []  # Allowed: Type cannot be inferred from an empty list
+```
+
+- Use `collections.abc` for generic types (e.g., `collections.abc.Sequence` instead of `list` for input arguments).
 - Every function has a concise docstring describing **only its purpose**.
 
 # CLI
