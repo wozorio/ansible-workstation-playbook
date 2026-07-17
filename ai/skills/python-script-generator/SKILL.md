@@ -92,7 +92,7 @@ cleanup()
 
 # Code Structure
 
-- `main()` is always the **first** function defined; remaining functions are ordered by first reference.
+- `main()` is always the **first** function defined; if a `log()` helper exists, it is the **second**; remaining functions are ordered by first reference.
 - Imports sorted via `ruff check --select I --fix <script.py>`.
 - Indentation: **4 spaces** (no tabs).
 - Max line length: **125 characters**.
