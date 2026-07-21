@@ -73,24 +73,39 @@
   become: false
   become_user: "{{ user }}"
   block:
-    - name: Copy OpenCode agents
-      ansible.builtin.copy:
+    - name: Sync OpenCode agents
+      ansible.posix.synchronize:
+        src: "ai/agents"
+        dest: "{{ homedir }}/.config/opencode"
+        archive: true
+        delete: true
+
+    - name: Sync OpenCode skills
+      ansible.posix.synchronize:
+        src: "ai/skills"
+        dest: "{{ homedir }}/.config/opencode"
+        archive: true
+        delete: true
+
+- name: CoPilot config
+  become: false
+  become_user: "{{ user }}"
+  block:
+    - name: Sync CoPilot agents
+      ansible.posix.synchronize:
         src: "ai/agents/"
         dest: "{{ homedir }}/.agents/"
-        remote_src: true
-        owner: "{{ user }}"
-        group: "{{ user }}"
-        mode: "preserve"
+        archive: true
+        delete: true
+        rsync_opts:
+          - "--exclude=*/"
 
-    - name: Copy OpenCode skills
-      ansible.builtin.copy:
-        src: "ai/skills/"
-        dest: "{{ homedir }}/.agents/skills/"
-        remote_src: true
-        owner: "{{ user }}"
-        group: "{{ user }}"
-        directory_mode: "0755"
-        mode: "preserve"
+    - name: Sync CoPilot skills
+      ansible.posix.synchronize:
+        src: "ai/skills"
+        dest: "{{ homedir }}/.agents"
+        archive: true
+        delete: true
 
 - name: Install FiraCode font
   ansible.builtin.apt:
