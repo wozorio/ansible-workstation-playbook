@@ -155,7 +155,7 @@ processed_ids: list[str] = []  # Allowed: Type cannot be inferred from an empty 
 
 ## CLI
 
-Use `click` for argument parsing.
+Use `click` for argument parsing, and only when arguments need to be parsed.
 
 ## Logging
 
@@ -261,5 +261,3 @@ def greet(name: str) -> str:
 if __name__ == "__main__":
     main()
 ```
-
-For a script without argument parsing, replace `click.prompt(...)` with whatever input source applies (env vars, `sys.argv`, none).
