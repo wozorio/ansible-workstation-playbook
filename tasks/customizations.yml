@@ -106,8 +106,3 @@
         dest: "{{ homedir }}/.agents"
         archive: true
         delete: true
-
-- name: Install FiraCode font
-  ansible.builtin.apt:
-    name: fonts-firacode
-    state: present
