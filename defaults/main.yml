@@ -35,6 +35,7 @@ devops_tools:
   - Azure/kubelogin/kubelogin
   - kubectx
   - hashicorp/tap/packer
+  - node
   - pulumi
   - ripgrep
   - ruff
