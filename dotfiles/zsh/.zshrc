@@ -16,9 +16,14 @@ plugins=(git kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
 
+# Display kube-ps1 plugin on the right side of the terminal
 RPROMPT='$(kube_ps1)'
 
-. "$HOME/.local/bin/env"
+# Ensure uv is added to the PATH
+source "$HOME/.local/bin/env"
 
+# Add Homebrew to the PATH
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+
+# Dotnet-related ENV variable
 export DOTNET_ROOT="/home/linuxbrew/.linuxbrew/opt/dotnet/libexec"
