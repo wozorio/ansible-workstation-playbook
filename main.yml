@@ -31,9 +31,12 @@
     - name: Import DevOps tools task
       ansible.builtin.import_tasks: tasks/devops_tools.yml
       tags: ["devops_tools"]
-    - name: Import customizations task
-      ansible.builtin.import_tasks: tasks/customizations.yml
-      tags: ["customizations"]
+    - name: Import AI agents and SKILLs task
+      ansible.builtin.import_tasks: tasks/ai_agents_skills.yml
+      tags: ["ai_agents_skills"]
+    - name: Import stow task
+      ansible.builtin.import_tasks: tasks/stow.yml
+      tags: ["stow"]
 
   post_tasks:
     - name: Remove obsolete dependencies

@@ -1,13 +1,28 @@
 ---
-- name: Install ZSH
-  ansible.builtin.apt:
-    name: zsh
-    state: present
+- name: Set up ZSH
+  block:
+    - name: Install ZSH
+      ansible.builtin.apt:
+        name: zsh
+        state: present
 
-- name: Set ZSH as the default shell
-  ansible.builtin.user:
-    name: "{{ user }}"
-    shell: /usr/bin/zsh
+    - name: Set ZSH as the default shell
+      ansible.builtin.user:
+        name: "{{ user }}"
+        shell: /usr/bin/zsh
+
+- name: Set up tmux
+  block:
+    - name: Install tmux
+      ansible.builtin.apt:
+        name: tmux
+        state: present
+
+    - name: Clone tmux plugin manager repo
+      # noqa: latest
+      ansible.builtin.git:
+        repo: https://github.com/tmux-plugins/tpm
+        dest: "/home/{{ user }}/.tmux/plugins/tpm"
 
 - name: Set up oh-my-zsh
   block:
@@ -31,28 +46,3 @@
       register: oh_my_zsh_output
       changed_when: "'folder already exists' not in oh_my_zsh_output.stdout"
       when: not oh_my_zsh_dir.stat.exists
-
-    - name: Set oh-my-zsh theme
-      ansible.builtin.lineinfile:
-        path: "/home/{{ user }}/.zshrc"
-        regexp: "^ZSH_THEME="
-        line: "ZSH_THEME={{ zsh.oh_my_zsh.theme }}"
-
-    - name: Set oh-my-zsh plugins
-      ansible.builtin.lineinfile:
-        path: "/home/{{ user }}/.zshrc"
-        regexp: "^plugins="
-        line: "plugins=({{ zsh.oh_my_zsh.plugins }})"
-
-    - name: Add kube-ps1 to the prompt
-      ansible.builtin.lineinfile:
-        path: "/home/{{ user }}/.zshrc"
-        regexp: "^PROMPT="
-        line: "RPROMPT='$(kube_ps1)'"
-
-    - name: Copy ZSH custom aliases to oh-my-zsh custom directory
-      ansible.builtin.copy:
-        src: "dotfiles/.aliases"
-        dest: "{{ homedir }}/.oh-my-zsh/custom/aliases.zsh"
-        remote_src: true
-        mode: "0555"

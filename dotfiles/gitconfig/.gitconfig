@@ -1,0 +1,9 @@
+[user]
+	name = Wellington Ozorio
+	email = wozorio@duck.com
+[pull]
+	rebase = False
+[include]
+	path = /home/wozorio/.gitalias
+[credential]
+	helper = store
