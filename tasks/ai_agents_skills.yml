@@ -1,0 +1,38 @@
+---
+- name: OpenCode agents and skills
+  become: false
+  become_user: "{{ user }}"
+  block:
+    - name: Sync OpenCode agents
+      ansible.posix.synchronize:
+        src: "ai/agents"
+        dest: "{{ homedir }}/.config/opencode"
+        archive: true
+        delete: false
+
+    - name: Sync OpenCode skills
+      ansible.posix.synchronize:
+        src: "ai/skills"
+        dest: "{{ homedir }}/.config/opencode"
+        archive: true
+        delete: false
+
+- name: CoPilot agents and skills
+  become: false
+  become_user: "{{ user }}"
+  block:
+    - name: Sync CoPilot agents
+      ansible.posix.synchronize:
+        src: "ai/agents/"
+        dest: "{{ homedir }}/.agents/"
+        archive: true
+        delete: false
+        rsync_opts:
+          - "--exclude=*/"
+
+    - name: Sync CoPilot skills
+      ansible.posix.synchronize:
+        src: "ai/skills"
+        dest: "{{ homedir }}/.agents"
+        archive: true
+        delete: false

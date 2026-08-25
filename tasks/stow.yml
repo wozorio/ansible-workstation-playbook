@@ -1,0 +1,14 @@
+---
+- name: Install GNU Stow
+  ansible.builtin.apt:
+    name: stow
+    state: present
+
+- name: Run GNU Stow to symlink configuration packages
+  become: false
+  become_user: "{{ user }}"
+  ansible.builtin.shell:
+    cmd: stow --verbose=2 --target=/home/{{ user }} *
+    chdir: dotfiles
+  register: stow_result
+  changed_when: "'LINK' in stow_result.stderr"
