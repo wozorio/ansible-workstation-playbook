@@ -49,7 +49,7 @@ main() {
     fi
 
     rm -rf "${INSTALL_DIR}"
-    git clone --depth 1 "${REPO_URL}" "${INSTALL_DIR}"
+    git clone "${REPO_URL}" "${INSTALL_DIR}"
     cd "${INSTALL_DIR}"
 
     make bootstrap
