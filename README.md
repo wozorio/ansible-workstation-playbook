@@ -26,13 +26,13 @@ You can filter which software to install by specifying the respective tag(s) usi
 
 The tags available are:
 
-| Tag            | Description                                                                                   |
-| -------------- | --------------------------------------------------------------------------------------------- |
-| `devops_tools` | Installs DevOps tools such as `Helm`, `Kubectl`, `Kubens`, `Kubectx`, `Stern` and `Terraform` |
-| `docker`       | Installs [Docker](https://docs.docker.com/engine/install/ubuntu/)                             |
-| `stow`         | Sets up dotfiles using GNU Stow                                                               |
-| `utils`        | Installs utilities (i.e.: `jq`, `unzip`, `git`, etc)                                          |
-| `zsh`          | Installs [Zsh](https://www.zsh.org/)                                                          |
+| Tag                 | Description                                                                                           |
+| ------------------- | ----------------------------------------------------------------------------------------------------- |
+| `homebrew_packages` | Installs Homebrew packages such as `Helm`, `Kubectl`, `Kubens`, `Kubectx`, `Stern`, `Terraform`, etc. |
+| `docker`            | Installs [Docker](https://docs.docker.com/engine/install/ubuntu/)                                     |
+| `stow`              | Sets up dotfiles using GNU Stow                                                                       |
+| `utils`             | Installs utilities (i.e.: `jq`, `unzip`, `git`, etc)                                                  |
+| `zsh`               | Installs [Zsh](https://www.zsh.org/)                                                                  |
 
 ## Usage example
 
@@ -45,7 +45,7 @@ make run args='--tags "customizations, docker"'
 ### Excluding specific tasks from execution
 
 ```bash
-make run args='--skip-tags "zsh"'
+make run args='--skip-tags "stow"'
 ```
 
 ### Overriding variables during runtime

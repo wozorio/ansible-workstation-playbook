@@ -53,3 +53,13 @@
     mode: "0644"
   become: false
   become_user: "{{ user }}"
+
+- name: Install Homebrew packages
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: latest
+    update_homebrew: true
+    path: "{{ homebrew_prefix }}/bin"
+  loop: "{{ homebrew_packages }}"
+  become: false
+  become_user: "{{ user }}"

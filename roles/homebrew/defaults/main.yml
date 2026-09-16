@@ -7,3 +7,5 @@ homebrew_dependencies:
   - git
 
 homebrew_prefix: "/home/linuxbrew/.linuxbrew"
+
+homebrew_packages: []

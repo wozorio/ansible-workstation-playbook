@@ -28,9 +28,6 @@
       tags: ["homebrew"]
 
   tasks:
-    - name: Import DevOps tools task
-      ansible.builtin.import_tasks: tasks/devops_tools.yml
-      tags: ["devops_tools"]
     - name: Import AI agents and SKILLs task
       ansible.builtin.import_tasks: tasks/ai_agents_skills.yml
       tags: ["ai_agents_skills"]

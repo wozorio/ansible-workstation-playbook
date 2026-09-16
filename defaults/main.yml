@@ -17,9 +17,10 @@ utils:
   - yq
   - yamllint
 
-devops_tools:
+homebrew_packages:
   - anomalyco/tap/opencode
   - azure-cli
+  - go-task
   - hadolint
   - helm
   - kube-linter
@@ -32,6 +33,7 @@ devops_tools:
   - ripgrep
   - ruff
   - shellcheck
+  - shfmt
   - sops
   - stern
   - hashicorp/tap/terraform
