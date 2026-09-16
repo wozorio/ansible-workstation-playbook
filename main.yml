@@ -31,7 +31,7 @@
     - name: Import AI agents and SKILLs task
       ansible.builtin.import_tasks: tasks/ai_agents_skills.yml
       tags: ["ai_agents_skills"]
-    - name: Import stow task
+    - name: Import GNU Stow task
       ansible.builtin.import_tasks: tasks/stow.yml
       tags: ["stow"]
 
