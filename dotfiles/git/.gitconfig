@@ -1,9 +1,51 @@
 [user]
 	name = Wellington Ozorio
 	email = wozorio@duck.com
+
+[core]
+	# Tells Git to use 'vi' for writing commit messages and interactive rebases
+	editor = vi
+	# Converts Windows CRLF line endings to Linux LF when committing, preventing messy line ending diffs
+	autocrlf = input
+	# Configures 'less' as the pager. '-F' quits immediately if the output fits on one screen, '-X' leaves the output on the terminal screen after exiting
+	pager = less -F -X
+
+[init]
+	# Sets the default starting branch for brand new repositories to 'main' instead of the old 'master'
+	defaultBranch = main
+
+[color]
+	# Automatically enables colors for git status, diff, and branch output when printing to a terminal
+	ui = auto
+
+[push]
+	# Ensures 'git push' only pushes the current branch to its corresponding upstream branch (a safe, standard default)
+	default = simple
+	# Automatically sets the upstream tracking branch on your very first push, saving you from typing 'git push -u origin branch-name'
+	autoSetupRemote = true
+
 [pull]
+	# Explicitly tells Git to create a merge commit when pulling new changes, rather than rebasing your local commits on top of them
 	rebase = False
+
+[fetch]
+	# Automatically cleans up your local tracking references if someone deletes a branch on the remote server
+	prune = true
+
+[merge]
+	# Enhances merge conflict markers to show 3 parts: your changes, the incoming changes, AND the original "base" code before either changed
+	conflictstyle = zdiff3
+
+[diff]
+	# Visually highlights code blocks that were moved to a different location, preventing them from looking like deleted/newly written code
+	colorMoved = zebra
+	# Instructs Git to detect and report when a file was copied, treating it similarly to a rename in the diff output
+	renames = copies
+
 [include]
+	# Keeps your main config clean by loading your aliases (and potentially other settings) from a separate file
 	path = /home/wozorio/.gitalias
+
 [credential]
+	# Caches your Git passwords/tokens on your local disk so you don't have to type them on every fetch/push
 	helper = store
