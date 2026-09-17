@@ -43,7 +43,7 @@
 	renames = copies
 
 [include]
-	# Keeps your main config clean by loading your aliases (and potentially other settings) from a separate file
+	# Keeps the main config clean by loading aliases from a separate file
 	path = /home/wozorio/.gitalias
 
 [credential]
