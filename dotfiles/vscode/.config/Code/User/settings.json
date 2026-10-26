@@ -1,0 +1,179 @@
+{
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "editor.minimap.enabled": false,
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "diffEditor.ignoreTrimWhitespace": true,
+  "workbench.startupEditor": "none",
+  "window.menuBarVisibility": "compact",
+  "explorer.compactFolders": false,
+  "remote.autoForwardPortsSource": "hybrid",
+  // Privacy
+  "redhat.telemetry.enabled": false,
+  // Git
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  // GitHub Copilot
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "yaml": false,
+    "csharp": false,
+  },
+  // Editor
+  "extensions.ignoreRecommendations": true,
+  "editor.tabSize": 4,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.semanticHighlighting.enabled": true,
+  // Prettier
+  "prettier.tabWidth": 4,
+  "prettier.printWidth": 125,
+  // MCP servers
+  "chat.mcp.gallery.enabled": true,
+  // Kubernetes
+  "vs-kubernetes": {
+    "vs-kubernetes.crd-code-completion": "disabled",
+    "vs-kubernetes.kubectl-path-linux": "/home/linuxbrew/.linuxbrew/bin/kubectl",
+    "vs-kubernetes.helm-path-linux": "/home/linuxbrew/.linuxbrew/bin/helm",
+  },
+  // Files
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  // C# (.NET)
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
+  },
+  // Docker
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-containers",
+  },
+  "[dockercompose]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-containers",
+  },
+  // Helm
+  "[helm]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+  },
+  // GitHub Actions
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+  },
+  // Makefile
+  "[makefile]": {
+    "editor.tabSize": 8,
+    "editor.insertSpaces": false,
+  },
+  "makefile.configureOnOpen": false,
+  "makefile.configureOnEdit": false,
+  "makefile.configureAfterCommand": false,
+  // Markdown
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.tabWidth": 2,
+  },
+  // Packer
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.(pkr.hcl|pkrvars.hcl)$",
+        "cmd": "packer fmt ${file}",
+      },
+    ],
+  },
+  // Python
+  "python.analysis.typeCheckingMode": "standard",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+    },
+  },
+  "python-envs.alwaysUseUv": true,
+  // JSON
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.tabWidth": 2,
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.tabWidth": 2,
+  },
+  // Javascript
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  // Shellscript
+  "[shellscript]": {
+    "editor.defaultFormatter": "mkhl.shfmt",
+  },
+  // Terraform
+  "terraform.validation.enableEnhancedValidation": false,
+  "[terraform]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.codeActionsOnSave": {
+      "source.formatAll.terraform": "always",
+    },
+  },
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.codeActionsOnSave": {
+      "source.formatAll.terraform": "always",
+    },
+  },
+  // Ansible
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/vars.json": ["*/defaults/**"],
+    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/meta.json": ["*/meta/**"],
+    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks": [
+      "*/handlers/**",
+      "*/tasks/**",
+    ],
+  },
+  // Azure pipelines
+  "[azure-pipelines]": {
+    "editor.defaultFormatter": "ms-azure-devops.azure-pipelines",
+  },
+  "files.associations": {
+    "**/pipelines/*.yml": "azure-pipelines",
+  },
+  "yaml.disableSchemaDetection": ["**/pipelines/*.yml", "azure-pipelines.yml", "azure-pipelines.yaml"],
+  // YAML
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.tabSize": 2,
+    "editor.autoIndent": "keep",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true,
+    },
+    "editor.suggest.insertMode": "replace",
+  },
+  "chat.byokUtilityModelDefault": "mainAgent",
+  "chat.tools.urls.autoApprove": {
+    "https://code.visualstudio.com": true,
+    "https://github.com/microsoft/vscode/wiki/*": true,
+    "https://registry.terraform.io": true,
+    "https://learn.microsoft.com": {
+      "approveRequest": false,
+      "approveResponse": true,
+    },
+  },
+  "chat.viewSessions.orientation": "stacked",
+  "github-enterprise.uris": ["https://bosch.ghe.com"],
+  "github.copilot.advanced": {
+    "authProvider": "github-enterprise",
+  },
+}
