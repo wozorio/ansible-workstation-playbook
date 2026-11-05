@@ -28,10 +28,8 @@ The tags available are:
 
 | Tag                 | Description                                                                                           |
 | ------------------- | ----------------------------------------------------------------------------------------------------- |
-| `ai_agents_skills`  | Installs AI agents and skills                                                                         |
 | `homebrew_packages` | Installs Homebrew packages such as `Helm`, `Kubectl`, `Kubens`, `Kubectx`, `Stern`, `Terraform`, etc. |
 | `docker`            | Installs [Docker](https://docs.docker.com/engine/install/ubuntu/)                                     |
-| `stow`              | Sets up dotfiles using GNU Stow                                                                       |
 | `utils`             | Installs utilities (i.e.: `jq`, `unzip`, `git`, etc)                                                  |
 | `zsh`               | Installs [Zsh](https://www.zsh.org/)                                                                  |
 

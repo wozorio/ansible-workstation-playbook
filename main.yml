@@ -27,14 +27,6 @@
     - role: homebrew
       tags: ["homebrew"]
 
-  tasks:
-    - name: Import AI agents and SKILLs task
-      ansible.builtin.import_tasks: tasks/ai_agents_skills.yml
-      tags: ["ai_agents_skills"]
-    - name: Import GNU Stow task
-      ansible.builtin.import_tasks: tasks/stow.yml
-      tags: ["stow"]
-
   post_tasks:
     - name: Remove obsolete dependencies
       ansible.builtin.apt:
